@@ -1,0 +1,39 @@
+\begin{thebibliography}{4}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Peng \emph{et~al.}(1994)Peng, Buldyrev, Havlin, Simons, Stanley, and Goldberger}]{Peng_1994}
+Peng CK, Buldyrev SV, Havlin S, Simons M, Stanley HE, Goldberger AL (1994).
+\newblock \enquote{{Mosaic Organization of DNA Nucleotides}.}
+\newblock \textbf{49}(2), 1685--1689.
+
+\bibitem[{Podobnik and Stanley(2008)}]{Podobnik2008}
+Podobnik B, Stanley HE (2008).
+\newblock \enquote{{Detrended cross-correlation analysis: A new method for analyzing two nonstationary time series}.}
+\newblock \emph{Physical Review Letters}, \textbf{100}(8).
+\newblock ISSN 00319007.
+\newblock \doi{10.1103/PhysRevLett.100.084102}.
+\newblock \eprint{0709.0281}.
+
+\bibitem[{Zebende(2011)}]{Zebende2011}
+Zebende GF (2011).
+\newblock \enquote{{DCCA cross-correlation coefficient: Quantifying level of cross-correlation}.}
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{390}(4), 614--618.
+\newblock ISSN 03784371.
+\newblock \doi{10.1016/j.physa.2010.10.022}.
+\newblock \urlprefix\url{http://dx.doi.org/10.1016/j.physa.2010.10.022}.
+
+\bibitem[{Zebende and Silva(2018)}]{Zebende2018}
+Zebende GF, Silva AM (2018).
+\newblock \enquote{{Detrended Multiple Cross-Correlation Coefficient}.}
+\newblock \emph{Physica A}, \textbf{510}, 91--97.
+\newblock ISSN 0378-4371.
+\newblock \doi{10.1016/j.physa.2018.06.119}.
+
+\end{thebibliography}
