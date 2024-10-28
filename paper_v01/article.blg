@@ -3,22 +3,11 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: article.aux
 The style file: jss.bst
 Database file #1: refs.bib
-Warning--I didn't find a database entry for "Zeileis+Kleiber+Jackman:2008"
-Warning--I didn't find a database entry for "Mullahy:1986"
-Warning--I didn't find a database entry for "Cameron+Trivedi:2013"
-Warning--I didn't find a database entry for "R"
-Warning--I didn't find a database entry for "Venables+Ripley:2002"
-Warning--I didn't find a database entry for "Jackman:2015"
-Warning--I didn't find a database entry for "Wood:2006"
-Warning--I didn't find a database entry for "Stasinopoulos+Rigby:2007"
-Warning--I didn't find a database entry for "Yee:2009"
-Warning--I didn't find a database entry for "McCullagh+Nelder:1989"
-Warning--I didn't find a database entry for "Chambers+Hastie:1992"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty journal in Peng_1994
 You've used 4 entries,
             3215 wiz_defined-function locations,
-            696 strings with 6269 characters,
+            674 strings with 5919 characters,
 and the built_in function-call counts, 4268 in all, are:
 = -- 424
 > -- 99
@@ -57,4 +46,4 @@ warning$ -- 1
 while$ -- 29
 width$ -- 0
 write$ -- 77
-(There were 12 warnings)
+(There was 1 warning)
