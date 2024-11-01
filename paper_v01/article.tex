@@ -36,7 +36,7 @@
 
 %% - \Abstract{} almost as usual
 \Abstract{
-  This paper presents tha \pkg{Zebende}, a \proglang{Python} package writen in \proglang{Python} and \proglang{Zig}, that calculates the $DFA$, $DCCA$ $\rho_{DCCA}$ and the $DMC_x^2$. The package presents an optimized algorithm that significantly improves the calculations speed. A comparison with ohter packages that calculates the .The package is also the firts to implement the $DMC_x^2$ corefficient for any number of series.
+  This paper presents tha \pkg{Zebende}, a \proglang{Python} package written in \proglang{Python} and \proglang{Zig}, that calculates the $DFA$, $DCCA$ $\rho_{DCCA}$ and the $DMC_x^2$. The package presents an optimized algorithm that significantly improves the calculations speed. A comparison with other packages that calculates the .The package is also the first to implement the $DMC_x^2$ coefficient for any number of series.
 }
 
 %% - \Keywords{} with LaTeX markup, at least one required
@@ -84,19 +84,72 @@
 
 The $\rho_{DCCA}$~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between tow non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationarity time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
 
-
+% rho DCCA applications
 
 The Detrended Multiple Cross-Correlation Coefficient \citep{Zebende2018} ($DMC_x^2$) is a generalization of the $\rho_{DCCA}$ coefficient that correlates one time series (dependent variable) a number of time series (independent variables). The $DMC_x^2$ values ranges from zero ($0$), indicating no correlation to $1$, meaning perfect correlation or anti-correlation between the dependent and the independent variables.
+
+% DMCx2 applications
 
 This paper presents the \pkg{Zebende} \proglang{Python} package, an implementation of the $DFA$, $DCCA$, $\rho_{DCCCA}$, $DMC_x^2$ and utility functions related to the methods. In section \ref{sec:calculations} the steps for calculating the $\rho_{DCCCA}$ and $DMC_x^2$ are presented and discussed. Section \ref{sec:optimization} shows how this library was implemented, the optimization technics and the recommended steps to use the library. In Section \ref{sec:results} the \pkg{Zebende} package is compared with other packages for \proglang{Python} and \proglang{R} that calculates the $\rho_{DCCA}$ in terms of performance and usability, leading to the conclusions in \ref{sec:summary}.
 
 \section{Algorithms of the coefficients}\label{sec:calculations}
+
+The algorithms that calculates the $\rho_{DCCA}$ uses the $DFA$ and the $DCCA$ steps. The $DMC_x^2$ coefficient uses the $\rho_{DCCA}$ coefficient and, consequently, also embraces the $DFA$ and the $DCCA$. The $DFA$ method is described in six steps:
+
+
+\begin{enumerate}\label{steps:dfa}
+
+  \item Taking a time series \(\{x_{i}\}\) with \(i\) ranging from \(1\) to \(N\), the integrated series \(X_{k}\) is calculated by \(X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] \) with \(k\) also ranging from \(1\) to \(N\);
+  \item the  \(X_{k}\) series is divided in \(N - n\) boxes of size \(n\)(time scale), each box containing \(n + 1\) values, starting in \(i\) up to \(i + n\);
+  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting \(\widetilde{X}_{k, i}\) with \( i \le k \le (i + n) \) (detrended values);
+  \item in each box is calculated: \(f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k, i})^{2}\)
+  \item for all the boxes of a time scale, the $DFA$ is calculated as:\\[10pt]
+        \(F_{DFA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DFA}^{2}(n, i)}\);
+  \item for a number of different timescales (n), with possible values \( 4 \le n \le \frac{N}{4}\) the \(F_{DFA}\) function is calculated to find a relation among \(F_{DFA} \times n\)
+
+\end{enumerate}
+
+
+The $DCCA$ method is very similar to the $DFA$ calculations. With the difference of analyzing two series while the $DFA$ evaluate properties of a single time series. It´s also a six steps process:
+
+
+\begin{enumerate}
+  \label{steps:DCCA}
+  \item Taking two time series with the same length $\{x\alpha_{i}\}$ and \(\{x\beta_{i}\}\) with \(i\) ranging from \(1\) to \(N\),
+        the integrated series \(X\alpha_{k}\) and \(X\beta_{k}\) are calculated by
+        \(X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] \) for each series, with \(k\) also ranging from \(1\) to \(N\);
+  \item \(X\alpha_{k}\) and \(X\beta_{k}\) series are divided in \(N - n\) boxes of size \(n\)(time scale), each box containing \(n + 1\) values, starting in \(i\) up to \(i + n\);
+  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting
+        $\widetilde{X\alpha}_{k, i}$ and $\widetilde{X\beta}_{k, i}$,
+        for series $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ respectively,
+        with \( i \le k \le (i + n) \) (detrended values);
+  \item in each box is calculated: $f_{DCCA}^{2}(n, i) =
+        \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k, i})$
+  \item for all the boxes of a time scale, the $DCCA$ is calculated as:\\[10pt]
+        $F_{DCCA}^{2}(n) =\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)$;
+  \item for a number of different timescales (n), with possible values
+        $4 \le n \le \frac{N}{4}$ the $F_{DCCA}^{2}$ function is calculated to find a relation among
+        $F_{DCCA}^{2} \times n$
+\end{enumerate}
+ 
+Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ is essentially an application of the variance calculation and the equivalent step of the $DCCA$ is a covariance between the two series. Step five calculates the square root of the mean of the variances calculated in  in each box for the $DFA$, in the $DCCA$, the mean of the covariances calculated for each box is calculated in stead. The last step,in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales.
+
+The $\rho_{DCCA}$ is measured using Eq. \ref{eq:p_dcca}. Considering the relation between $DFA$ and variance and $DCCA$ and covariance, the $\rho_{DCCA}$ resembles Pearson correlation for a time scale $n$.
+
+\begin{equation}
+  {\rho}_{DCCA}(n) = \frac{F_{DCCA~(x\alpha,~x\beta)}^{2}(n)}
+  {F_{DFA~(x\alpha)}(n) \times F_{DFA~(x\beta)}(n)}
+  \label{eq:p_dcca}
+\end{equation}
+
+The $DMC_x^2$ is a generalization of the $\rho_{DCCA}$ that calculates the correlation between one time-series $\left\lbrace Y \right\rbrace $, as the  dependent variable, and a number $j$ of time-series $\left\lbrace X_{1} \right\rbrace $, $\left\lbrace X_{2} \right\rbrace $, $\left\lbrace X_{3} \right\rbrace $, $\dots $, $\left\lbrace X_{j} \right\rbrace $ defined as independent variables. The coefficient is expressed mathematically as:
 
 \begin{equation}
   {DMC}_{x}^{2}  \equiv \rho_{Y,X_{i}}(n)^{T} \times \rho^{-1}(n) \times \rho_{Y,X_{i}}(n)
   \label{eq:dmcx2}
 \end{equation}
 
+In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X_{1},X_{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X_{1}$ and $X_{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is evaluated a commutative expression. 
 
 \begin{equation}
   \rho^{-1}(n) = \left(\begin{matrix}
@@ -108,52 +161,13 @@ This paper presents the \pkg{Zebende} \proglang{Python} package, an implementati
   \label{eq:p_dcca_matrix}
 \end{equation}
 
+At last Eq. \ref{eq:rhocol} represent the transposed vector of the $\rho_{Y,X_{i}}(n)$ between the depended variable $\left\lbrace Y \right\rbrace $ and each $\left\lbrace X_{i} \right\rbrace $ independent variable for a given time scale $n$. 
 
-\begin{equation}
-  \rho_{Y,X_k}(n)^T=[\rho_{Y,X_1}(n), \rho_{Y,X_2}(n),\cdots,\rho_{Y,X_j}(n)]
-  \label{eq:rhocol}
+\begin{equation} \label{eq:rhocol}
+  \rho_{Y,X_i}(n)^T=[\rho_{Y,X_1}(n), \rho_{Y,X_2}(n),\cdots,\rho_{Y,X_j}(n)]
 \end{equation}
 
-\begin{equation}
-  {\rho}_{DCCA}(n) = \frac{F_{DCCA~(x\alpha,~x\beta)}^{2}(n)}
-  {F_{DFA~(x\alpha)}(n) \times F_{DFA~(x\beta)}(n)}
-  \label{eq:p_dcca}
-\end{equation}
-
-
-\begin{description}
-
-  \label{steps:dfa}
-  \item Taking a time series \(\{x_{i}\}\) with \(i\) ranging from \(1\) to \(N\), the integrated series \(X_{k}\) is calculated by \(X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] \) with \(k\) also ranging from \(1\) to \(N\);
-  \item the  \(X_{k}\) series is divided in \(N - n\) boxes of size \(n\)(time scale),each box containing \(n + 1\) values, starting in \(i\) up to \(i + n\);
-  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting \(\widetilde{X}_{k, i}\) with \( i \le k \le (i + n) \) (detrended values);
-  \item in each box is calculated: \(f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k, i})^{2}\)
-  \item for all the boxes of a time scale, the DFA is calculated as:\\[10pt]
-        \(F_{DFA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DFA}^{2}(n, i)}\);
-  \item for a number of different timescales (n), with possible values \( 4 \le n \le \frac{N}{4}\) the \(F_{DFA}\) function is calculated to find a relation among \(F_{DFA} \times n\)
-
-\end{description}
-
-
-\begin{description}
-  \label{steps:DCCA}
-  \item Taking two time series with the same length \(\{x\alpha_{i}\}\) and \(\{x\beta_{i}\}\) with \(i\) ranging from \(1\) to \(N\),
-        the integrated series \(X\alpha_{k}\) and \(X\beta_{k}\) are calculated by
-        \(X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] \) for each series, with \(k\) also ranging from \(1\) to \(N\);
-  \item \(X\alpha_{k}\) and \(X\beta_{k}\) series are divided in \(N - n\) boxes of size \(n\)(time scale),
-        each box containing \(n + 1\) values, starting in \(i\) up to \(i + n\);
-  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting
-        \(\widetilde{X\alpha}_{k, i}\) and \(\widetilde{X\beta}_{k, i}\),
-        for series \(\{x\alpha_{i}\}\) and \(\{x\beta_{i}\}\) respectively,
-        with \( i \le k \le (i + n) \) (detrended values);
-  \item in each box is calculated: \(f_{DCCA}^{2}(n, i) =
-        \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k, i})\)
-  \item for all the boxes of a time scale, the DFA is calculated as:\\[10pt]
-        \(F_{DCCA}^{2}(n) =\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)\);
-  \item for a number of different timescales (n), with possible values
-        \( 4 \le n \le \frac{N}{4}\) the \(F_{DCCA}^{2}\) function is calculated to find a relation among
-        \(F_{DCCA}^{2} \times n\)
-\end{description}
+The $\rho_{DCCA}$ and the $DMC_x^2$ should be evaluated in a number of time scales ($n$) to analyze the characteristics of each coefficient.
 
 %% -- Manuscript ---------------------------------------------------------------
 
@@ -193,10 +207,6 @@ This paper presents the \pkg{Zebende} \proglang{Python} package, an implementati
 %% -- Summary/conclusions/discussion -------------------------------------------
 
 \section{Summary and discussion} \label{sec:summary}
-
-\begin{leftbar}
-  As usual \dots
-\end{leftbar}
 
 
 %% -- Optional special unnumbered sections -------------------------------------
