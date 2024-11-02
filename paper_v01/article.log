@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  1 NOV 2024 18:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  1 NOV 2024 21:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -576,11 +576,7 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count325
 \l__pdf_internal_box=\box75
-) (./article.aux
-
-LaTeX Warning: Label `fig:pdcca_flow' multiply defined.
-
-)
+) (./article.aux)
 \openout1 = `article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
@@ -698,39 +694,38 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
-<./figs/pdcca_cart.png, id=97, 715.67375pt x 162.6075pt>
-File: ./figs/pdcca_cart.png Graphic file (type png)
-<use ./figs/pdcca_cart.png>
-Package pdftex.def Info: ./figs/pdcca_cart.png  used on input line 188.
-(pdftex.def)             Requested size: 354.12434pt x 80.45995pt.
-
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 3
  []
 
 [3]
-<./figs/dmc_chart.png, id=111, 715.67375pt x 175.65625pt>
+<./figs/pdcca_chart.png, id=109, 1030.44975pt x 279.444pt>
+File: ./figs/pdcca_chart.png Graphic file (type png)
+<use ./figs/pdcca_chart.png>
+Package pdftex.def Info: ./figs/pdcca_chart.png  used on input line 191.
+(pdftex.def)             Requested size: 354.12434pt x 96.03305pt.
+<./figs/dmc_chart.png, id=111, 1006.962pt x 273.4215pt>
 File: ./figs/dmc_chart.png Graphic file (type png)
 <use ./figs/dmc_chart.png>
-Package pdftex.def Info: ./figs/dmc_chart.png  used on input line 195.
-(pdftex.def)             Requested size: 354.12434pt x 86.9166pt.
+Package pdftex.def Info: ./figs/dmc_chart.png  used on input line 199.
+(pdftex.def)             Requested size: 354.12434pt x 96.1537pt.
  (./article.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 21.
  (c:/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ))
-Underfull \hbox (badness 10000) in paragraph at lines 326--326
+Underfull \hbox (badness 10000) in paragraph at lines 330--330
 
  []
 
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/m/it' tried instead on input line 326.
+(Font)              Font shape `T1/pzc/m/it' tried instead on input line 330.
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 4 []
  []
 
-[4 <./figs/pdcca_cart.png> <./figs/dmc_chart.png>]
+[4 <./figs/pdcca_chart.png> <./figs/dmc_chart.png>]
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 5
  []
@@ -740,23 +735,19 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `article.out' has not changed.
 (rerunfilecheck)             Checksum: D4DA7ADD6B6FFCC75B3D568F24586FC5;971.
  ) 
 Here is how much of TeX's memory you used:
- 25878 strings out of 475188
- 523210 string characters out of 5767805
+ 25879 strings out of 475188
+ 523233 string characters out of 5767805
  1933248 words of memory out of 5000000
- 46683 multiletter control sequences out of 15000+600000
+ 46684 multiletter control sequences out of 15000+600000
  653511 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,14n,101p,933b,980s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (5 pages, 449737 bytes).
+Output written on article.pdf (5 pages, 495810 bytes).
 PDF statistics:
  253 PDF objects out of 1000 (max. 8388607)
  191 compressed objects within 2 object streams

@@ -124,14 +124,14 @@ The $DCCA$ method is very similar to the $DFA$ calculations. With the difference
         for series $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ respectively,
         with \( i \le k \le (i + n) \) (detrended values);
   \item in each box is calculated: $f_{DCCA}^{2}(n, i) =
-        \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k, i})$
+          \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k, i})$
   \item for all the boxes of a time scale, the $DCCA$ is calculated as:\\[10pt]
         $F_{DCCA}^{2}(n) =\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)$;
   \item for a number of different timescales (n), with possible values
         $4 \le n \le \frac{N}{4}$ the $F_{DCCA}^{2}$ function is calculated to find a relation among
         $F_{DCCA}^{2} \times n$
 \end{enumerate}
- 
+
 Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ is essentially an application of the variance calculation and the equivalent step of the $DCCA$ is a covariance between the two series. Step five calculates the square root of the mean of the variances calculated in  in each box for the $DFA$, in the $DCCA$, the mean of the covariances calculated for each box is calculated in stead. The last step,in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales.
 
 The $\rho_{DCCA}$ is measured using Eq. \ref{eq:p_dcca}. Considering the relation between $DFA$ and variance and $DCCA$ and covariance, the $\rho_{DCCA}$ resembles Pearson correlation for a time scale $n$.
@@ -149,7 +149,7 @@ The $DMC_x^2$ is a generalization of the $\rho_{DCCA}$ that calculates the corre
   \label{eq:dmcx2}
 \end{equation}
 
-In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X_{1},X_{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X_{1}$ and $X_{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is evaluated a commutative expression. 
+In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X_{1},X_{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X_{1}$ and $X_{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is evaluated a commutative expression.
 
 \begin{equation}
   \rho^{-1}(n) = \left(\begin{matrix}
@@ -161,7 +161,7 @@ In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populate
   \label{eq:p_dcca_matrix}
 \end{equation}
 
-At last Eq. \ref{eq:rhocol} represent the transposed vector of the $\rho_{Y,X_{i}}(n)$ between the depended variable $\left\lbrace Y \right\rbrace $ and each $\left\lbrace X_{i} \right\rbrace $ independent variable for a given time scale $n$. 
+At last Eq. \ref{eq:rhocol} represent the transposed vector of the $\rho_{Y,X_{i}}(n)$ between the depended variable $\left\lbrace Y \right\rbrace $ and each $\left\lbrace X_{i} \right\rbrace $ independent variable for a given time scale $n$.
 
 \begin{equation} \label{eq:rhocol}
   \rho_{Y,X_i}(n)^T=[\rho_{Y,X_1}(n), \rho_{Y,X_2}(n),\cdots,\rho_{Y,X_j}(n)]
@@ -182,20 +182,24 @@ The $\rho_{DCCA}$ and the $DMC_x^2$ should be evaluated in a number of time scal
 
 \section{Zebende package: implementation and optimization} \label{sec:optimization}
 
-
-\begin{figure}[t!]
-  \centering
-  \includegraphics{./figs/pdcca_cart.png}
-  \caption{\label{fig:pdcca_flow}Flowchart for the $\rho_{DCCA}$ package usage}
-  \end{figure}
+The implementation of the \pkg{Zebende} package was focussed on some
 
 
-  \begin{figure}[t!]
-    \centering
-    \includegraphics{./figs/dmc_chart.png}
-    \caption{\label{fig:pdcca_flow}Flowchart for the $DMC_x^2$ package usage}
-    \end{figure}
+\begin{figure}[h!]
   
+  \centering
+  \includegraphics{./figs/pdcca_chart.png}
+  \caption{\label{fig:pdcca_chart}Calculating  $\rho_{DCCA}$ with \pkg{Zebende} package - Simplified flowchart}
+\end{figure}
+
+
+\begin{figure}[h!]
+  
+  \centering
+  \includegraphics{./figs/dmc_chart.png}
+  \caption{\label{fig:dmc_chart}Calculating  $DMC_x^2$ with \pkg{Zebende} package - Simplified flowchart}
+\end{figure}
+
 
 
 %% -- Illustrations ------------------------------------------------------------
