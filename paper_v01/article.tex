@@ -90,7 +90,7 @@ The Detrended Multiple Cross-Correlation Coefficient \citep{Zebende2018} ($DMC_x
 
 % DMCx2 applications
 
-This paper presents the \pkg{Zebende} \proglang{Python} package, an implementation of the $DFA$, $DCCA$, $\rho_{DCCCA}$, $DMC_x^2$ and utility functions related to the methods. In section \ref{sec:calculations} the steps for calculating the $\rho_{DCCCA}$ and $DMC_x^2$ are presented and discussed. Section \ref{sec:optimization} shows how this library was implemented, the optimization technics and the recommended steps to use the library. In Section \ref{sec:results} the \pkg{Zebende} package is compared with other packages for \proglang{Python} and \proglang{R} that calculates the $\rho_{DCCA}$ in terms of performance and usability, leading to the conclusions in \ref{sec:summary}.
+This paper presents the \pkg{Zebende} \proglang{Python} package, an implementation of the $DFA$, $DCCA$, $\rho_{DCCCA}$, $DMC_x^2$ and utility functions related to the methods. In section \ref{sec:calculations} the steps for calculating the $\rho_{DCCCA}$ and $DMC_x^2$ are presented and discussed. Section \ref{sec:optimization} shows how this library was implemented, the optimization technics and the recommended steps to use the library. In Section \ref{sec:results} the \pkg{Zebende} package is compared with other packages for \proglang{Python} and \proglang{R} that calculates the $\rho_{DCCA}$ in terms of performance and usability, leading to the conclusions in Section \ref{sec:summary}.
 
 \section{Algorithms of the coefficients}\label{sec:calculations}
 
@@ -182,25 +182,112 @@ The $\rho_{DCCA}$ and the $DMC_x^2$ should be evaluated in a number of time scal
 
 \section{Zebende package: implementation and optimization} \label{sec:optimization}
 
-The implementation of the \pkg{Zebende} package was focussed on some
+The implementation of the \pkg{Zebende} package follows some well defined golas:
 
+\begin{enumerate}
+  \item Enhance performance;
+  \item avoid redundant calculations;
+  \item make the outputs compatibles with other data analyses tools (including data manipulation, machine learn and statistical packages);
+  \item deliver a customizable set of tools;
+  \item facilitate package evolution and maintenance;
+  \item create an easy to use package.
+\end{enumerate}
+
+The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels} ...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}...) and data visualization(\pkg(Matplotlib), \pkg{Seaborn}, \pkg{Plotly}) among other related applications.
 
 \begin{figure}[h!]
-  
   \centering
   \includegraphics{./figs/pdcca_chart.png}
   \caption{\label{fig:pdcca_chart}Calculating  $\rho_{DCCA}$ with \pkg{Zebende} package - Simplified flowchart}
 \end{figure}
 
+The first draft of the code was written in pure \proglang{Python}, to rapidly prototype the way users will interact with the package. Figures \ref{fig:pdcca_chart} and \ref{fig:dmc_chart} presents simplified flowcharts illustrating how to use the package and how the main functions ($\rho_{DCCA}$ and $DMA_x^2$) works.
 
 \begin{figure}[h!]
-  
   \centering
   \includegraphics{./figs/dmc_chart.png}
   \caption{\label{fig:dmc_chart}Calculating  $DMC_x^2$ with \pkg{Zebende} package - Simplified flowchart}
 \end{figure}
 
+The preparation steps are the same in both functions. First the data is loaded, and should be analyzed by the researchers. Base on the data characteristics, the set should be treated to ensure the methods requirements in the "Pre-processing" stage. The package functions expects data as ma matrix with the columns as the series and the lines as time steps. Columns unused in the indented research should also be dropped for better performance os the algorithms in this step. The more common way to do that is to use a data manipulation package. To proceed to the next step, the data table should be in the form of a \pkg{Numpy} 2D array, and this could be done with any data manipulation \proglang{Python} package. The next step is to calculate the integrated series. The package provides a function, named \verb"integrated_series()", to calculate that. The code example below show how to load the libraries (using \pkg{Pandas} as the data manipulation packages and loading a \verb".csv" file as a generic example), convert to \pkg{Numpy} array and generate the integrated series.
 
+\begin{Code}
+# importing packages
+import numpy as np
+import pandas as pd
+import zebende as zb
+
+data = pd.read_csv('path_to_the_file.csv') # loading data
+# Pre-processing data
+# ...
+data = data.to_numpy(data) #converting data to Numpy array
+int_data = zb.integrated_series(data) # calculating the integrated series
+\end{Code}
+
+The option of taking out the integrated series generation from the main functions to an independent one was inspired by \cite{Peng_1994} work, where the way of calculating integrated series was different from the one that is widely used in more recent years. The integration of the series is essentially a pre-processing step, and this approach makes easy to explore alternative ways to integrate the series or compare \cite{Peng_1994} approach to the current one in different scenarios.
+
+The input and output structures of each function are displayed below:
+
+\begin{Code}
+def p_dcca(
+    input_data: NDArray[float64],
+    tws: NDArray[int64] | NDArray[float64],
+    DCCA_of: ndarray | Literal['all'] = "all",
+    P_DCCA_output_matrix: bool = False
+) -> tuple[NDArray[float64],  # DFA
+          NDArray[float64],   # DCCA
+          NDArray[float64]    # P_DCCA
+          ]
+\end{Code}
+
+\begin{Code}
+def dmcx2(
+    input_data: NDArray[float64],
+    tws: NDArray[int64] | NDArray[float64],
+    dmcx2_of: ENUM_DMCx2_of | NDArray[float64] | list = 'all-full'
+) -> tuple[ NDArray[float64],   # DFA
+            NDArray[float64],   # DCCA
+            NDArray[float64],   # P_DCCA
+            NDArray[float64],   # DMC
+          ]
+  \end{Code}
+
+The first two inputs are the same for functions \verb"p_dcca()" and \verb"dmcx2()": \verb"input_data" receive the integrated series and the \verb"tws" receives an 1D array representing the time scales (box size) described in the algorithms on Section \ref{sec:calculations}. The \verb"input_data" is a 2D array of 64 bits floating point data. The \verb"tws" accepts integers and, for convenience reasons, also floating points. Since the size of the boxes needs to be integers, in case of floating points, the values will be converted to integers by ignoring the decimal values(truncating). This two inputs are colored in light gray in Figures \ref{fig:pdcca_chart} and \ref{eq:dmcx2}, indicating mandatory inputs.
+
+With the mandatory steps explained, some very important optional inputs should be addressed. Starting with the $\rho_{DCCA}$ function (dark green node in Figure \ref{fig:dmc_chart}) represents the input \verb"DCCA_of" of the function. This input requires a 2D array of index. For example: if the \verb"input_data" receives a four columns matrix, with index ranging from $0$ to $3$, that is intended to calculate de $DFA$ for all the series but the $\rho_{DCCA}$ between series of index $0$ and $1$ and also for series $2$ and $3$, the \verb"DCCA_of" input should receive the array \verb"[[0,1], [2,3]]". If no value (or the string \verb"'all'") is given, the function will calculate all possible combinations of $DCCA$ calculations between all the series respecting the index values order, as below:
+
+\begin{Code}
+[[0,1], [0,2], [0,3], [1,2], [1,3], [2,3]]
+\end{Code}
+
+It´s important to understand the calculation steps, the role of the \verb"DCCA_of" array and how it fits in the goals of the package implementation. The code below is part of the \proglang{Python} implementation of the $\rho_{DCCA}$ function, 
+
+\begin{Code}
+for n_index, n  in enumerate(tws): # for each time scale
+  # temporaty allocation arrays
+  f2dfa_n = np.full(shape=(data.shape[0] - n, data.shape[1]),
+  fill_value=np.nan, dtype=data.dtype)
+  dcca_n = np.full(shape=(data.shape[0] - n, DCCA_of.shape[0]), 
+  fill_value=np.nan, dtype=data.dtype)
+  detrended_mat = np.full(shape=(n + 1, data.shape[1]), 
+  fill_value=np.nan, dtype=data.dtype)
+  for i in range(data.shape[0] - n): # for each box
+      detrended_series( # inputs
+                        time_steps[i : i + (n + 1)],  # arr_x
+                        data[i : i + (n + 1), :],  # mat_y
+                         detrended_mat,  # output
+                      )
+      f2dfa_n[i] = np.power(detrended_mat, 2).mean(axis=0)
+      for j, pair in enumerate(DCCA_of): # for each DCCA pair
+          dcca_n[i, j] = (detrended_mat[:, pair[0]] * detrended_mat[:, pair[1]]
+                         ).mean(axis=0)
+  F_DFA_arr[n_index, :] = np.sqrt(f2dfa_n.mean(axis=0))
+  DCCA_arr[n_index, :] = dcca_n.mean(axis=0)
+  # calculation of P_DCCA
+  P_DCCA_output_function(n_index, DCCA_of, F_DFA_arr, DCCA_arr, P_DCCA_arr)
+\end{Code}
+
+The first \verb"for" loop in the code operates over the values of the \verb"tws" input, asserting that the step 6 of the $DFA$ and $DCCA$ methods in Section \ref{sec:calculations}. Three temporary arrays are allocated for each time scale, \verb"f2dfa_n"
 
 %% -- Illustrations ------------------------------------------------------------
 

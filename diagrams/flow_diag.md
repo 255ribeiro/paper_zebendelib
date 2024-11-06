@@ -78,6 +78,7 @@ end
     p_dcca --> run_dmc
     run_dmc --> dmc_out
     def_dmc["Define DMCx² series - 2D array of indexes"] --> run_dmc & dcca_pairs
+    add_pairs["Aditional dcca pairs"] --> dcca_pairs
     dmc_out --> end_chart((("End")))
     
 %% class definitions
@@ -87,6 +88,7 @@ end
     classDef func_dmc_class fill:PaleGoldenRod, color:black
     classDef optional_class fill:DarkSeaGreen, color:Black
     classDef indirect_class fill:DarkGray, color:Black
+    classDef optional2_class fill:PaleGreen, color:Black
     classDef out_class fill:SkyBlue
     classDef transparent_class fill:#00000000, color:#00000000, margin-top:200px
 
@@ -105,6 +107,7 @@ end
      pdcca_func:::func_class
      dmc_out:::out_class
      def_dmc:::optional_class
+     add_pairs:::optional2_class
      end_chart:::se_class
      dmc_func:::func_dmc_class
     ajust_pdcca_dmc:::transparent_class
@@ -171,6 +174,7 @@ flowchart LR
     preproc --> generate
     generate --> det
     define_tws["Define time scales - 1D array"] --> det
+    
     dcca_pairs["Define dcca pairs - 2D array of indexes"] -->  DCCA & P_DCCA 
     det --> DFA & DCCA
     DFA --> dfa
@@ -178,6 +182,7 @@ flowchart LR
     DCCA --> dcca
     dcca --> P_DCCA
     P_DCCA --> p_dcca
+    P_DCCA_out_type["$$\rho$$ <sub>DCCA</sub> &nbsp; matrix output: bool"]--> P_DCCA
     p_dcca --> end_chart((("End")))
     
 %% class definitions
@@ -187,18 +192,20 @@ flowchart LR
     classDef func_class fill:BurlyWood, color:Black, margin:0px
     classDef func_dmc_class fill:PaleGoldenRod, color:black
     classDef optional_class fill:DarkSeagreen, color:Black
+    classDef optional2_class fill:PaleGreen, color:Black
     classDef indirect_class fill:DarkGray, color:Black
     classDef out_class fill:SkyBlue
     classDef transparent_class fill:#00000000, color:#00000000, margin-top:200px
 
 %% Class attribution
-     dfa:::out_class
-     dcca:::out_class
-     P_DCCA:::pad_class
-     p_dcca:::out_class
-     Start:::se_class
-     dcca_pairs:::optional_class
-     det:::indirect_class
+    dfa:::out_class
+    dcca:::out_class
+    P_DCCA:::pad_class
+    p_dcca:::out_class
+    Start:::se_class
+    dcca_pairs:::optional_class
+    P_DCCA_out_type:::optional2_class
+    det:::indirect_class
      DFA:::indirect_class
      DCCA:::indirect_class
      P_DCCA:::indirect_class
