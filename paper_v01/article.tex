@@ -254,7 +254,7 @@ def dmcx2(
 
 The first two inputs are the same for functions \verb"p_dcca()" and \verb"dmcx2()": \verb"input_data" receive the integrated series and the \verb"tws" receives an 1D array representing the time scales (box size) described in the algorithms on Section \ref{sec:calculations}. The \verb"input_data" is a 2D array of 64 bits floating point data. The \verb"tws" accepts integers and, for convenience reasons, also floating points. Since the size of the boxes needs to be integers, in case of floating points, the values will be converted to integers by ignoring the decimal values(truncating). This two inputs are colored in light gray in Figures \ref{fig:pdcca_chart} and \ref{eq:dmcx2}, indicating mandatory inputs.
 
-With the mandatory steps explained, some very important optional inputs should be addressed. Starting with the $\rho_{DCCA}$ function (dark green node in Figure \ref{fig:dmc_chart}) represents the input \verb"DCCA_of" of the function. This input requires a 2D array of index. For example: if the \verb"input_data" receives a four columns matrix, with index ranging from $0$ to $3$, that is intended to calculate de $DFA$ for all the series but the $\rho_{DCCA}$ between series of index $0$ and $1$ and also for series $2$ and $3$, the \verb"DCCA_of" input should receive the array \verb"[[0,1], [2,3]]". If no value (or the string \verb"'all'") is given, the function will calculate all possible combinations of $DCCA$ calculations between all the series respecting the index values order, as below:
+With the mandatory steps explained, some very important optional inputs should be addressed. Starting with the $\rho_{DCCA}$ function (dark green node in Figure \ref{fig:dmc_chart}) represents the input \verb"DCCA_of" of the function. This input requires a 2D array of integers, each row is a pair of index, related to the \verb"data_input" matrix. For example: if the \verb"input_data" receives a four columns matrix, with index ranging from $0$ to $3$, that is intended to calculate de $DFA$ for all the series but the $\rho_{DCCA}$ between series of index $0$ and $1$ and also for series $2$ and $3$, the \verb"DCCA_of" input should receive the array \verb"[[0,1], [2,3]]". If no value (or the string \verb"'all'") is given, the function will calculate all possible combinations of $DCCA$ calculations between all the series respecting the index values order, as below:
 
 \begin{Code}
 [[0,1], [0,2], [0,3], [1,2], [1,3], [2,3]]
@@ -284,10 +284,19 @@ for n_index, n  in enumerate(tws): # for each time scale
   F_DFA_arr[n_index, :] = np.sqrt(f2dfa_n.mean(axis=0))
   DCCA_arr[n_index, :] = dcca_n.mean(axis=0)
   # calculation of P_DCCA
-  P_DCCA_output_function(n_index, DCCA_of, F_DFA_arr, DCCA_arr, P_DCCA_arr)
+  P_DCCA_output_function(n_index, DCCA_of, F_DFA_arr, DCCA_arr, # Inputs
+  P_DCCA_arr) # Output
 \end{Code}
 
-The first \verb"for" loop in the code operates over the values of the \verb"tws" input, asserting that the step 6 of the $DFA$ and $DCCA$ methods in Section \ref{sec:calculations}. Three temporary arrays are allocated for each time scale, \verb"f2dfa_n"
+The first \verb"for" loop in the code operates over the values of the \verb"tws" input, asserting that the step 6 of the $DFA$ and $DCCA$ methods in Section \ref{sec:calculations}. Three temporary arrays are allocated for each time scale. The first, \verb"f2dfa_n", to store the calculations of the step 4 of the $DFA$. The number of lines of this array correspond to the number of boxes in the current time scale ($N - n$) and the columns is the number of series in the analysis. Array  \verb"dcca_n", holds the values calculated in the step 4 of the $DCCA$. The number of lines also correspond to the number of boxes but the number of columns equals the number of pairs (rows) in the \verb"DCCA_of" input. The \verb"detrended_mat" array has a number of lines is the number of points in a time scale box ($n +1$) and column count also equal to the number of time series. This last array is very important to the implementation goals.
+
+In each box, the \verb"detrended_series" function execute a one degree polynomial fit, subtract the values of the serie with the value given by the interpolated curve and stores this values in the \verb"detrended_mat". After the $DFA$ is calculated. With all the detrended values calculated, another loop, for all the rows in the \verb"DCCA_of", uses the \verb"detrended_mat" and the $DFA$ arrays to calculate the $DCCA$. This approach avoid redundant calculation. If the \verb"DCCA_of" is $[[0,1], [0,2], [1,2]]$, the detrended and $DFA$ values for each serie are calculated just once. If in a set of four series, a research intend to calculate the $DCCA$ between the first serie and all the others along with the two last series, inputting  \verb"DCCA_of" $= [[0,1], [0,2], [0,3], [2,3]]$. In this case, the \verb"detrended_mat" will be calculated just once for each series and the $DCCA$ between series $[[1,2], [1,3]]$ will be skipped, revealing a very customizable algorithm. 
+
+The $\rho_{DCCA}$ function, named \verb"P_DCCA_output_function" in the code is, in fact a pointer to other functions. One that outputs the  $\rho_{DCCA}$ results in the form of a table (rows for each time scale and columns for each \verb"DCCA_of" pair) and the other outputs it the form of a 3D matrix, where each level is the matrix in Equation \ref{eq:p_dcca_matrix} for one of the time scales. This behavior is driven by the \verb"P_DCCA_output_matrix" input (represented as the light green node in Figure \ref{fig:pdcca_chart}), where \verb"False" means table output and \verb"True" matrix output. This is very convenient for calculating the $DMC_x^2$.
+
+The $DMC_x^2$ function runs the $\rho_{DCCA}$ with \verb"P_DCCA_output_matrix" set to \verb"True". 
+
+
 
 %% -- Illustrations ------------------------------------------------------------
 

@@ -78,7 +78,7 @@ end
     p_dcca --> run_dmc
     run_dmc --> dmc_out
     def_dmc["Define DMCx² series - 2D array of indexes"] --> run_dmc & dcca_pairs
-    add_pairs["Aditional dcca pairs"] --> dcca_pairs
+  
     dmc_out --> end_chart((("End")))
     
 %% class definitions
@@ -107,7 +107,6 @@ end
      pdcca_func:::func_class
      dmc_out:::out_class
      def_dmc:::optional_class
-     add_pairs:::optional2_class
      end_chart:::se_class
      dmc_func:::func_dmc_class
     ajust_pdcca_dmc:::transparent_class
