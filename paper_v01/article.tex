@@ -294,7 +294,10 @@ In each box, the \verb"detrended_series" function execute a one degree polynomia
 
 The $\rho_{DCCA}$ function, named \verb"P_DCCA_output_function" in the code is, in fact a pointer to other functions. One that outputs the  $\rho_{DCCA}$ results in the form of a table (rows for each time scale and columns for each \verb"DCCA_of" pair) and the other outputs it the form of a 3D matrix, where each level is the matrix in Equation \ref{eq:p_dcca_matrix} for one of the time scales. This behavior is driven by the \verb"P_DCCA_output_matrix" input (represented as the light green node in Figure \ref{fig:pdcca_chart}), where \verb"False" means table output and \verb"True" matrix output. This is very convenient for calculating the $DMC_x^2$.
 
-The $DMC_x^2$ function runs the $\rho_{DCCA}$ with \verb"P_DCCA_output_matrix" set to \verb"True". 
+The $DMC_x^2$ function runs the $\rho_{DCCA}$ with \verb"P_DCCA_output_matrix" set to \verb"True". There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. The first value of each row is the index of the serie used as the dependent variable, the others, the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependente variable in relation with all the others.
+
+
+
 
 
 
