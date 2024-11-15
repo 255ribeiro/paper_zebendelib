@@ -99,40 +99,40 @@ The algorithms that calculates the $\rho_{DCCA}$ uses the $DFA$ and the $DCCA$ s
 
 \begin{enumerate}\label{steps:dfa}
 
-  \item Taking a time series \(\{x_{i}\}\) with \(i\) ranging from \(1\) to \(N\), the integrated series \(X_{k}\) is calculated by \(X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] \) with \(k\) also ranging from \(1\) to \(N\);
-  \item the  \(X_{k}\) series is divided in \(N - n\) boxes of size \(n\)(time scale), each box containing \(n + 1\) values, starting in \(i\) up to \(i + n\);
-  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting \(\widetilde{X}_{k, i}\) with \( i \le k \le (i + n) \) (detrended values);
-  \item in each box is calculated: \(f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k, i})^{2}\)
+  \item Taking a time series $\{x_{i}\}$ with $i$ ranging from $1$ to $N$, the integrated series $X_{k}$ is calculated by $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right]$ with \(k\) also ranging from $1$ to $N$;
+  \item the  $X_{k}$ series is divided in $N - n$ boxes of size $n$(time scale), each box containing $n + 1$ values, starting in $i$ up to $i + n$;
+  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting $\widetilde{X}_{k, i}$ with $i \le k \le (i + n)$;
+  \item in each box is calculated: $f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k, i})^{2}$
   \item for all the boxes of a time scale, the $DFA$ is calculated as:\\[10pt]
-        \(F_{DFA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DFA}^{2}(n, i)}\);
-  \item for a number of different timescales (n), with possible values \( 4 \le n \le \frac{N}{4}\) the \(F_{DFA}\) function is calculated to find a relation among \(F_{DFA} \times n\)
+        $F_{DFA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DFA}^{2}(n, i)}$;
+  \item for a number of different timescales ($n$), with possible values $4 \le n \le \frac{N}{4}$ the $F_{DFA}$ function is calculated to find a relation among $F_{DFA} \times n$
 
 \end{enumerate}
 
 
-The $DCCA$ method is very similar to the $DFA$ calculations. With the difference of analyzing two series while the $DFA$ evaluate properties of a single time series. It´s also a six steps process:
+The $DCCA$ method is very similar to the $DFA$ calculations, with the difference of analyzing two series while the $DFA$ evaluate properties of a single time series. It´s also a six steps process:
 
 
 \begin{enumerate}
   \label{steps:DCCA}
-  \item Taking two time series with the same length $\{x\alpha_{i}\}$ and \(\{x\beta_{i}\}\) with \(i\) ranging from \(1\) to \(N\),
-        the integrated series \(X\alpha_{k}\) and \(X\beta_{k}\) are calculated by
-        \(X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] \) for each series, with \(k\) also ranging from \(1\) to \(N\);
-  \item \(X\alpha_{k}\) and \(X\beta_{k}\) series are divided in \(N - n\) boxes of size \(n\)(time scale), each box containing \(n + 1\) values, starting in \(i\) up to \(i + n\);
+  \item Taking two time series with the same length $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ with $i$ ranging from $1$ to $N$,
+        the integrated series $X\alpha_{k}$ and $X\beta_{k}$ are calculated by
+        $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] $ for each series, with $k$ also ranging from $i$ to $N$;
+  \item $X\alpha_{k}$ and $X\beta_{k}$ series are divided in $N - n$ boxes of size $n$(time scale), each box containing $n + 1$ values, starting in $i$ up to $i + n$;
   \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting
         $\widetilde{X\alpha}_{k, i}$ and $\widetilde{X\beta}_{k, i}$,
         for series $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ respectively,
-        with \( i \le k \le (i + n) \) (detrended values);
+        with $i \le k \le (i + n)$;
   \item in each box is calculated: $f_{DCCA}^{2}(n, i) =
           \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k, i})$
   \item for all the boxes of a time scale, the $DCCA$ is calculated as:\\[10pt]
         $F_{DCCA}^{2}(n) =\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)$;
-  \item for a number of different timescales (n), with possible values
+  \item for a number of different timescales ($n$), with possible values
         $4 \le n \le \frac{N}{4}$ the $F_{DCCA}^{2}$ function is calculated to find a relation among
         $F_{DCCA}^{2} \times n$
 \end{enumerate}
 
-Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ is essentially an application of the variance calculation and the equivalent step of the $DCCA$ is a covariance between the two series. Step five calculates the square root of the mean of the variances calculated in  in each box for the $DFA$, in the $DCCA$, the mean of the covariances calculated for each box is calculated in stead. The last step,in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales.
+Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polinomial fit(estimated seires); and the equivalent step of the $DCCA$ is, in teh same terms, compared to the covariance between the two series. Step five calculates the square root of the mean of the values calculates in the previous step $(f_{DFA}^{2}$ in each box for the $DFA$, in the $DCCA$, the mean of the values evaluated  each box is calculated in stead. The last step,in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales.
 
 The $\rho_{DCCA}$ is measured using Eq. \ref{eq:p_dcca}. Considering the relation between $DFA$ and variance and $DCCA$ and covariance, the $\rho_{DCCA}$ resembles Pearson correlation for a time scale $n$.
 
@@ -188,9 +188,9 @@ The implementation of the \pkg{Zebende} package follows some well defined golas:
   \item Enhance performance;
   \item avoid redundant calculations;
   \item make the outputs compatibles with other data analyses tools (including data manipulation, machine learn and statistical packages);
-  \item deliver a customizable set of tools;
+  \item create a customizable and modular set of tools;
   \item facilitate package evolution and maintenance;
-  \item create an easy to use package.
+  \item deliver an easy to use package.
 \end{enumerate}
 
 The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels} ...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}...) and data visualization(\pkg(Matplotlib), \pkg{Seaborn}, \pkg{Plotly}) among other related applications.
@@ -292,10 +292,38 @@ The first \verb"for" loop in the code operates over the values of the \verb"tws"
 
 In each box, the \verb"detrended_series" function execute a one degree polynomial fit, subtract the values of the serie with the value given by the interpolated curve and stores this values in the \verb"detrended_mat". After the $DFA$ is calculated. With all the detrended values calculated, another loop, for all the rows in the \verb"DCCA_of", uses the \verb"detrended_mat" and the $DFA$ arrays to calculate the $DCCA$. This approach avoid redundant calculation. If the \verb"DCCA_of" is $[[0,1], [0,2], [1,2]]$, the detrended and $DFA$ values for each serie are calculated just once. If in a set of four series, a research intend to calculate the $DCCA$ between the first serie and all the others along with the two last series, inputting  \verb"DCCA_of" $= [[0,1], [0,2], [0,3], [2,3]]$. In this case, the \verb"detrended_mat" will be calculated just once for each series and the $DCCA$ between series $[[1,2], [1,3]]$ will be skipped, revealing a very customizable algorithm. 
 
-The $\rho_{DCCA}$ function, named \verb"P_DCCA_output_function" in the code is, in fact a pointer to other functions. One that outputs the  $\rho_{DCCA}$ results in the form of a table (rows for each time scale and columns for each \verb"DCCA_of" pair) and the other outputs it the form of a 3D matrix, where each level is the matrix in Equation \ref{eq:p_dcca_matrix} for one of the time scales. This behavior is driven by the \verb"P_DCCA_output_matrix" input (represented as the light green node in Figure \ref{fig:pdcca_chart}), where \verb"False" means table output and \verb"True" matrix output. This is very convenient for calculating the $DMC_x^2$.
+The function named \verb"P_DCCA_output_function" in the code above,is a pointer to other functions. One that outputs the  $\rho_{DCCA}$ results in the form of a table (rows for each time scale and columns for each \verb"DCCA_of" pair) and the other outputs it the form of a 3D matrix, where each level is the matrix in Equation \ref{eq:p_dcca_matrix} for one of the time scales. This behavior is driven by the \verb"P_DCCA_output_matrix" input (represented as the light green node in Figure \ref{fig:pdcca_chart}), where \verb"False" means table output and \verb"True" matrix output. This is very convenient for calculating the $DMC_x^2$. There are two utility functions to transform a table output in a matrix one (\verb"p_dcca_simple_to_matrix") and also the other way around (\verb"p_dcca_matrix_to_simple").
 
-The $DMC_x^2$ function runs the $\rho_{DCCA}$ with \verb"P_DCCA_output_matrix" set to \verb"True". There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. The first value of each row is the index of the serie used as the dependent variable, the others, the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependente variable in relation with all the others.
+The \verb"dmcx2" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True". There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. The first value of each row is the index of the serie used as the dependent variable, the others, the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependente variable in relation with all the others. The \verb"'all-full'" option is operated by the function \verb"dmc_of_all_as_y".
 
+There is a restriction to the \verb"dmcx2_of" array: the independent values must be in crescent order. There is a check in the \verb"dmcx2" that raises an error if the values are out of order, and suggests the use of a utility function named \verb"ordering_x_dmcx2_of". The code below shows an example of a manually defined \verb"dmcx2_of" array with 2 elements out of order in the second row, the \verb"AssertionError" output, the way of fixing it with the \verb"ordering_x_dmcx2_of" function and finally the outputted ordered array.
+
+\begin{CodeChunk}
+  \begin{CodeInput}
+dmcx2_of = np.array([ [0, 1, 2, 3],
+                      [1, 0, 3, 2],
+                      [2, 0, 1, 3],
+                      [3, 0, 1, 2]  ])
+
+dfa , dcca, pdcca, dmc = zb.dmcx2(int_data, tws, dmcx2_of=dmcx2_of)
+  \end{CodeInput}
+  \begin{CodeOutput}
+AssertionError: 
+dmcx2_of x values out of order: 
+use zebende.ordering_x_dmcx2_of(dmcx2_of)
+ to fix it before passing the dmcx2_of values to zebende.dmcx2() function"
+  \end{CodeOutput}
+  \begin{CodeInput}
+dmcx2_of = ordering_x_dmcx2_of(dmcx2_of)
+print(dmcx2_of)
+  \end{CodeInput}
+  \begin{CodeOutput}
+[[0 1 2 3]
+ [1 0 2 3]
+ [2 0 1 3]
+ [3 0 1 2]]
+  \end{CodeOutput}
+\end{CodeChunk}
 
 
 

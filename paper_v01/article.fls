@@ -392,6 +392,7 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ts1-lmtt10.tfm
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtto10.tfm
 INPUT ./article.bbl
 INPUT ./article.bbl
 INPUT article.bbl
@@ -423,4 +424,5 @@ INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
+INPUT c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb
 INPUT c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb

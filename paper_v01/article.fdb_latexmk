@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex article"] 1730946509 "article.aux" "article.bbl" "article" 1730946636 0
+["bibtex article"] 1731711924 "article.aux" "article.bbl" "article" 1731714610 0
   "./jss.bst" 1728929345 32989 20bb38cc9c684ce32025a8fa283a9df6 ""
   "./refs.bib" 1729692094 3475 c9a50d81551be2796a76afb6c9607930 ""
-  "article.aux" 1730946634 2213 a0dacf279ce0a8584982f31ee3fb980d "pdflatex"
+  "article.aux" 1731714608 2213 fc775267ce612aabb4e2535a48973c8c "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1730946631 "d:/gitrepos/paper_zebendelib/paper_v01/article.tex" "article.pdf" "article" 1730946636 0
-  "article.aux" 1730946634 2213 a0dacf279ce0a8584982f31ee3fb980d "pdflatex"
-  "article.bbl" 1730946510 1736 b70c75347f91f62d64d53d20c8486a4a "bibtex article"
-  "article.out" 1730946634 971 d4da7add6b6ffcc75b3d568f24586fc5 "pdflatex"
-  "article.tex" 1730946629 28472 f70472e25ebe199412d912cc05d9356f ""
+["pdflatex"] 1731714605 "d:/gitrepos/paper_zebendelib/paper_v01/article.tex" "article.pdf" "article" 1731714610 0
+  "article.aux" 1731714608 2213 fc775267ce612aabb4e2535a48973c8c "pdflatex"
+  "article.bbl" 1731711925 1736 b70c75347f91f62d64d53d20c8486a4a "bibtex article"
+  "article.out" 1731714608 971 d4da7add6b6ffcc75b3d568f24586fc5 "pdflatex"
+  "article.tex" 1731714603 29979 f2cf3a14e9715a81c99b634967c4c457 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1691348256 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691353563 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1691353563 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -43,6 +43,7 @@
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmssbx10.tfm" 1691353563 11168 06d87f5698fd1b642d96449b7c8d90b0 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmsso10.tfm" 1691353563 11316 701b7748a8cc1abea04b4bcc027674ae ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm" 1691353563 1372 2ef2c2b492b3c4cd7879fe083abbb061 ""
+  "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtto10.tfm" 1691353563 1380 00eebcaab5055b45833853580c209ed4 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/lmex10.tfm" 1691353563 992 ce925c9346c7613270a79afbee98c070 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm" 1691353563 1528 6d36b2385e0ca062a654de6ac59cb34f ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm" 1691353563 1524 753b192b18f2991794f9d41a8228510b ""
@@ -86,6 +87,7 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb" 1691353563 27863 09ce3735688ffde955e72da27c95b61a ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb" 1691353563 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb" 1691353563 113227 d3d1adc024746ff57b20efba82c6d365 ""
+  "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb" 1691353563 125829 8123c8ab071cec821b194c5aeaae7d6c ""
   "c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb" 1691370527 49289 ed75f97b75be34140e9d251dd8e641af ""
   "c:/texlive/2023/texmf-dist/fonts/vf/adobe/zapfchan/pzcmi8t.vf" 1691370527 2308 b1f0e720c2c5fa7d47ec91998ab9de1d ""
   "c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1691355342 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -236,7 +238,7 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1691371227 4687025 676c7d7298543c4303eabe86c426c675 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1691371334 8172625 f42d0d86b5a9d53df6cf8902d13f892b ""
   "c:/texlive/2023/texmf.cnf" 1691371196 713 e69b156964470283e0530f5060668171 ""
-  "d:/gitrepos/paper_zebendelib/paper_v01/article.tex" 1730946629 28472 f70472e25ebe199412d912cc05d9356f ""
+  "d:/gitrepos/paper_zebendelib/paper_v01/article.tex" 1731714603 29979 f2cf3a14e9715a81c99b634967c4c457 ""
   "figs/dmc_chart.png" 1730916186 58869 946bb0593ee9bfc80b3686046b8bfb06 ""
   "figs/pdcca_chart.png" 1730914033 64339 3c8ccc1ce1d7a81b6481143339ee7468 ""
   "jss.cls" 1728937806 14941 3697c2d4e5008ba5075da85ee0382bd5 ""
