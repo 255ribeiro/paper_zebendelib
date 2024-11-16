@@ -82,7 +82,7 @@
 
 \section{introduction} \label{sec:intro}
 
-The $\rho_{DCCA}$~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between tow non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationarity time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
+The Detrended Cross-correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between tow non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationarity time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
 
 % rho DCCA applications
 
@@ -102,7 +102,7 @@ The algorithms that calculates the $\rho_{DCCA}$ uses the $DFA$ and the $DCCA$ s
   \item Taking a time series $\{x_{i}\}$ with $i$ ranging from $1$ to $N$, the integrated series $X_{k}$ is calculated by $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right]$ with \(k\) also ranging from $1$ to $N$;
   \item the  $X_{k}$ series is divided in $N - n$ boxes of size $n$(time scale), each box containing $n + 1$ values, starting in $i$ up to $i + n$;
   \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting $\widetilde{X}_{k, i}$ with $i \le k \le (i + n)$;
-  \item in each box is calculated: $f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k, i})^{2}$
+  \item in each box is calculated: $f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k})^{2}$
   \item for all the boxes of a time scale, the $DFA$ is calculated as:\\[10pt]
         $F_{DFA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DFA}^{2}(n, i)}$;
   \item for a number of different timescales ($n$), with possible values $4 \le n \le \frac{N}{4}$ the $F_{DFA}$ function is calculated to find a relation among $F_{DFA} \times n$
@@ -124,7 +124,7 @@ The $DCCA$ method is very similar to the $DFA$ calculations, with the difference
         for series $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ respectively,
         with $i \le k \le (i + n)$;
   \item in each box is calculated: $f_{DCCA}^{2}(n, i) =
-          \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k, i})$
+          \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k})$
   \item for all the boxes of a time scale, the $DCCA$ is calculated as:\\[10pt]
         $F_{DCCA}^{2}(n) =\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)$;
   \item for a number of different timescales ($n$), with possible values
@@ -132,7 +132,9 @@ The $DCCA$ method is very similar to the $DFA$ calculations, with the difference
         $F_{DCCA}^{2} \times n$
 \end{enumerate}
 
-Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polinomial fit(estimated seires); and the equivalent step of the $DCCA$ is, in teh same terms, compared to the covariance between the two series. Step five calculates the square root of the mean of the values calculates in the previous step $(f_{DFA}^{2}$ in each box for the $DFA$, in the $DCCA$, the mean of the values evaluated  each box is calculated in stead. The last step,in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales.
+Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polinomial fit(estimated seires); and the equivalent step of the $DCCA$ is, in the same terms, compared to the covariance between the two series. The technique of fitting a curve, interpreted as a trend inside each box, and subtracting the value estimated by the trend from the actual value in the integrated series $(X_{k}-\widetilde{X}_{k})$ from now on will be called \textbf{detrended values}($DV$). In the $DFA$ algorithm, the $f_{DFA}^{2}(n, i)$ function is the mean of the square of the $DV$, in $DCCA$ calculations, the $f_{DCCA}^{2}(n, i)$ function evaluates the mean of the product of the $DV$ of the two series in each box.
+
+Step five of the $DFA$ calculates the square root of the mean of the values calculates in the previous step for each box, in the $DCCA$, the mean of the values evaluated for each box is calculated in stead. The last step, in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales ($n$).
 
 The $\rho_{DCCA}$ is measured using Eq. \ref{eq:p_dcca}. Considering the relation between $DFA$ and variance and $DCCA$ and covariance, the $\rho_{DCCA}$ resembles Pearson correlation for a time scale $n$.
 
@@ -149,7 +151,7 @@ The $DMC_x^2$ is a generalization of the $\rho_{DCCA}$ that calculates the corre
   \label{eq:dmcx2}
 \end{equation}
 
-In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X_{1},X_{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X_{1}$ and $X_{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is evaluated a commutative expression.
+In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X_{1},X_{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X_{1}$ and $X_{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a cross-correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is a commutative operation.
 
 \begin{equation}
   \rho^{-1}(n) = \left(\begin{matrix}
@@ -167,7 +169,7 @@ At last Eq. \ref{eq:rhocol} represent the transposed vector of the $\rho_{Y,X_{i
   \rho_{Y,X_i}(n)^T=[\rho_{Y,X_1}(n), \rho_{Y,X_2}(n),\cdots,\rho_{Y,X_j}(n)]
 \end{equation}
 
-The $\rho_{DCCA}$ and the $DMC_x^2$ should be evaluated in a number of time scales ($n$) to analyze the characteristics of each coefficient.
+As the $DFA$ and the $DCCA$,~$\rho_{DCCA}$ and~$DMC_x^2$ should be evaluated in a number of time scales ($n$) to analyze the characteristics of each coefficient.
 
 %% -- Manuscript ---------------------------------------------------------------
 
@@ -193,7 +195,7 @@ The implementation of the \pkg{Zebende} package follows some well defined golas:
   \item deliver an easy to use package.
 \end{enumerate}
 
-The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels} ...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}...) and data visualization(\pkg(Matplotlib), \pkg{Seaborn}, \pkg{Plotly}) among other related applications.
+The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels} ...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}...) and data visualization(\pkg(Matplotlib), \pkg{Seaborn}, \pkg{Plotly} ...) among other related applications.
 
 \begin{figure}[h!]
   \centering
