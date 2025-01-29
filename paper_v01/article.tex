@@ -195,7 +195,7 @@ The implementation of the \pkg{Zebende} package follows some well defined golas:
   \item deliver an easy to use package.
 \end{enumerate}
 
-The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels} ...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}...) and data visualization(\pkg(Matplotlib), \pkg{Seaborn}, \pkg{Plotly} ...) among other related applications.
+The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels}~...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}~...) and data visualization(\pkg{Matplotlib}, \pkg{Seaborn}, \pkg{Plotly}~...) among other data related applications.
 
 \begin{figure}[h!]
   \centering
@@ -211,7 +211,7 @@ The first draft of the code was written in pure \proglang{Python}, to rapidly pr
   \caption{\label{fig:dmc_chart}Calculating  $DMC_x^2$ with \pkg{Zebende} package - Simplified flowchart}
 \end{figure}
 
-The preparation steps are the same in both functions. First the data is loaded, and should be analyzed by the researchers. Base on the data characteristics, the set should be treated to ensure the methods requirements in the "Pre-processing" stage. The package functions expects data as ma matrix with the columns as the series and the lines as time steps. Columns unused in the indented research should also be dropped for better performance os the algorithms in this step. The more common way to do that is to use a data manipulation package. To proceed to the next step, the data table should be in the form of a \pkg{Numpy} 2D array, and this could be done with any data manipulation \proglang{Python} package. The next step is to calculate the integrated series. The package provides a function, named \verb"integrated_series()", to calculate that. The code example below show how to load the libraries (using \pkg{Pandas} as the data manipulation packages and loading a \verb".csv" file as a generic example), convert to \pkg{Numpy} array and generate the integrated series.
+The preparation steps are the same in both functions. First the data is loaded, and should be analyzed by the researchers. Based on the data characteristics, the set should be treated to ensure the methods requirements in the "Pre-processing" stage. The package functions expects data as a matrix with the columns as the series and the lines as time steps. Columns unwanted in the indented research should also be dropped for better performance of the algorithms in this step. The more common way to do that is to use a data manipulation package. To proceed to the next step, the data table should be in the form of a \pkg{Numpy} 2D array. Any data manipulation \proglang{Python} package can export a table as a \pkg{Numpy} array. The next step is to calculate the integrated series. The package provides a function, named \verb"integrated_series()", to calculate that. The code example below show how to load the libraries (using \pkg{Pandas} as the data manipulation packages and loading a \verb".csv" file as a generic example), convert to \pkg{Numpy} array and generate the integrated series.
 
 \begin{Code}
 # importing packages
@@ -226,7 +226,7 @@ data = data.to_numpy(data) #converting data to Numpy array
 int_data = zb.integrated_series(data) # calculating the integrated series
 \end{Code}
 
-The option of taking out the integrated series generation from the main functions to an independent one was inspired by \cite{Peng_1994} work, where the way of calculating integrated series was different from the one that is widely used in more recent years. The integration of the series is essentially a pre-processing step, and this approach makes easy to explore alternative ways to integrate the series or compare \cite{Peng_1994} approach to the current one in different scenarios.
+The option of taking out the integrated series generation from the main methods (\verb"p_dcca()" and \verb"dmcx2()") to an independent one was inspired by \cite{Peng_1994} work, where the way of calculating integrated series was different from the one that is widely used in more recent years. The integration of the series is essentially a pre-processing step, and this approach makes easy to explore alternative ways to integrate the series or compare \cite{Peng_1994} approach to the current most used one in different scenarios, or even embrace new proposals for the series integrating step.
 
 The input and output structures of each function are displayed below:
 
