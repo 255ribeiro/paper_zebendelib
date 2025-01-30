@@ -264,6 +264,8 @@ With the mandatory steps explained, some very important optional inputs should b
 [[0,1], [0,2], [0,3], [1,2], [1,3], [2,3]]
 \end{Code}
 
+\subsection{Implementation of the Detrended Cross-correlation Coefficient function}
+
 It´s important to understand the calculation steps, the role of the \verb"DCCA_of" array and how it fits in the goals of the package implementation. The code below is part of the pure \proglang{Python} implementation of the $\rho_{DCCA}$ function, 
 
 \begin{Code}
@@ -298,11 +300,13 @@ After the allocation of the temporary arrays, the second \verb"for" loop operate
 
 The next nested \verb"for" loop operates over the \verb"DCCA_of" array. For each line (pair) in the \verb"DCCA_of" array, the $f_{DCCA}^{2}(n, i)$ is evaluated by multiplying the corresponding $DV$ from the two series  boxes in the current pair, getting the mean, and stores it in the \verb"dcca_n" temporary array.
 
-After all the pairs are calculated, the algorithm goes back to the 
+After all the pairs are calculated, the algorithm goes back to the each box \verb"for" loop and head to the next box for the current time scale. when all the all the boxes are calculated, the final results for the $DFA$, $DCCA$ and $\rho_{DCCA}$ are evaluated and saved in the output vectors \verb"F_DFA_arr", \verb"DCCA_arr" and \verb"P_DCCA_arr" respectively.
 
 The function named \verb"P_DCCA_output_function()" in the code above,is a pointer to other functions. One that outputs the  $\rho_{DCCA}$ results in the form of a table (rows for each time scale and columns for each \verb"DCCA_of" pair) and the other outputs it the form of a 3D matrix, where each level is the matrix in Equation \ref{eq:p_dcca_matrix} for one of the time scales. This behavior is driven by the \verb"P_DCCA_output_matrix" input (represented as the light green node in Figure \ref{fig:pdcca_chart}), where \verb"False" means table output and \verb"True" matrix output. This is very convenient for calculating the $DMC_x^2$. There are two utility functions to transform a table output in a matrix one (\verb"p_dcca_simple_to_matrix()") and also the other way around (\verb"p_dcca_matrix_to_simple()").
 
-The \verb"dmcx2" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True". There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. The first value of each row is the index of the serie used as the dependent variable, the others, the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependente variable in relation with all the others. The \verb"'all-full'" option is operated by the function \verb"dmc_of_all_as_y()".
+\subsection{Implementation of the Detrended Multiple Cross-correlation Coefficient function}
+
+The \verb"dmcx2()" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True" in the background. There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. For each row, the first elements is the index of the serie used as the dependent variable, the others, the index of the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependente variable in relation with all the others. The \verb"'all-full'" option is conducted by calling \verb"dmc_of_all_as_y()", also available as a utility function.
 
 There is a restriction to the \verb"dmcx2_of" array: the independent values must be in crescent order. There is a check in the \verb"dmcx2" that raises an error if the values are out of order, and suggests the use of a utility function named \verb"ordering_x_dmcx2_of()". The code below shows an example of a manually defined \verb"dmcx2_of" array with 2 elements out of order in the second row, the \verb"AssertionError" output, the way of fixing it with the \verb"ordering_x_dmcx2_of()" function and finally the outputted ordered array.
 
@@ -333,10 +337,41 @@ print(dmcx2_of)
   \end{CodeOutput}
 \end{CodeChunk}
 
+With a given \verb"dmcx2_of" an array with all the necessary pairs for the $DCCA$ and $\rho_{DCCA}$ is automatically generated and used for the background \verb"p_dcca()" function to calculate da matrix as in Eq. \ref{eq:p_dcca_matrix}. The \verb"dcca_of_from_dmcx2_of()", also can be used as an utility function, receives the  \verb"dmcx2_of" as input and returns the \verb"dcca_of" array. With the matrix $\rho_{DCCA}$ assembled, two internal functions, that can also be used as utility functions, calculates the $DMc_{x}^2$ for all the lines in the \verb"dmcx2_of" matrix, for all the time scales. The first function, \verb"dmcx2_from_p_dcca_matrix()", that receives the $\rho_{DCCA}$ and the \verb"dmcx2_of" array, is presented in the code below.
+
+\begin{Code}
+def dmcx2_from_p_dcca_matrix(P_DCCA_arr: NDArray[np.float64], 
+      dmcx2_of: NDArray[np.float64]) -> NDArray[np.float64]:   
+    # DMCx2 output matrix
+    DMCx2_arr = np.full(shape=(P_DCCA_arr.shape[2], dmcx2_of.shape[0]),
+    fill_value=np.nan, dtype=P_DCCA_arr.dtype)
+
+    for n_index in range(P_DCCA_arr.shape[2]):
+        P_DCCA_arr_2D = P_DCCA_arr[:, :, n_index]
+        for j,  dmcx2_of_1D in enumerate(dmcx2_of):
+            DMCx2_arr[n_index, j] = dmcx2_from_p_dcca_matrix_2d(P_DCCA_arr_2D,
+                                                                dmcx2_of_1D)
+    return DMCx2_arr
+\end{Code}
+
+The \verb"dmcx2_from_p_dcca_matrix()" function executes a for loop over the $\rho_{DCCA}$ that separates the this 3D matrix in to the 2D matrices for each time scale. Nested in this loop, another \verb"for" extracts each line of the \verb"dmcx2_of" and passes, the extracted matrix and the line vector to the \verb"dmcx2_from_p_dcca_matrix_2d()", displayed here.
+
+\begin{Code}
+def dmcx2_from_p_dcca_matrix_2d(P_DCCA_arr_2D: NDArray[np.float64], 
+          dmcx2_of_1D: NDArray[np.float64]) -> NDArray[np.float64]:   
+  y_index = dmcx2_of_1D[0:1]
+  x_indexes = dmcx2_of_1D[1:]
+
+  mat_x = P_DCCA_arr_2D[np.ix_(x_indexes, x_indexes)]
+  vec_y = P_DCCA_arr_2D[np.ix_(x_indexes, y_index)]
+
+  return vec_y.T @ np.linalg.inv(mat_x) @ vec_y
+\end{Code}
+
+The \verb"dmcx2_from_p_dcca_matrix_2d()" function uses \pkg{Numpy} methods to preparate the data to apply Eq. \ref{eq:dmcx2}. The list of indexes is divided in \verb"y_index", holding an one item array wiht the index of the dependent variabel time series, and \verb"x_indexes", containing the indexes of the independent ones. The \pkg{Numpy} function \verb"np.ix_()" constructs index arrays that will index the cross product from a serie of 1D arrays as inputs.
 
 
-
-
+ 
 %% -- Illustrations ------------------------------------------------------------
 
 %% - Virtually all JSS manuscripts list source code along with the generated
