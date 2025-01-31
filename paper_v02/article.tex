@@ -368,7 +368,89 @@ def dmcx2_from_p_dcca_matrix_2d(P_DCCA_arr_2D: NDArray[np.float64],
   return vec_y.T @ np.linalg.inv(mat_x) @ vec_y
 \end{Code}
 
-The \verb"dmcx2_from_p_dcca_matrix_2d()" function uses \pkg{Numpy} methods to preparate the data to apply Eq. \ref{eq:dmcx2}. The list of indexes is divided in \verb"y_index", holding an one item array wiht the index of the dependent variabel time series, and \verb"x_indexes", containing the indexes of the independent ones. The \pkg{Numpy} function \verb"np.ix_()" constructs index arrays that will index the cross product from a serie of 1D arrays as inputs.
+The \verb"dmcx2_from_p_dcca_matrix_2d()" function uses \pkg{Numpy} methods to preparate the data to apply Eq. \ref{eq:dmcx2}. The list of indexes is divided in \verb"y_index", holding an one item array whit the index of the dependent variabel time series, and \verb"x_indexes", containing the indexes of the independent ones. The \pkg{Numpy} \verb"np.ix_()", althow it's not a very known funcntion of the library constructs index arrays that will use the cross product from a serie of 1D arrays as inputs. It's a very convenient way to extract a submatrix and a vector from the $\rho_{DCCA}$ matrix. The matrix, as assembled by the \verb"p_dcca()" function, will always need to have extracions of a 2D matrix and a vector, as we can see in Eq.~\ref{eq:dmcx2}. The code below is an example of the extraction process.
+
+\begin{CodeChunk}
+\begin{CodeInput}
+import numpy as np
+arr = np.array([[1,2,3,4],
+                [2,1,5,6],
+                [3,5,1,7],
+                [4,6,7,1]])
+print(arr)
+\end{CodeInput}
+
+\begin{CodeOutput}
+[[1 2 3 4]
+ [2 1 5 6]
+ [3 5 1 7]
+ [4 6 7 1]]
+\end{CodeOutput}
+An illustrative \verb"arr" matrix is defined as $4 \times 4$ with all ones in the main diagonal and symmetric integer values in the other cells. Since the $\rho_{DCCA}$ ranges from $-1$ to $1$, those values should be interpreted as place holders. 
+\begin{CodeInput}
+sub_mat_index = np.ix_([1,2,3], [1,2,3])
+print("index combination:\n", sub_mat_index)
+print("extracted matrix:\n",arr[sub_mat_index])
+\end{CodeInput}
+
+\begin{CodeOutput}
+index combination:
+(array([[1],
+      [2],
+      [3]]), array([[1, 2, 3]]))
+extracted matrix:
+[[1 5 6]
+[5 1 7]
+[6 7 1]]
+\end{CodeOutput}
+
+Above, a submatrix, holding the positions $1$ to $3$ is extracted using \verb"np.ix_()" function, and below, the extraction of the vector, first as a line and then as a column vector.
+
+\begin{CodeInput}
+sub_mat_vec = np.ix_([0], [1,2,3])
+print("line vectror:\n", arr[sub_mat_vec])
+sub_mat_vec = np.ix_([1,2,3],[0])
+print("column vectror:\n", arr[sub_mat_vec])
+\end{CodeInput}
+
+\begin{CodeOutput}
+line vectror:
+[[2 3 4]]
+column vectror:
+[[2]
+[3]
+[4]]
+\end{CodeOutput}
+\end{CodeChunk}
+
+In the \pkg{Zebende} package, the vector is extracted as a column for better coherence with the $DMC_{x}^{2}$ theory. The method also works for dependent variable different of index $0$. The resulting matrix will preserve the diagonal as $1$, the symmetry regarding the main diagonal and the order of elements in the column vector respeted. the code below extract the index $1$ series as the dependent and the others as independent.
+\begin{CodeChunk}
+\begin{CodeInput}
+sub_mat_index = np.ix_([0,2,3], [0,2,3])
+print("index combination:\n", sub_mat_index)
+print("extracted matrix:\n",arr[sub_mat_index])
+sub_mat_vec = np.ix_([0,2,3],[1])
+print("column vectror:\n", arr[sub_mat_vec])
+\end{CodeInput}
+
+\begin{CodeOutput}
+index combination:
+(array([[0],
+      [2],
+      [3]]), array([[0, 2, 3]]))
+extracted matrix:
+[[1 3 4]
+[3 1 7]
+[4 7 1]]
+column vectror:
+[[2]
+[5]
+[6]]
+\end{CodeOutput}
+\end{CodeChunk}
+
+
+
 
 
  
