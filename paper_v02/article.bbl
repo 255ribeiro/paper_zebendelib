@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{5}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -7,6 +7,12 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi
 \providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Kacs \emph{et~al.}(2024)Kacs, Lee, Zarins, and Brown}]{10820804}
+Kacs D, Lee J, Zarins J, Brown N (2024).
+\newblock \enquote{Pragma driven shared memory parallelism in Zig by supporting OpenMP loop directives.}
+\newblock In \emph{SC24-W: Workshops of the International Conference for High Performance Computing, Networking, Storage and Analysis}, pp. 930--938.
+\newblock \doi{10.1109/SCW63240.2024.00132}.
 
 \bibitem[{Peng \emph{et~al.}(1994)Peng, Buldyrev, Havlin, Simons, Stanley, and Goldberger}]{Peng_1994}
 Peng CK, Buldyrev SV, Havlin S, Simons M, Stanley HE, Goldberger AL (1994).

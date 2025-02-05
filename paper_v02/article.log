@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  30 JAN 2025 23:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  5 FEB 2025 18:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -621,7 +621,7 @@ Package hyperref Info: Link coloring ON on input line 67.
 \@outlinefile=\write5
 \openout5 = `article.out'.
 
-<jsslogo.jpg, id=35, 540.0175pt x 393.47pt>
+<jsslogo.jpg, id=43, 540.0175pt x 393.47pt>
 File: jsslogo.jpg Graphic file (type jpg)
 <use jsslogo.jpg>
 Package pdftex.def Info: jsslogo.jpg  used on input line 67.
@@ -699,12 +699,12 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
  []
 
 [3]
-<./figs/pdcca_chart.png, id=118, 1019.60925pt x 261.97874pt>
+<./figs/pdcca_chart.png, id=126, 1019.60925pt x 261.97874pt>
 File: ./figs/pdcca_chart.png Graphic file (type png)
 <use ./figs/pdcca_chart.png>
 Package pdftex.def Info: ./figs/pdcca_chart.png  used on input line 204.
 (pdftex.def)             Requested size: 354.12434pt x 90.98637pt.
-<./figs/dmc_chart.png, id=122, 1006.962pt x 273.4215pt>
+<./figs/dmc_chart.png, id=130, 1006.962pt x 273.4215pt>
 File: ./figs/dmc_chart.png Graphic file (type png)
 <use ./figs/dmc_chart.png>
 Package pdftex.def Info: ./figs/dmc_chart.png  used on input line 212.
@@ -761,12 +761,12 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [11])
-Underfull \hbox (badness 10000) in paragraph at lines 582--582
+Underfull \hbox (badness 10000) in paragraph at lines 571--571
 
  []
 
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/m/it' tried instead on input line 582.
+(Font)              Font shape `T1/pzc/m/it' tried instead on input line 571.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 12 []
@@ -778,21 +778,21 @@ LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
  ***********
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: 71B775CED7AFE6E5E8638F8A8F6B72C5;2126.
+(rerunfilecheck)             Checksum: A3B124F57A718D0B47B2D34AD8E0B9B5;2594.
  ) 
 Here is how much of TeX's memory you used:
- 25949 strings out of 475188
- 524721 string characters out of 5767805
- 1933248 words of memory out of 5000000
- 46730 multiletter control sequences out of 15000+600000
+ 25960 strings out of 475188
+ 524979 string characters out of 5767805
+ 1934248 words of memory out of 5000000
+ 46736 multiletter control sequences out of 15000+600000
  654137 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,14n,101p,1658b,1090s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,14n,101p,1658b,1062s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (12 pages, 562785 bytes).
+Output written on article.pdf (12 pages, 566172 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 259 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 100 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -132,7 +132,7 @@ The $DCCA$ method is very similar to the $DFA$ calculations, with the difference
         $F_{DCCA}^{2} \times n$
 \end{enumerate}
 
-Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polinomial fit(estimated seires); and the equivalent step of the $DCCA$ is, in the same terms, compared to the covariance between the two series. The technique of fitting a curve, interpreted as a trend inside each box, and subtracting the value estimated by the trend from the actual value in the integrated series $(X_{k}-\widetilde{X}_{k})$ from now on will be called \textbf{detrended values}($DV$). In the $DFA$ algorithm, the $f_{DFA}^{2}(n, i)$ function is the mean of the square of the $DV$, in $DCCA$ calculations, the $f_{DCCA}^{2}(n, i)$ function evaluates the mean of the product of the $DV$ of the two series in each box.
+Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polynomial fit (estimated series); and the equivalent step of the $DCCA$ is, in the same terms, compared to the covariance between the two series. The technique of fitting a curve, interpreted as a trend inside each box, and subtracting the value estimated by the trend from the actual value in the integrated series $(X_{k}-\widetilde{X}_{k})$ from now on will be called \textbf{detrended values}($DV$). In the $DFA$ algorithm, the $f_{DFA}^{2}(n, i)$ function is the mean of the square of the $DV$, in $DCCA$ calculations, the $f_{DCCA}^{2}(n, i)$ function evaluates the mean of the product of the $DV$ of the two series in each box.
 
 Step five of the $DFA$ calculates the square root of the mean of the values calculates in the previous step for each box, in the $DCCA$, the mean of the values evaluated for each box is calculated in stead. The last step, in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales ($n$).
 
@@ -184,7 +184,7 @@ As the $DFA$ and the $DCCA$,~$\rho_{DCCA}$ and~$DMC_x^2$ should be evaluated in 
 
 \section{Zebende package: implementation and optimization} \label{sec:optimization}
 
-The implementation of the \pkg{Zebende} package follows some well defined golas:
+The implementation of the \pkg{Zebende} package follows some well defined goals:
 
 \begin{enumerate}
   \item Enhance performance;
@@ -197,7 +197,7 @@ The implementation of the \pkg{Zebende} package follows some well defined golas:
   \item deliver an easy to use package.
 \end{enumerate}
 
-The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a pletora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels}~...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}~...) and data visualization(\pkg{Matplotlib}, \pkg{Seaborn}, \pkg{Plotly}~...) among other data related applications.
+The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a plethora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels}~...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}~...) and data visualization(\pkg{Matplotlib}, \pkg{Seaborn}, \pkg{Plotly}~...) among other data related applications.
 
 \begin{figure}[h!]
   \centering
@@ -306,36 +306,7 @@ The function named \verb"P_DCCA_output_function()" in the code above,is a pointe
 
 \subsection{Implementation of the Detrended Multiple Cross-correlation Coefficient function}
 
-The \verb"dmcx2()" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True" in the background. There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. For each row, the first elements is the index of the serie used as the dependent variable, the others, the index of the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependente variable in relation with all the others. The \verb"'all-full'" option is conducted by calling \verb"dmc_of_all_as_y()", also available as a utility function.
-
-There is a restriction to the \verb"dmcx2_of" array: the independent values must be in crescent order. There is a check in the \verb"dmcx2" that raises an error if the values are out of order, and suggests the use of a utility function named \verb"ordering_x_dmcx2_of()". The code below shows an example of a manually defined \verb"dmcx2_of" array with 2 elements out of order in the second row, the \verb"AssertionError" output, the way of fixing it with the \verb"ordering_x_dmcx2_of()" function and finally the outputted ordered array.
-
-\begin{CodeChunk}
-  \begin{CodeInput}
-dmcx2_of = np.array([ [0, 1, 2, 3],
-                      [1, 0, 3, 2],
-                      [2, 0, 1, 3],
-                      [3, 0, 1, 2]  ])
-
-dfa , dcca, pdcca, dmc = zb.dmcx2(int_data, tws, dmcx2_of=dmcx2_of)
-  \end{CodeInput}
-  \begin{CodeOutput}
-AssertionError: 
-dmcx2_of x values out of order: 
-use zebende.ordering_x_dmcx2_of(dmcx2_of)
- to fix it before passing the dmcx2_of values to zebende.dmcx2() function"
-  \end{CodeOutput}
-  \begin{CodeInput}
-dmcx2_of = ordering_x_dmcx2_of(dmcx2_of)
-print(dmcx2_of)
-  \end{CodeInput}
-  \begin{CodeOutput}
-[[0 1 2 3]
- [1 0 2 3]
- [2 0 1 3]
- [3 0 1 2]]
-  \end{CodeOutput}
-\end{CodeChunk}
+The \verb"dmcx2()" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True" in the background. There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. For each row, the first elements is the index of the serie used as the dependent variable, the others, the index of the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependent variable in relation with all the others. The \verb"'all-full'" option is conducted by calling \verb"dmc_of_all_as_y()", also available as a utility function.
 
 With a given \verb"dmcx2_of" an array with all the necessary pairs for the $DCCA$ and $\rho_{DCCA}$ is automatically generated and used for the background \verb"p_dcca()" function to calculate da matrix as in Eq. \ref{eq:p_dcca_matrix}. The \verb"dcca_of_from_dmcx2_of()", also can be used as an utility function, receives the  \verb"dmcx2_of" as input and returns the \verb"dcca_of" array. With the matrix $\rho_{DCCA}$ assembled, two internal functions, that can also be used as utility functions, calculates the $DMc_{x}^2$ for all the lines in the \verb"dmcx2_of" matrix, for all the time scales. The first function, \verb"dmcx2_from_p_dcca_matrix()", that receives the $\rho_{DCCA}$ and the \verb"dmcx2_of" array, is presented in the code below.
 
@@ -386,7 +357,9 @@ print(arr)
  [3 5 1 7]
  [4 6 7 1]]
 \end{CodeOutput}
+\end{CodeChunk}
 An illustrative \verb"arr" matrix is defined as $4 \times 4$ with all ones in the main diagonal and symmetric integer values in the other cells. Since the $\rho_{DCCA}$ ranges from $-1$ to $1$, those values should be interpreted as place holders. 
+\begin{CodeChunk}
 \begin{CodeInput}
 sub_mat_index = np.ix_([1,2,3], [1,2,3])
 print("index combination:\n", sub_mat_index)
@@ -403,8 +376,10 @@ extracted matrix:
 [5 1 7]
 [6 7 1]]
 \end{CodeOutput}
+\end{CodeChunk}
 
 Above, a submatrix, holding the positions $1$ to $3$ is extracted using \verb"np.ix_()" function, and below, the extraction of the vector, first as a line and then as a column vector.
+\begin{CodeChunk}
 
 \begin{CodeInput}
 sub_mat_vec = np.ix_([0], [1,2,3])
@@ -448,6 +423,20 @@ column vectror:
 [6]]
 \end{CodeOutput}
 \end{CodeChunk}
+
+The idea of separating the calculations of the $\rho{DCCA}$ calculatons in three distinct functons aims to different workflows. The \verb"dmcx2()" function calculates and outputs all the prerequisites, as the $DFA$, $DCCA$, $\rho_{DCCA}$ along with the $DMC_{x}^{2}$. This is the most practical way of getting all this calculations conducted. But the task can also be diveded in two: first use the \verb"p_dcca()" function to generate $DFA$, $DCCA$, $\rho_{DCCA}$ outputs, analyze the outputs and then get the $DMC_{x}^{2}$ using \verb"dmcx2_from_p_dcca_matrix()".
+
+Function \verb"dmcx2_from_p_dcca_matrix_2d()" can be used to more customizable applications. Imagine a usecase where only the $\rho_{DCCA}$ anti-correlation, above a certain trashhold, in relation to the dependent variable, with the \verb"dmcx2_0f" set to \verb"all-full". From previous $\rho_{DCCA}$ studies is known that this coefficient can vary from posite to negative and vice  versa in different time scales. This implies that the $\rho_{DCCA}$ matrix should be analyzed in every time scale from every line of the \verb"dmcx2_of", also implies that the \verb"dmcx2_of" may not be a matrix in the sence that the rows may have different. The \pkg{Numpy} ND Array could not hold that. Many different workarounds could be proposed for that situation. In the implementation of this package, function \verb"dmcx2_from_p_dcca_matrix_2d()" allow the user to make a costum code that extracts the  $\rho_{DCCA}$ matrix for the current stime scale and extracts the elements that fit the rules from each \verb"dmcx2_of" row.
+
+\subsection{Zig implementation}
+
+The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could be 
+
+Zig language is one low-level language that gain popularity in recent years~\citep{10820804}. 
+
+\subsection{Algorithm optimization}
+
+
 
 
 
