@@ -430,18 +430,103 @@ Function \verb"dmcx2_from_p_dcca_matrix_2d()" can be used to more customizable a
 
 \subsection{Zig implementation}
 
-The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could be 
+The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could benefit with the integration of a low-level language. \proglang{Zig} was choosen to enhance the algorithms perpormance. It's a low-level language that gain popularity in recent years and provides performance similar to \proglang{C} and proglang{Fortran} in some scenarios~\citep{10820804}.
 
-Zig language is one low-level language that gain popularity in recent years~\citep{10820804}. 
+The interest for using \proglang{ZIg} for this project also relies on the cross-compiling capabilities of the \proglang{Zig} compiler. For a small research group mantaining a package could be chalenging and the ability to to compile all releases for all platforms in a single machine is a great advantage. The \proglang{Zig} compiler can generate binaries for Windows, Linux and MacOS from a single machine. The \proglang{Zig} compiler is also very fast, and the language is very easy to learn, with a syntax that is very similar to \proglang{C}.
+
+The implementaton focus on writing technics $\rho_{DCCA}$ function in \proglang{Zig} exposed as a \proglang{C} Application Binary Interface (ABI), called by \proglang{Python} using the \pkg{ctypes} package. The $\rho_{DCCA}$ function is the most computational expensive part of the package, and the performance gain was expected to be significant.
+
+The output arrays are allocated in the \proglang{Python} side and passed as pointers to the \proglang{Zig} function thogheter with the series matrix, \verb"tws" and \verb"DCCA_of" arrays. The \proglang{Zig} function receives the pointers and the size of the arrays as inputs, and the results are stored in the same memory space. Before passing to \proglang{Zig} must be assured that the arrays are contiguous, using the \verb"np.ascontiguousarray()" function. The boolean parameter \verb"P_dcca_matrix_output" is also passed to the \proglang{Zig} function, to determine if the output of the $\rho_{DCCA}$ should be a table or a matrix.
+
+The \proglang{Zig} implementation folows the same steps as the \proglang{Python} one, but repspecting languages differences. In \proglang{Python}, using \pkg{Numpy}, all the time series calculations occour in the same line of code, using the \pkg{Numpy} broadcasting capabilities. In \proglang{Zig}, the calculations are made in a nested \verb"for" loop.
 
 \subsection{Algorithm optimization}
 
+Althow the \proglang{Zig} implementation presents a significant performance gain,the algorithm can be optimized. The strategie is to focus on repeated calculatins in the process. The code below shows the calculations of the polynomial fit before the optimizarion.
 
+\begin{Code}
+  pub fn lin_ls_fit(win: []f64, time: []f64) [2]f64 {
+    var x_sum: f64 = 0;
+    var y_sum: f64 = 0;
+    var xy_sum: f64 = 0;
+    var x2_sum: f64 = 0;
+    for (win, time) |w, t| {
+        x_sum += t;
+        y_sum += w;
+        xy_sum += t * w;
+        x2_sum += pow(f64, t, 2);
+    }
+    const n: f64 = @as(f64, @floatFromInt(time.len));
+    //slope
+    const slope: f64 = (((n * xy_sum) - (x_sum * y_sum)) /
+        ((n * x2_sum) - (pow(f64, x_sum, 2))));
+    //inter
+    const inter: f64 = ((y_sum - (slope * x_sum)) /
+        (n));
+    //result
+    return [_]f64{ slope, inter };
+}
+\end{Code}
 
+The code above calculates the slope and the intercept of a linear least squares fit. The function runs on every box for every time scale. For consecutive boxes, the value of the sums from the previous box is used to calculate the next one widhout a loop by implementing a simple technic: when a box is calculated, the first value is saved in a temporary variable, to calculate the next sum, the previous sum is suntracted from the temporary variable and the new value is added. Also, to optimize the calculations from one time scale to the next, the first sums for the first box are saved in a temporary variable. Considering the current time scale as $tws_prev$ and the consecutive as $tws_current$. To calculate the current value, the algorithm takes the sums from the $tws_prev$ and add the values with indexes that exceed the $tws_prev$ size. The code was also rewritten with structs, to hold the temporary values and the functons for better readability. The code below shows the optimized version of polynomial fitting calculations.
 
+\begin{Code}
 
+fn shiftWindow( self: *MainOperator,
+                n: usize, win_start: usize,
+                F_DFA_ptr: *allowzero [*c]f64) void {
+    self.time_window = self.time[win_start ..][ .. (n + 1)];
+    // print("win_start {}\n", .{win_start});
+    if (win_start != 0) {
+        // updating sum_x
+        self.current.sum_x = self.current.sum_x - self.left_x + self.time_window[n];
+        // updating sum x^2
+        self.current.sum_x2 = self.current.sum_x2 - 
+        pow(f64, self.left_x, 2) + pow(f64, self.time_window[n], 2);
+        // updating y and y*x for every serie
+        for (self.series, 0..) |serie, sr_index| {
+            serie.current.sum_y = serie.current.sum_y - 
+            serie.left_y + serie.serie[win_start + n];
 
+            serie.current.sum_xy = serie.current.sum_xy - 
+            (self.left_x * serie.left_y) + 
+            (self.time_window[n] * serie.serie[win_start + n]);
+            serie.left_y = serie.serie[win_start];
+            self.detrended(serie, win_start, &F_DFA_ptr.*[sr_index]);
+        }
+    } else { // win_start == 0
+        self.current.window_len = n + 1;
 
+        for (self.previous.window_len..self.current.window_len) |i| {
+            self.previous.sum_x += self.time_window[i];
+            self.previous.sum_x2 += pow(f64, self.time_window[i], 2);
+
+            for (self.series) |serie| {
+                serie.previous.sum_y += serie.serie[i];
+                serie.previous.sum_xy += self.time_window[i] * serie.serie[i];
+            }
+        }
+
+        // updating current sum values
+        self.current.sum_x = self.previous.sum_x;
+        self.current.sum_x2 = self.previous.sum_x2;
+
+        for (self.series, 0..) |serie, sr_index| {
+            serie.current.sum_xy = serie.previous.sum_xy;
+            serie.current.sum_y = serie.previous.sum_y;
+
+            serie.left_y = serie.serie[win_start];
+            self.detrended(serie, win_start, &F_DFA_ptr.*[sr_index]);
+        }
+    }
+    self.left_x = self.time_window[0];
+}
+\end{Code}
+In the code above, the \verb"MainOperator" is a structure that holds the time series(y), the time window, the sums and the temporary values. The \verb"shiftWindow()" function is a method of the \verb"MainOperator" structure. The function receives the size of the box, the index of the first element of the box, and a pointer to the $F_{DFA}^{2}$ array. The function is called for every box in every time scale. The function is responsible for updating the sums of the time series, the sums of the $DV$ and the $DV$ matrix.
+
+The function also calls the \verb"detrended()" function, that calculates the $DV$ for each time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series
+
+The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized \proglang{Zig}, where tested and the results are presented in the next section.
  
 %% -- Illustrations ------------------------------------------------------------
 
