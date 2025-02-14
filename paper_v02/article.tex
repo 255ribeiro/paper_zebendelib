@@ -126,10 +126,6 @@ The $DCCA$ method is very similar to the $DFA$ calculations, with the difference
   \item in each box is calculated: $f_{DCCA}^{2}(n, i) =
           \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k})$
   \item for all the boxes of a time scale, the $DCCA$ is calculated as:\\[10pt]
-        $F_{DCCA}^{2}(n) =\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)$;
-  \item for a number of different timescales ($n$), with possible values
-        $4 \le n \le \frac{N}{4}$ the $F_{DCCA}^{2}$ function is calculated to find a relation among
-        $F_{DCCA}^{2} \times n$
 \end{enumerate}
 
 Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polynomial fit (estimated series); and the equivalent step of the $DCCA$ is, in the same terms, compared to the covariance between the two series. The technique of fitting a curve, interpreted as a trend inside each box, and subtracting the value estimated by the trend from the actual value in the integrated series $(X_{k}-\widetilde{X}_{k})$ from now on will be called \textbf{detrended values}($DV$). In the $DFA$ algorithm, the $f_{DFA}^{2}(n, i)$ function is the mean of the square of the $DV$, in $DCCA$ calculations, the $f_{DCCA}^{2}(n, i)$ function evaluates the mean of the product of the $DV$ of the two series in each box.
@@ -524,7 +520,10 @@ fn shiftWindow( self: *MainOperator,
 \end{Code}
 In the code above, the \verb"MainOperator" is a structure that holds the time series(y), the time window, the sums and the temporary values. The \verb"shiftWindow()" function is a method of the \verb"MainOperator" structure. The function receives the size of the box, the index of the first element of the box, and a pointer to the $F_{DFA}^{2}$ array. The function is called for every box in every time scale. The function is responsible for updating the sums of the time series, the sums of the $DV$ and the $DV$ matrix.
 
-The function also calls the \verb"detrended()" function, that calculates the $DV$ for each time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series. The function is called for every time series in the \verb"MainOperator" structure. The \verb"detrended()" function is not shown in the code above, but it is a simple function that calculates the $DV$ for a time series
+
+\begin{equation}
+\sum_{k=i}^{i + n}S_k = \sum_{j=i-1}^{n}S_j - S_{i-1} + S_{n+1}
+\end{equation}
 
 The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized \proglang{Zig}, where tested and the results are presented in the next section.
  
