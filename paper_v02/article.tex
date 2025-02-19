@@ -438,7 +438,7 @@ The \proglang{Zig} implementation folows the same steps as the \proglang{Python}
 
 \subsection{Algorithm optimization}
 
-Althow the \proglang{Zig} implementation presents a significant performance gain,the algorithm can be optimized. The strategie is to focus on repeated calculatins in the process. The code below shows the calculations of the polynomial fit before the optimizarion.
+Althow the \proglang{Zig} implementation presents a significant performance gain, the algorithm can be optimized. The strategie is to focus on repeated calculatins in the process. The code below shows the calculations of the polynomial fit before the optimizarion.
 
 \begin{Code}
   pub fn lin_ls_fit(win: []f64, time: []f64) [2]f64 {
@@ -522,7 +522,7 @@ In the code above, the \verb"MainOperator" is a structure that holds the time se
 
 
 \begin{equation}
-\sum_{k=i}^{i + n}S_k = \sum_{j=i-1}^{n}S_j - S_{i-1} + S_{n+1}
+\forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}S_k = \sum_{j=i-1}^{i -1 +n}S_j - S_{i-1} + S_{n+1}
 \end{equation}
 
 The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized \proglang{Zig}, where tested and the results are presented in the next section.
