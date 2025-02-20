@@ -82,7 +82,7 @@
 
 \section{introduction} \label{sec:intro}
 
-The Detrended Cross-correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between two non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationarity time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
+The Detrended Cross-correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between two non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationary time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
 
 % rho DCCA applications
 
@@ -290,9 +290,9 @@ for n_index, n  in enumerate(tws): # for each time scale
   P_DCCA_arr) # Output
 \end{Code}
 
-The first \verb"for" loop in the code operates over the values of the \verb"tws" input, ensuring that step 6 of the $DFA$ and $DCCA$ methods, presented in Section \ref{sec:calculations}, is being carried out. In other words, the calculations will be applied, sequentially, to every single value in the \verb"tws" array. Three temporary arrays are allocated and resized for each time scale. The first, \verb"f2dfa_n", is used to store the calculations of the step 4 of the $DFA$~($f_{DFA}^{2}$). The number of lines of this array correspond to the number of boxes in the current time scale ($N - n$, resized for each time scale $n$) and the columns is the number of series in the analysis (same size for every value of $n$). Second, the array  \verb"dcca_n" holds the values calculated in the step 4 of the $DCCA$~(to calculate $f_{DCCA}^{2}(n, i)$). The number of lines also correspond to the number of boxes(resized for each $n$) but the number of columns equals the number of pairs (rows) in the \verb"DCCA_of" input (same size in each $n$). The \verb"detrended_mat" array has a number of lines equal to the number of points in a time scale box ($n +1$, resized for each $n$) and column count also equal to the number of time series (same size in each $n$). The first two tempoaray arrays will store data for all the boxes in the time scale, the last one will be used in each box and will have the values replaced in the next one, until the last box of the time scale. Than all the arrays will be cleared and recreated with shapes calculated with the new value of $n$.
+The first \verb"for" loop in the code operates over the values of the \verb"tws" input, ensuring that step 6 of the $DFA$ and $DCCA$ methods, presented in Section \ref{sec:calculations}, is being carried out. In other words, the calculations will be applied, sequentially, to every single value in the \verb"tws" array. Three temporary arrays are allocated and resized for each time scale. The first, \verb"f2dfa_n", is used to store the calculations of the step 4 of the $DFA$~($f_{DFA}^{2}$). The number of lines of this array correspond to the number of boxes in the current time scale ($N - n$, resized for each time scale $n$) and the columns is the number of series in the analysis (same size for every value of $n$). Second, the array  \verb"dcca_n" holds the values calculated in the step 4 of the $DCCA$~(to calculate $f_{DCCA}^{2}(n, i)$). The number of lines also correspond to the number of boxes(resized for each $n$) but the number of columns equals the number of pairs (rows) in the \verb"DCCA_of" input (same size in each $n$). The \verb"detrended_mat" array has a number of lines equal to the number of points in a time scale box ($n +1$, resized for each $n$) and column count also equal to the number of time series (same size in each $n$). The first two temporary arrays will store data for all the boxes in the time scale, the last one will be used in each box and will have the values replaced in the next one, until the last box of the time scale. Than all the arrays will be cleared and recreated with shapes calculated with the new value of $n$.
 
-After the allocation of the temporary arrays, the second \verb"for" loop operates in every box for a certain time scale $n$. In each box, the \verb"detrended_series()" function execute a one degree polynomial fit, subtract the values of the serie with the value given by the interpolated curve($DV$) and stores this values in the \verb"detrended_mat". After that, the \textbf{mean of the square of each $DV$ in the box} ($f_{DFA}^{2}(n, i)$) is calculated in the current box for every time series and stored in the \verb"f2dfa_n" array in the line associated with the current box, and the column related to each time series.
+After the allocation of the temporary arrays, the second \verb"for" loop operates in every box for a certain time scale $n$. In each box, the \verb"detrended_series()" function execute a one degree polynomial fit, subtract the values of the series with the value given by the interpolated curve($DV$) and stores this values in the \verb"detrended_mat". After that, the \textbf{mean of the square of each $DV$ in the box} ($f_{DFA}^{2}(n, i)$) is calculated in the current box for every time series and stored in the \verb"f2dfa_n" array in the line associated with the current box, and the column related to each time series.
 
 The next nested \verb"for" loop operates over the \verb"DCCA_of" array. For each line (pair) in the \verb"DCCA_of" array, the $f_{DCCA}^{2}(n, i)$ is evaluated by multiplying the corresponding $DV$ from the two series  boxes in the current pair, getting the mean, and stores it in the \verb"dcca_n" temporary array.
 
@@ -302,7 +302,7 @@ The function named \verb"P_DCCA_output_function()" in the code above,is a pointe
 
 \subsection{Implementation of the Detrended Multiple Cross-correlation Coefficient function}
 
-The \verb"dmcx2()" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True" in the background. There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. For each row, the first elements is the index of the serie used as the dependent variable, the others, the index of the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependent variable in relation with all the others. The \verb"'all-full'" option is conducted by calling \verb"dmc_of_all_as_y()", also available as a utility function.
+The \verb"dmcx2()" function runs the \verb"p_dcca()" with \verb"P_DCCA_output_matrix" set to \verb"True" in the background. There is no \verb"DCCA_of" input for the $DMC_x^2$ function, instead there is a \verb"dmcx2_of" parameter. This input receives a 2D matrix where each line represents the indexes of the series to be used in Equation \ref{eq:dmcx2}. For each row, the first elements is the index of the series used as the dependent variable, the others, the index of the independent ones. There are two literal strings that can be used, for convenience as inputs for this parameter: \verb"'all-full'", that generates a 2D array with every series as the dependent variable against all the others; and \verb"'first-full'", with only one row, having the index zero series as the dependent variable in relation with all the others. The \verb"'all-full'" option is conducted by calling \verb"dmc_of_all_as_y()", also available as a utility function.
 
 With a given \verb"dmcx2_of" an array with all the necessary pairs for the $DCCA$ and $\rho_{DCCA}$ is automatically generated and used for the background \verb"p_dcca()" function to calculate da matrix as in Eq. \ref{eq:p_dcca_matrix}. The \verb"dcca_of_from_dmcx2_of()", also can be used as an utility function, receives the  \verb"dmcx2_of" as input and returns the \verb"dcca_of" array. With the matrix $\rho_{DCCA}$ assembled, two internal functions, that can also be used as utility functions, calculates the $DMc_{x}^2$ for all the lines in the \verb"dmcx2_of" matrix, for all the time scales. The first function, \verb"dmcx2_from_p_dcca_matrix()", that receives the $\rho_{DCCA}$ and the \verb"dmcx2_of" array, is presented in the code below.
 
@@ -335,7 +335,7 @@ def dmcx2_from_p_dcca_matrix_2d(P_DCCA_arr_2D: NDArray[np.float64],
   return vec_y.T @ np.linalg.inv(mat_x) @ vec_y
 \end{Code}
 
-The \verb"dmcx2_from_p_dcca_matrix_2d()" function uses \pkg{Numpy} methods to preparate the data to apply Eq. \ref{eq:dmcx2}. The list of indexes is divided in \verb"y_index", holding an one item array whit the index of the dependent variabel time series, and \verb"x_indexes", containing the indexes of the independent ones. The \pkg{Numpy} \verb"np.ix_()", althow it's not a very known funcntion of the library constructs index arrays that will use the cross product from a serie of 1D arrays as inputs. It's a very convenient way to extract a submatrix and a vector from the $\rho_{DCCA}$ matrix. The matrix, as assembled by the \verb"p_dcca()" function, will always need to have extracions of a 2D matrix and a vector, as we can see in Eq.~\ref{eq:dmcx2}. The code below is an example of the extraction process.
+The \verb"dmcx2_from_p_dcca_matrix_2d()" function uses \pkg{Numpy} methods to prepare the data to apply Eq. \ref{eq:dmcx2}. The list of indexes is divided in \verb"y_index", holding an one item array whit the index of the dependent variable time series, and \verb"x_indexes", containing the indexes of the independent ones. The \pkg{Numpy} \verb"np.ix_()", although  it's not a very known function of the library constructs index arrays that will use the cross product from a series of 1D arrays as inputs. It's a very convenient way to extract a sub matrix and a vector from the $\rho_{DCCA}$ matrix. The matrix, as assembled by the \verb"p_dcca()" function, will always need to have extractions of a 2D matrix and a vector, as we can see in Eq.~\ref{eq:dmcx2}. The code below is an example of the extraction process.
 
 \begin{CodeChunk}
 \begin{CodeInput}
@@ -374,34 +374,34 @@ extracted matrix:
 \end{CodeOutput}
 \end{CodeChunk}
 
-Above, a submatrix, holding the positions $1$ to $3$ is extracted using \verb"np.ix_()" function, and below, the extraction of the vector, first as a line and then as a column vector.
+Above, a sub matrix, holding the positions $1$ to $3$ is extracted using \verb"np.ix_()" function, and below, the extraction of the vector, first as a line and then as a column vector.
 \begin{CodeChunk}
 
 \begin{CodeInput}
 sub_mat_vec = np.ix_([0], [1,2,3])
-print("line vectror:\n", arr[sub_mat_vec])
+print("line vector:\n", arr[sub_mat_vec])
 sub_mat_vec = np.ix_([1,2,3],[0])
-print("column vectror:\n", arr[sub_mat_vec])
+print("column vector:\n", arr[sub_mat_vec])
 \end{CodeInput}
 
 \begin{CodeOutput}
-line vectror:
+line vector:
 [[2 3 4]]
-column vectror:
+column vector:
 [[2]
 [3]
 [4]]
 \end{CodeOutput}
 \end{CodeChunk}
 
-In the \pkg{Zebende} package, the vector is extracted as a column for better coherence with the $DMC_{x}^{2}$ theory. The method also works for dependent variable different of index $0$. The resulting matrix will preserve the diagonal as $1$, the symmetry regarding the main diagonal and the order of elements in the column vector respeted. the code below extract the index $1$ series as the dependent and the others as independent.
+In the \pkg{Zebende} package, the vector is extracted as a column for better coherence with the $DMC_{x}^{2}$ theory. The method also works for dependent variable different of index $0$. The resulting matrix will preserve the diagonal as $1$, the symmetry regarding the main diagonal and the order of elements in the column vector respected. the code below extract the index $1$ series as the dependent and the others as independent.
 \begin{CodeChunk}
 \begin{CodeInput}
 sub_mat_index = np.ix_([0,2,3], [0,2,3])
 print("index combination:\n", sub_mat_index)
 print("extracted matrix:\n",arr[sub_mat_index])
 sub_mat_vec = np.ix_([0,2,3],[1])
-print("column vectror:\n", arr[sub_mat_vec])
+print("column vector:\n", arr[sub_mat_vec])
 \end{CodeInput}
 
 \begin{CodeOutput}
@@ -413,32 +413,32 @@ extracted matrix:
 [[1 3 4]
 [3 1 7]
 [4 7 1]]
-column vectror:
+column vector:
 [[2]
 [5]
 [6]]
 \end{CodeOutput}
 \end{CodeChunk}
 
-The idea of separating the calculations of the $\rho{DCCA}$ calculatons in three distinct functons aims to different workflows. The \verb"dmcx2()" function calculates and outputs all the prerequisites, as the $DFA$, $DCCA$, $\rho_{DCCA}$ along with the $DMC_{x}^{2}$. This is the most practical way of getting all this calculations conducted. But the task can also be diveded in two: first use the \verb"p_dcca()" function to generate $DFA$, $DCCA$, $\rho_{DCCA}$ outputs, analyze the outputs and then get the $DMC_{x}^{2}$ using \verb"dmcx2_from_p_dcca_matrix()".
+The idea of separating the calculations of the $\rho{DCCA}$ calculations in three distinct functions aims to different workflows. The \verb"dmcx2()" function calculates and outputs all the prerequisites, as the $DFA$, $DCCA$, $\rho_{DCCA}$ along with the $DMC_{x}^{2}$. This is the most practical way of getting all this calculations conducted. But the task can also be divided in two: first use the \verb"p_dcca()" function to generate $DFA$, $DCCA$, $\rho_{DCCA}$ outputs, analyze the outputs and then get the $DMC_{x}^{2}$ using \verb"dmcx2_from_p_dcca_matrix()".
 
-Function \verb"dmcx2_from_p_dcca_matrix_2d()" can be used to more customizable applications. Imagine a usecase where only the $\rho_{DCCA}$ anti-correlation, above a certain trashhold, in relation to the dependent variable, with the \verb"dmcx2_0f" set to \verb"all-full". From previous $\rho_{DCCA}$ studies is known that this coefficient can vary from posite to negative and vice  versa in different time scales. This implies that the $\rho_{DCCA}$ matrix should be analyzed in every time scale from every line of the \verb"dmcx2_of", also implies that the \verb"dmcx2_of" may not be a matrix in the sence that the rows may have different. The \pkg{Numpy} ND Array could not hold that. Many different workarounds could be proposed for that situation. In the implementation of this package, function \verb"dmcx2_from_p_dcca_matrix_2d()" allow the user to make a costum code that extracts the  $\rho_{DCCA}$ matrix for the current stime scale and extracts the elements that fit the rules from each \verb"dmcx2_of" row.
+Function \verb"dmcx2_from_p_dcca_matrix_2d()" can be used to more customizable applications. Imagine a use case where only the $\rho_{DCCA}$ anti-correlation, inside a certain range, in relation to the dependent variable, with the \verb"dmcx2_0f" set to \verb"all-full". From previous $\rho_{DCCA}$ studies is known that this coefficient can vary from positive to negative and vice  versa in different time scales. This implies that the $\rho_{DCCA}$ matrix should be analyzed in every time scale from every line of the \verb"dmcx2_of", also implies that the \verb"dmcx2_of" may not be a matrix in the since that the rows may have different. The \pkg{Numpy} ND Array could not hold that. Many different workarounds could be proposed for that situation. In the implementation of this package, function \verb"dmcx2_from_p_dcca_matrix_2d()" allow the user to make a custom code that extracts the  $\rho_{DCCA}$ matrix for the current time scale and extracts the elements that fit the rules from each \verb"dmcx2_of" row.
 
 \subsection{Zig implementation}
 
-The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could benefit with the integration of a low-level language. \proglang{Zig} was choosen to enhance the algorithms perpormance. It's a low-level language that gain popularity in recent years and provides performance similar to \proglang{C} and proglang{Fortran} in some scenarios~\citep{10820804}.
+The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could benefit with the integration of a low-level language. \proglang{Zig} was chosen to enhance the algorithms performance. It's a low-level language that gain popularity in recent years and provides performance similar to \proglang{C} and \proglang{Fortran} in some scenarios~\citep{10820804}.
 
-The interest for using \proglang{ZIg} for this project also relies on the cross-compiling capabilities of the \proglang{Zig} compiler. For a small research group mantaining a package could be chalenging and the ability to to compile all releases for all platforms in a single machine is a great advantage. The \proglang{Zig} compiler can generate binaries for Windows, Linux and MacOS from a single machine. The \proglang{Zig} compiler is also very fast, and the language is very easy to learn, with a syntax that is very similar to \proglang{C}.
+The interest for using \proglang{ZIg} for this project also relies on the cross-compiling capabilities of the \proglang{Zig} compiler. For a small research group maintaining a package could be challenging and the ability to to compile all releases for all platforms in a single machine is a great advantage. The \proglang{Zig} compiler can generate binaries for Windows, Linux and MacOS from a single machine. The \proglang{Zig} compiler is also very fast, and the language is very easy to learn, with a syntax that is very similar to \proglang{C}.
 
-The implementaton focus on writing technics $\rho_{DCCA}$ function in \proglang{Zig} exposed as a \proglang{C} Application Binary Interface (ABI), called by \proglang{Python} using the \pkg{ctypes} package. The $\rho_{DCCA}$ function is the most computational expensive part of the package, and the performance gain was expected to be significant.
+The implementation focus on writing technics $\rho_{DCCA}$ function in \proglang{Zig} exposed as a \proglang{C} Application Binary Interface (ABI), called by \proglang{Python} using the \pkg{ctypes} package. The $\rho_{DCCA}$ function is the most computational expensive part of the package, and the performance gain was expected to be significant.
 
-The output arrays are allocated in the \proglang{Python} side and passed as pointers to the \proglang{Zig} function thogheter with the series matrix, \verb"tws" and \verb"DCCA_of" arrays. The \proglang{Zig} function receives the pointers and the size of the arrays as inputs, and the results are stored in the same memory space. Before passing to \proglang{Zig} must be assured that the arrays are contiguous, using the \verb"np.ascontiguousarray()" function. The boolean parameter \verb"P_dcca_matrix_output" is also passed to the \proglang{Zig} function, to determine if the output of the $\rho_{DCCA}$ should be a table or a matrix.
+The output arrays are allocated in the \proglang{Python} side and passed as pointers to the \proglang{Zig} function together with the series matrix, \verb"tws" and \verb"DCCA_of" arrays. The \proglang{Zig} function receives the pointers and the size of the arrays as inputs, and the results are stored in the same memory space. Before passing to \proglang{Zig} must be assured that the arrays are contiguous, using the \verb"np.ascontiguousarray()" function. The boolean parameter \verb"P_dcca_matrix_output" is also passed to the \proglang{Zig} function, to determine if the output of the $\rho_{DCCA}$ should be a table or a matrix.
 
-The \proglang{Zig} implementation folows the same steps as the \proglang{Python} one, but repspecting languages differences. In \proglang{Python}, using \pkg{Numpy}, all the time series calculations occour in the same line of code, using the \pkg{Numpy} broadcasting capabilities. In \proglang{Zig}, the calculations are made in a nested \verb"for" loop.
+The \proglang{Zig} implementation follows the same steps as the \proglang{Python} one, but repspecting languages differences. In \proglang{Python}, using \pkg{Numpy}, all the time series calculations occur in the same line of code, using the \pkg{Numpy} broadcasting capabilities. In \proglang{Zig}, the calculations are made in a nested \verb"for" loop.
 
 \subsection{Algorithm optimization}
 
-Althow the \proglang{Zig} implementation presents a significant performance gain, the algorithm can be optimized. The strategie is to focus on repeated calculatins in the process. The code below shows the calculations of the polynomial fit before the optimizarion.
+Although the \proglang{Zig} implementation presents a significant performance gain, the algorithm still can be optimized. The strategy is to focus on avoiding repeated calculations in the process. The code below shows the calculations of the polynomial fit before the optimization.
 
 \begin{Code}
   pub fn lin_ls_fit(win: []f64, time: []f64) [2]f64 {
@@ -464,7 +464,17 @@ Althow the \proglang{Zig} implementation presents a significant performance gain
 }
 \end{Code}
 
-The code above calculates the slope and the intercept of a linear least squares fit. The function runs on every box for every time scale. For consecutive boxes, the value of the sums from the previous box is used to calculate the next one widhout a loop by implementing a simple technic: when a box is calculated, the first value is saved in a temporary variable, to calculate the next sum, the previous sum is suntracted from the temporary variable and the new value is added. Also, to optimize the calculations from one time scale to the next, the first sums for the first box are saved in a temporary variable. Considering the current time scale as $tws_prev$ and the consecutive as $tws_current$. To calculate the current value, the algorithm takes the sums from the $tws_prev$ and add the values with indexes that exceed the $tws_prev$ size. The code was also rewritten with structs, to hold the temporary values and the functons for better readability. The code below shows the optimized version of polynomial fitting calculations.
+The code above calculates the slope and the intercept of a linear least squares fit. The function runs on every box for every time scale.In the optimized version, for consecutive boxes, the value of the sums from the previous box is used to calculate the next one without a loop for every item in the box. 
+
+\begin{equation}
+  \label{eq:sum_opt}
+  \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}S_k = \left(\sum_{j=i-1}^{(i+n)-1}S_j\right) - S_{i-1} + S_{n+1}
+  \end{equation}
+
+The expression in Eq.~\ref{eq:sum_opt} stands that the sum of the values in a box is equal to the sum of the previous box minus the first value of the previous box plus the last value of the current box. According to that, the 
+when a box is calculated, the sum and the first value is saved in temporary variables, to calculate the next sum, the previous sum is subtracted from the temporary variable and the new value is added. The bigger the box, the bigger the gain in performance.
+
+Also, to optimize the calculations from one time scale to the next, the first sums for the first box are saved in a temporary variable. Considering the current time scale as $tws_prev$ and the consecutive as $tws_current$. To calculate the current value, the algorithm takes the sums from the $tws_prev$ and add the values with indexes that exceed the $tws_prev$ size. The code was also rewritten with structs, to hold the temporary values and the functions for better readability. The code below shows the optimized version of polynomial fitting calculations.
 
 \begin{Code}
 
@@ -521,9 +531,7 @@ fn shiftWindow( self: *MainOperator,
 In the code above, the \verb"MainOperator" is a structure that holds the time series(y), the time window, the sums and the temporary values. The \verb"shiftWindow()" function is a method of the \verb"MainOperator" structure. The function receives the size of the box, the index of the first element of the box, and a pointer to the $F_{DFA}^{2}$ array. The function is called for every box in every time scale. The function is responsible for updating the sums of the time series, the sums of the $DV$ and the $DV$ matrix.
 
 
-\begin{equation}
-\forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}S_k = \sum_{j=i-1}^{i -1 +n}S_j - S_{i-1} + S_{n+1}
-\end{equation}
+
 
 The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized \proglang{Zig}, where tested and the results are presented in the next section.
  
