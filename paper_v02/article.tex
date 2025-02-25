@@ -464,14 +464,29 @@ Although the \proglang{Zig} implementation presents a significant performance ga
 }
 \end{Code}
 
-The code above calculates the slope and the intercept of a linear least squares fit. The function runs on every box for every time scale.In the optimized version, for consecutive boxes, the value of the sums from the previous box is used to calculate the next one without a loop for every item in the box. 
+The code above calculates the slope and the intercept of a linear least squares fit. The function runs on every box for every time scale.In the optimized version, for consecutive boxes, the value of the sums from the previous box is used to calculate the next one without a loop for every item in the box.
 
 \begin{equation}
-  \label{eq:sum_opt}
-  \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}S_k = \left(\sum_{j=i-1}^{(i+n)-1}S_j\right) - S_{i-1} + S_{n+1}
-  \end{equation}
+  \label{eq:sum_opt_x}
+  \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}T_k = \left(\sum_{j=i-1}^{(i+n)-1}T_j\right)~-~T_{i-1}~+~T_{i + n}
+\end{equation}
 
-The expression in Eq.~\ref{eq:sum_opt} stands that the sum of the values in a box is equal to the sum of the previous box minus the first value of the previous box plus the last value of the current box. According to that, the 
+\begin{equation}
+  \label{eq:sum_opt_x2}
+  \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}T_k^2 = \left(\sum_{j=i-1}^{(i+n)-1}T_j^2\right)~-~T_{i-1}^2~+~T_{i + n}^2
+\end{equation}
+
+\begin{equation}
+  \label{eq:sum_opt_y}
+  \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n}S_k = \left(\sum_{j=i-1}^{(i+n)-1}S_j\right)~-~S_{i-1}~+~S_{i + n}
+\end{equation}
+
+\begin{equation}
+  \label{eq:sum_opt_xy}
+  \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n} (S_k\times T_k) = \left(\sum_{j=i-1}^{(i+n)-1}(S_j \times T_j)\right)-(S_{i-1} \times T_{i-1})+(S_{i + n} \times T_{i + n})
+\end{equation}
+
+The expression in Eq.~\ref{eq:sum_opt_y} stands that the sum of the values in a box is equal to the sum of the previous box minus the first value of the previous box plus the last value of the current box. According to that, the 
 when a box is calculated, the sum and the first value is saved in temporary variables, to calculate the next sum, the previous sum is subtracted from the temporary variable and the new value is added. The bigger the box, the bigger the gain in performance.
 
 Also, to optimize the calculations from one time scale to the next, the first sums for the first box are saved in a temporary variable. Considering the current time scale as $tws_prev$ and the consecutive as $tws_current$. To calculate the current value, the algorithm takes the sums from the $tws_prev$ and add the values with indexes that exceed the $tws_prev$ size. The code was also rewritten with structs, to hold the temporary values and the functions for better readability. The code below shows the optimized version of polynomial fitting calculations.
@@ -529,9 +544,6 @@ fn shiftWindow( self: *MainOperator,
 }
 \end{Code}
 In the code above, the \verb"MainOperator" is a structure that holds the time series(y), the time window, the sums and the temporary values. The \verb"shiftWindow()" function is a method of the \verb"MainOperator" structure. The function receives the size of the box, the index of the first element of the box, and a pointer to the $F_{DFA}^{2}$ array. The function is called for every box in every time scale. The function is responsible for updating the sums of the time series, the sums of the $DV$ and the $DV$ matrix.
-
-
-
 
 The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized \proglang{Zig}, where tested and the results are presented in the next section.
  
