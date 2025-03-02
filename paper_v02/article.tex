@@ -486,9 +486,11 @@ The code above calculates the slope and the intercept of a linear least squares 
   \forall~1<i\leq(N-n),~\sum_{k=i}^{i + n} (S_k\times T_k) = \left(\sum_{j=i-1}^{(i+n)-1}(S_j \times T_j)\right)-(S_{i-1} \times T_{i-1})+(S_{i + n} \times T_{i + n})
 \end{equation}
 
-The expression in Eq.~\ref{eq:sum_opt_y} states that the sum of the values in a box is equal to the sum of the previous box minus the first value of the previous box plus the last value of the current box. According to that, when a box is calculated, the sum and the first value are saved in temporary variables. To calculate the next sum, the previous sum is subtracted from the temporary variable and the new value is added. The larger the box, the greater the performance gain.
+The expressions (Eq.~\ref{eq:sum_opt_x},Eq.~\ref{eq:sum_opt_x2}, Eq.~\ref{eq:sum_opt_y} and Eq.\ref{eq:sum_opt_xy}) showcases how the optimizations can be implemented in the code. Each expression display that the sum of the values in a box can be calculated using the sum of the previous box and the values of the first and last elements of the current box. Eq.\ref{eq:sum_opt_x} presents the sum of the time stamps values and Eq.\ref{eq:sum_opt_x2} the sum of the squares of the time stamps values. This calculations occur once for every box in every time scale and is stored in variables. Eq.\ref{eq:sum_opt_y} and Eq.\ref{eq:sum_opt_xy} presents the same calculations for the series values. Storing values for each time series.
 
-Also, to optimize the calculations from one time scale to the next, the first sums for the first box are saved in a temporary variable. Considering the current time scale as $tws_prev$ and the consecutive as $tws_current$. To calculate the current value, the algorithm takes the sums from the $tws_prev$ and add the values with indexes that exceed the $tws_prev$ size. The code was also rewritten with structs, to hold the temporary values and the functions for better readability. The code below shows the optimized version of polynomial fitting calculations.
+Also, to optimize the calculations from one time scale to the next, the first sums for the first box are saved in a temporary variable. Considering the current time scale as \verb"tws_prev" and the consecutive as \verb"tws_current". To calculate the current value, the algorithm takes the sums from the \verb"tws_prev" and add the values with indexes that exceed the \verb"tws_prev" size. The code was also rewritten with structs, to hold the temporary values and the functions for better readability. The code below shows the optimized version of polynomial fitting calculations.
+
+
 
 \begin{Code}
 
@@ -542,7 +544,14 @@ fn shiftWindow( self: *MainOperator,
     self.left_x = self.time_window[0];
 }
 \end{Code}
-In the code above, the \verb"MainOperator" is a structure that holds the time series(y), the time window, the sums and the temporary values. The \verb"shiftWindow()" function is a method of the \verb"MainOperator" structure. The function receives the size of the box, the index of the first element of the box, and a pointer to the $F_{DFA}^{2}$ array. The function is called for every box in every time scale. The function is responsible for updating the sums of the time series, the sums of the $DV$ and the $DV$ matrix.
+In the code above, the \verb"MainOperator" is a structure that holds the time series($Y_n$), the time stamps(x), the sums for the time window and for each series and the temporary variables that holds the first values of the previous box. The \verb"shiftWindow()" function is a method of the \verb"MainOperator" structure. The function receives the size of the box, the index of the first element of the box, and a pointer to the $F_{DFA}^{2}$ array. The function is called for every box in every time scale. The function is responsible for updating the sums of the time series, the sums of the $DV$ and the $DV$ matrix.
+
+The if statement in the code above is responsible for updating the sums for the current box. The first \verb"if" block is executed for
+every box except the first one in each time scale, where the \verb"else" block is executed instead. 
+
+The \verb"if" block first update the values for the sum of the time stamps (\verb"sum_x") and the sum of the squares of the time stamps (\verb"sum_x2"). Then, for every series, the sum of the series values (\verb"sum_y") and the sum of the product of the series and the time stamps are updated (\verb"sum_xy"). Than the values are passed to the \verb"detrended" function that calculates The $DV$ and the $DFA$ for the current box.
+
+The \verb"else" block is executed for the first box in each time scale. For consecutive time scales, the values of the sums are updated using the values of the previous box, looping and adding only the values in the current box that don't overlap with the previous one. The \verb"detrended" function is also called for every series in the time scale.
 
 The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized \proglang{Zig}, where tested and the results are presented in the next section.
  
