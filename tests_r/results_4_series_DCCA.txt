@@ -1,0 +1,12 @@
+ source("D:/gitrepos/papers/paper_zebendelib/tests_r/test_4_series_DCCA.R")
+Carregando pacotes exigidos: DCCA
+[1] "Number of time windows scales:"
+[1] 42
+[1] 1 2
+[1] 1 3
+[1] 1 4
+[1] 2 3
+[1] 2 4
+[1] 3 4
+[1] "elapsed time:"
+Time difference of 33.12779 mins
