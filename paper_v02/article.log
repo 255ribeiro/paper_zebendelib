@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  6 MAR 2025 21:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  7 MAR 2025 11:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -781,9 +781,14 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [14]
-Overfull \hbox (10.61906pt too wide) in paragraph at lines 584--585
-[]\T1/lmr/m/n/10.95 The \T1/lmr/b/n/10.95 DFA \T1/lmr/m/n/10.95 ([][]Mesquita, Filho, and Danile-vicz.[][] [][]2024[][]) is a pure \T1/lmss/m/n/10.95 R \T1/lmr/m/n/10.95 im-ple-men-ta-tion. The \T1/lmr/b/n/10.95 DCCA \T1/lmr/m/n/10.95 ([][]Prass
- []
+<figs/elapsed_tws.png, id=241, 927.2241pt x 632.3625pt>
+File: figs/elapsed_tws.png Graphic file (type png)
+<use figs/elapsed_tws.png>
+Package pdftex.def Info: figs/elapsed_tws.png  used on input line 616.
+(pdftex.def)             Requested size: 354.12434pt x 241.50638pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (./article.bbl
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
@@ -791,23 +796,31 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [15]
-Underfull \hbox (badness 2277) in paragraph at lines 46--52
+Underfull \hbox (badness 2277) in paragraph at lines 41--47
 \T1/lmr/m/n/10.95 multi cross-correlation anal-y-sis ap-plied on EEG sig-nals to study mo-tor ac-tiv-ity
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 714--714
+Underfull \hbox (badness 10000) in paragraph at lines 723--723
 
  []
 
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/m/it' tried instead on input line 714.
+(Font)              Font shape `T1/pzc/m/it' tried instead on input line 723.
+
+Underfull \vbox (badness 2253) has occurred while \output is active []
+
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 16 []
  []
 
-[16] (./article.aux)
+[16 <./figs/elapsed_tws.png>]
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+[] \T1/lmr/m/n/10.95 17
+ []
+
+[17] (./article.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -816,18 +829,18 @@ Package rerunfilecheck Info: File `article.out' has not changed.
 (rerunfilecheck)             Checksum: A3B124F57A718D0B47B2D34AD8E0B9B5;2594.
  ) 
 Here is how much of TeX's memory you used:
- 25994 strings out of 475188
- 525565 string characters out of 5767805
+ 26001 strings out of 475188
+ 525779 string characters out of 5767805
  1933248 words of memory out of 5000000
- 46758 multiletter control sequences out of 15000+600000
+ 46764 multiletter control sequences out of 15000+600000
  654137 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,14n,101p,1658b,1052s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (16 pages, 584836 bytes).
+Output written on article.pdf (17 pages, 631951 bytes).
 PDF statistics:
- 403 PDF objects out of 1000 (max. 8388607)
- 325 compressed objects within 4 object streams
- 74 named destinations out of 1000 (max. 500000)
- 100 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 407 PDF objects out of 1000 (max. 8388607)
+ 326 compressed objects within 4 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

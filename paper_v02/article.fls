@@ -393,6 +393,11 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmtt.fd
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ts1-lmtt10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmtto10.tfm
+INPUT ./figs/elapsed_tws.png
+INPUT ./figs/elapsed_tws.png
+INPUT ./figs/elapsed_tws.png
+INPUT ./figs/elapsed_tws.png
+INPUT ./figs/elapsed_tws.png
 INPUT ./article.bbl
 INPUT ./article.bbl
 INPUT article.bbl

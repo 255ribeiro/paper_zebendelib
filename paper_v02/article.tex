@@ -572,19 +572,27 @@ The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized 
 
 \section{Results} \label{sec:results}
 
-The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper, the original data came from the \textit{Physionet} open-access website, available at this link:
+The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG (electroencephalogram) data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated.
+
+The original data came from the \textit{Physionet} open-access website, available at this link:
 
 \begin{center}
 	\url{https://physionet.org/content/eegmmidb/1.0.0/}
-\end{center} 
-This comprehensive dataset of EEG (electroencephalogram) data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes. The results were compared with the original ones, and the algorithms where validated.
+\end{center}
 
-Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} package repository, the \pkg{DCCA} \pkg{DFA} packages where found, and, from the \proglang{Python} \textbf{pypi}, the \pkg{DCCA} package was used.
 
-The \pkg{DFA}~\citep{R-DFA} is a pure \proglang{R} implementation. The \pkg{DCCA}~\citep{R-DCCA} is a \proglang{R} package implemented in \proglang{Java}. A package also named \pkg{DCCA}\citep{alchieri2024lateralization} is a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops.
+Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} repository, the \pkg{DFA}, a pure \proglang{R} implementation, and  the \pkg{DCCA}~\citep{R-DCCA},  a \proglang{R} package implemented in \proglang{Java} where found. From the \proglang{Python} \textbf{pypi} repository, a package also named \pkg{DCCA}\citep{alchieri2024lateralization}, a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops, was used. All those packages have $\rho_{DCCA}$ functions. Since the $dmc_{x}^{2}$ is a more recent concept, no other package was found that calculates it besides the \pkg{Zebende} package. The $\rho_{DCCA}$ is a fundamental step to calculate the $DMC_{x}^{2}$ and contains the most computational expensive parts.  
+
+With the idea to broadly compare the performance of the \pkg{Zebende} package with the other packages, aiming an overall order of magnitude of the packages compared speed, using the same computer and the same time window scales, the performance comparison was made using data from one of the experiments described in the \cite{RIBEIRO2025107419} paper, available at the link below:
+
+\begin{center}
+  	\url{https://tinyurl.com/zbtestdata01}
+\end{center}
+
 
 
 \begin{table}[h]
+  \label{tab:elapsed_time}
   \centering
   \caption{Elapsed Time Comparison}
   \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
@@ -595,18 +603,19 @@ The \pkg{DFA}~\citep{R-DFA} is a pure \proglang{R} implementation. The \pkg{DCCA
     Zebende & Zig (basic) & 42.03 & 52.7\% \\
     DCCA & Python & 370.54 & 1239.4\% \\
     DCCA & R-Java & 1987.67 & 7202.4\% \\
-    Zebende & Pure Python & 2415.94 & 8803.4\% \\
+    Zebende & Python & 2415.94 & 8803.4\% \\
     DFA & R & 20173.13 & 73,011.4\% \\
     \hline
   \end{tabular}
 \end{table}
 
 
-
-
-Regarding performance 
-
-%% -- Summary/conclusions/discussion -------------------------------------------
+\begin{figure}[h!]
+  \centering
+  \includegraphics{
+    figs/elapsed_tws.png}
+  \caption{\label{fig:elapsed_tws}Elapsed Time Comparison for Different Implementations}
+\end{figure}
 
 \section{Summary and discussion} \label{sec:summary}
 
