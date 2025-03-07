@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{9}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -8,11 +8,21 @@
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi
 \providecommand{\eprint}[2][]{\url{#2}}
 
+\bibitem[{Alchieri \emph{et~al.}(2024)Alchieri, Abdalazim, Alecci, Gashi, Gjoreski, and Santini}]{alchieri2024lateralization}
+Alchieri L, Abdalazim N, Alecci L, Gashi S, Gjoreski M, Santini S (2024).
+\newblock \enquote{Lateralization Effects in Electrodermal Activity Data Collected Using Wearable Devices.}
+\newblock \emph{Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies}, \textbf{8}(1), 1--30.
+
 \bibitem[{Kacs \emph{et~al.}(2024)Kacs, Lee, Zarins, and Brown}]{10820804}
 Kacs D, Lee J, Zarins J, Brown N (2024).
 \newblock \enquote{Pragma driven shared memory parallelism in Zig by supporting OpenMP loop directives.}
 \newblock In \emph{SC24-W: Workshops of the International Conference for High Performance Computing, Networking, Storage and Analysis}, pp. 930--938.
 \newblock \doi{10.1109/SCW63240.2024.00132}.
+
+\bibitem[{Mesquita \emph{et~al.}(2024)Mesquita, Filho, and Danilevicz.}]{R-DFA}
+Mesquita VB, Filho FMO, Danilevicz IM (2024).
+\newblock \emph{DFA: Detrended Fluctuation Analysis}.
+\newblock R package version 1.0.0, \urlprefix\url{https://CRAN.R-project.org/package=DFA}.
 
 \bibitem[{Peng \emph{et~al.}(1994)Peng, Buldyrev, Havlin, Simons, Stanley, and Goldberger}]{Peng_1994}
 Peng CK, Buldyrev SV, Havlin S, Simons M, Stanley HE, Goldberger AL (1994).
@@ -26,6 +36,11 @@ Podobnik B, Stanley HE (2008).
 \newblock ISSN 00319007.
 \newblock \doi{10.1103/PhysRevLett.100.084102}.
 \newblock \eprint{0709.0281}.
+
+\bibitem[{Prass and Pumi(2020)}]{R-DCCA}
+Prass TS, Pumi G (2020).
+\newblock \emph{DCCA: Detrended Fluctuation and Detrended Cross-Correlation Analysis}.
+\newblock R package version 0.1.1, \urlprefix\url{https://CRAN.R-project.org/package=DCCA}.
 
 \bibitem[{Ribeiro \emph{et~al.}(2025)Ribeiro, de~Almeida~Brito, Filho, Cruz, and Zebende}]{RIBEIRO2025107419}
 Ribeiro FF, de~Almeida~Brito A, Filho FMO, Cruz JAL, Zebende GF (2025).

@@ -1,0 +1,7 @@
+Zebende Zig(opt) : 27.520853996276855 seconds
+Zebende Zig(basic) : 42.03087592124939 seconds
+DCCA(Python) : 370.53771352767944 seconds
+DCCA(R-Java) : 33.12779 minutes
+Zebende(pure Python) : 2415.9367322921753 seconds
+DFA(R) : 5.603646 hours
+

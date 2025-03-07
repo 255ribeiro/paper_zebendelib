@@ -572,16 +572,36 @@ The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized 
 
 \section{Results} \label{sec:results}
 
-The algorithm was tested with data and results from the \citep{RIBEIRO2025107419}, the original data came from the \textit{Physionet} open-access website, available at this link:
+The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper, the original data came from the \textit{Physionet} open-access website, available at this link:
 
 \begin{center}
 	\url{https://physionet.org/content/eegmmidb/1.0.0/}
 \end{center} 
-This comprehensive dataset, with 108 subjects processes for all the 12 experiments, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all the subjects and experiments, where used to compare result and validate the implementations.
+This comprehensive dataset of EEG (electroencephalogram) data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes. The results were compared with the original ones, and the algorithms where validated.
 
 Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} package repository, the \pkg{DCCA} \pkg{DFA} packages where found, and, from the \proglang{Python} \textbf{pypi}, the \pkg{DCCA} package was used.
 
-The \pkg{DFA} is a pure \proglang{R} implementation. The \pkg{DCCA} is a \proglang{R} package with a \proglang{Java} implementation. The \pkg{DCCA} is a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops. 
+The \pkg{DFA}~\citep{R-DFA} is a pure \proglang{R} implementation. The \pkg{DCCA}~\citep{R-DCCA} is a \proglang{R} package implemented in \proglang{Java}. A package also named \pkg{DCCA}\citep{alchieri2024lateralization} is a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops.
+
+
+\begin{table}[h]
+  \centering
+  \caption{Elapsed Time Comparison}
+  \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
+    \hline
+    Package & Implementation & Elapsed Time(s) & Percentage Increase \\
+    \hline
+    Zebende & Zig (opt) & 27.52  & - \\
+    Zebende & Zig (basic) & 42.03 & 52.7\% \\
+    DCCA & Python & 370.54 & 1239.4\% \\
+    DCCA & R-Java & 1987.67 & 7202.4\% \\
+    Zebende & Pure Python & 2415.94 & 8803.4\% \\
+    DFA & R & 20173.13 & 73,011.4\% \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
 
 
 Regarding performance 

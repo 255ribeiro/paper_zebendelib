@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex article"] 1741225082 "article.aux" "article.bbl" "article" 1741225082 0
+["bibtex article"] 1741301722 "article.aux" "article.bbl" "article" 1741306177 0
   "./jss.bst" 1728929345 32989 20bb38cc9c684ce32025a8fa283a9df6 ""
   "./refs.bib" 1741225081 7218 1edd473b78cc46b3d7956734534d0dd2 ""
-  "article.aux" 1741225062 2678 71c6be1f9f4581ecbbe76614364d1b0d "pdflatex"
+  "article.aux" 1741306175 3162 aa009a8b4af12d4fa60cb90de5c03e17 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1741225057 "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" "article.pdf" "article" 1741225082 0
-  "article.aux" 1741225062 2678 71c6be1f9f4581ecbbe76614364d1b0d "pdflatex"
-  "article.bbl" 1741225082 2721 ddf41606e42564e11396c99ab847ff7b "bibtex article"
-  "article.out" 1741225062 2594 a3b124f57a718d0b47b2d34ad8e0b9b5 "pdflatex"
-  "article.tex" 1741178580 48195 b32960c0cae06a96a62079708ffbe74b ""
+["pdflatex"] 1741306172 "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" "article.pdf" "article" 1741306177 0
+  "article.aux" 1741306175 3162 aa009a8b4af12d4fa60cb90de5c03e17 "pdflatex"
+  "article.bbl" 1741301723 3672 979e92f761ea49ea8538e0d7ce64b958 "bibtex article"
+  "article.out" 1741306175 2594 a3b124f57a718d0b47b2d34ad8e0b9b5 "pdflatex"
+  "article.tex" 1741306170 48885 49149b7f76c717d9ad5970823dc8afcc ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1691348256 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691353563 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1691353563 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -238,7 +238,7 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1691371227 4687025 676c7d7298543c4303eabe86c426c675 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1691371334 8172625 f42d0d86b5a9d53df6cf8902d13f892b ""
   "c:/texlive/2023/texmf.cnf" 1691371196 713 e69b156964470283e0530f5060668171 ""
-  "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" 1741178580 48195 b32960c0cae06a96a62079708ffbe74b ""
+  "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" 1741306170 48885 49149b7f76c717d9ad5970823dc8afcc ""
   "figs/dmc_chart.png" 1730916186 58869 946bb0593ee9bfc80b3686046b8bfb06 ""
   "figs/pdcca_chart.png" 1730914033 64339 3c8ccc1ce1d7a81b6481143339ee7468 ""
   "jss.cls" 1728937806 14941 3697c2d4e5008ba5075da85ee0382bd5 ""
