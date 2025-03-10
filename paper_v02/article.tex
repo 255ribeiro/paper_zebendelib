@@ -581,21 +581,18 @@ The original data came from the \textit{Physionet} open-access website, availabl
 \end{center}
 
 
-Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} repository, the \pkg{DFA}, a pure \proglang{R} implementation, and  the \pkg{DCCA}~\citep{R-DCCA},  a \proglang{R} package implemented in \proglang{Java} where found. From the \proglang{Python} \textbf{pypi} repository, a package also named \pkg{DCCA}\citep{alchieri2024lateralization}, a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops, was used. All those packages have $\rho_{DCCA}$ functions. Since the $dmc_{x}^{2}$ is a more recent concept, no other package was found that calculates it besides the \pkg{Zebende} package. The $\rho_{DCCA}$ is a fundamental step to calculate the $DMC_{x}^{2}$ and contains the most computational expensive parts.  
+Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} repository, the \pkg{DFA}, a pure \proglang{R} implementation, and  the \pkg{DCCA}~\citep{R-DCCA},  a \proglang{R} package implemented in \proglang{Java} where found. From the \proglang{Python} \textbf{pypi} repository, a package also named \pkg{DCCA}\citep{alchieri2024lateralization}, a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops, was used. All those packages have $\rho_{DCCA}$ functions. Hereafter the \pkg{DCCA} \proglang{R-java} package will be referred as \pkg{DCCA-R-Java} and the \pkg{DCCA} \proglang{Python} package as \pkg{DCCA-Python} for better distinction.
 
-With the idea to broadly compare the performance of the \pkg{Zebende} package with the other packages, aiming an overall order of magnitude of the packages compared speed, using the same computer and the same time window scales, the performance comparison was made using data from one of the experiments described in the \cite{RIBEIRO2025107419} paper, available at the link below:
+The $dmc_{x}^{2}$ is a more recent coefficient, and no other package was found that calculates it besides the \pkg{Zebende} package. That alone is a big contribution of this package. The $\rho_{DCCA}$ is a fundamental step to calculate the $DMC_{x}^{2}$ and contains the most computational expensive parts. In the $DMC_{x}^{2}$ calculation, The $\rho_{DCCA}$ is calculated for, at least, a combination of 3 series two by two. With the idea to broadly compare the performance of the \pkg{Zebende} package with the others, aiming an overall order of magnitude of the packages compared speed, using the same computer and the same time window scales, the performance comparison was made using data from one of the experiments described in the \cite{RIBEIRO2025107419} paper, available at the link below:
 
 \begin{center}
   	\url{https://tinyurl.com/zbtestdata01}
 \end{center}
 
-
-
-
-
+None of the comparison packages can calculate multiple series comparison in the same input, so the $\rho_{DCCA}$ methods where wrapped around a loop that alternate the series used by the function, using a four two by two combination of the data indexes. The \pkg{DCCA-Python} package also didn't accepts multiple inputs for the time scale, so another loop was added in that test. The results are presented in the Table \ref{tab:time}.
 
 \begin{table}[h]
-  \label{tab:elapsed_time}
+  \label{tab:time}
   \centering
   \caption{Elapsed Time Comparison}
   \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
@@ -612,6 +609,11 @@ With the idea to broadly compare the performance of the \pkg{Zebende} package wi
   \end{tabular}
 \end{table}
 
+The \pkg{Zebende} package, using the optimized \proglang{Zig} implementation, was the fastest, with a 27.52 seconds elapsed time. The basic \proglang{Zig} implementation was the second fastest, with 42.03 seconds. The \pkg{DCCA-Python} package was the third fastest, with 370.54 seconds. The \pkg{DCCA-R-Java} package was the fourth fastest, with 1987.67 seconds. The \pkg{Zebende} package, using the \proglang{Python} implementation, was the fifth fastest, with 2415.94 seconds. The \pkg{DFA-R} package was the slowest, with 20173.13 seconds.
+
+The \proglang{Zig} basic and optimized versions occupying the first two positions in the ranking is not unexpected, hence the \proglang{Zig} language is more performative than the other ones used in the comparison. The \pkg{DCCA-Python} package in the third position is a surprise, showing that a well implemented \proglang{Python} package can overperform a \proglang{Java} implementation.
+
+The $52.7\%$ increase in performance from the basic to the optimized \proglang{Zig} implementation is a good result, showcasing the effectiveness of the optimizations. Another test was conducted, wth the same data and settings as the previous one, but getting the elapsed time inside every time scale. These results are presented in Fig.~\ref{fig:elapsed_tws}.
 
 \begin{figure}[h!]
   \centering
@@ -620,7 +622,12 @@ With the idea to broadly compare the performance of the \pkg{Zebende} package wi
   \caption{\label{fig:elapsed_tws}Elapsed Time Comparison for Different Implementations}
 \end{figure}
 
+Figure \ref{fig:elapsed_tws} shows the elapsed computation time difference from the Basic to the optimized version of the algorithm increases as the time scale increases. If the test was conducted with a bigger time series, and with larger time scales the difference would be even more significant. 
+
+
 \section{Summary and discussion} \label{sec:summary}
+
+The \pkg{Zebende} package is the first tool that calculates the $DMC_{x}^{2}$ coefficient for any number of time series. The package also calculates the $\rho_{DCCA}$, a fundamental step for the $DMC_{x}^{2}$ calculation. The package was tested with data from the \cite{RIBEIRO2025107419} paper, and the results were validated. The package was also compared with other packages that calculate the $\rho_{DCCA}$, and the results showed that the \pkg{Zebende} package is the fastest. The package is available at the \textbf{pypi}.
 
 
 %% -- Optional special unnumbered sections -------------------------------------
