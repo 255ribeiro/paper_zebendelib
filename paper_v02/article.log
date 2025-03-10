@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  9 MAR 2025 21:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  10 MAR 2025 00:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -683,38 +683,38 @@ Package translations Info: loading dictionary `translations-basic-dictionary' fo
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 85.
  (c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Underfull \vbox (badness 3872) has occurred while \output is active []
-
- [1
+) [1
 
 {c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./jsslogo.jpg>]
+Overfull \hbox (5.47499pt too wide) has occurred while \output is active
+\T1/lmr/m/n/10.95 2 []
+ []
+
+[2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 Underfull \hbox (badness 10000) in paragraph at lines 128--129
 
  []
 
 
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
-\T1/lmr/m/n/10.95 2 []
- []
-
-[2{c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
-Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 3
  []
 
 [3]
-<./figs/pdcca_chart.png, id=126, 1019.60925pt x 261.97874pt>
+<./figs/pdcca_chart.png, id=146, 1019.60925pt x 261.97874pt>
 File: ./figs/pdcca_chart.png Graphic file (type png)
 <use ./figs/pdcca_chart.png>
 Package pdftex.def Info: ./figs/pdcca_chart.png  used on input line 200.
 (pdftex.def)             Requested size: 354.12434pt x 90.98637pt.
-<./figs/dmc_chart.png, id=130, 1006.962pt x 273.4215pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./figs/dmc_chart.png, id=150, 1006.962pt x 273.4215pt>
 File: ./figs/dmc_chart.png Graphic file (type png)
 <use ./figs/dmc_chart.png>
 Package pdftex.def Info: ./figs/dmc_chart.png  used on input line 208.
 (pdftex.def)             Requested size: 354.12434pt x 96.1537pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -726,7 +726,7 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 4 []
  []
 
-[4 <./figs/pdcca_chart.png>]
+[4]
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 220.
  (c:/texlive/2023/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -735,7 +735,7 @@ Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 5
  []
 
-[5 <./figs/dmc_chart.png>]
+[5 <./figs/pdcca_chart.png> <./figs/dmc_chart.png>]
 Overfull \hbox (5.47499pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 6 []
  []
@@ -781,27 +781,36 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [14]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 15
  []
 
 [15]
-<figs/elapsed_tws.png, id=250, 927.2241pt x 632.3625pt>
+<figs/elapsed_tws.png, id=268, 927.2241pt x 632.3625pt>
 File: figs/elapsed_tws.png Graphic file (type png)
 <use figs/elapsed_tws.png>
 Package pdftex.def Info: figs/elapsed_tws.png  used on input line 621.
 (pdftex.def)             Requested size: 354.12434pt x 241.50638pt.
- (./article.bbl
+
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 16 []
  []
 
-[16 <./figs/elapsed_tws.png>]
-Underfull \hbox (badness 2277) in paragraph at lines 41--47
+[16 <./figs/elapsed_tws.png>] (./article.bbl
+Underfull \hbox (badness 2277) in paragraph at lines 62--68
 \T1/lmr/m/n/10.95 multi cross-correlation anal-y-sis ap-plied on EEG sig-nals to study mo-tor ac-tiv-ity
  []
 
-)
+
+Overfull \hbox (10.94998pt too wide) has occurred while \output is active
+[] \T1/lmr/m/n/10.95 17
+ []
+
+[17])
 Underfull \hbox (badness 10000) in paragraph at lines 733--733
 
  []
@@ -810,10 +819,10 @@ LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
 (Font)              Font shape `T1/pzc/m/it' tried instead on input line 733.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
-[] \T1/lmr/m/n/10.95 17
+\T1/lmr/m/n/10.95 18 []
  []
 
-[17] (./article.aux)
+[18] (./article.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
@@ -822,18 +831,18 @@ Package rerunfilecheck Info: File `article.out' has not changed.
 (rerunfilecheck)             Checksum: A3B124F57A718D0B47B2D34AD8E0B9B5;2594.
  ) 
 Here is how much of TeX's memory you used:
- 26001 strings out of 475188
- 525771 string characters out of 5767805
- 1933248 words of memory out of 5000000
- 46764 multiletter control sequences out of 15000+600000
+ 26027 strings out of 475188
+ 526213 string characters out of 5767805
+ 1932248 words of memory out of 5000000
+ 46784 multiletter control sequences out of 15000+600000
  654137 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,14n,101p,1658b,1052s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,14n,101p,1658b,1074s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (17 pages, 635417 bytes).
+Output written on article.pdf (18 pages, 640255 bytes).
 PDF statistics:
- 412 PDF objects out of 1000 (max. 8388607)
- 331 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 356 compressed objects within 4 object streams
+ 81 named destinations out of 1000 (max. 500000)
  105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

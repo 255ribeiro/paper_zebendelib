@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{13}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -12,6 +12,27 @@
 Alchieri L, Abdalazim N, Alecci L, Gashi S, Gjoreski M, Santini S (2024).
 \newblock \enquote{Lateralization Effects in Electrodermal Activity Data Collected Using Wearable Devices.}
 \newblock \emph{Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies}, \textbf{8}(1), 1--30.
+
+\bibitem[{Brito \emph{et~al.}(2019)Brito, Araujo, and Zebende}]{Brito2019}
+Brito AA, Araujo HA, Zebende GF (2019).
+\newblock \enquote{Detrended Multiple Cross-Correlation Coefficient applied to solar radiation, air temperature and relative humidity.}
+\newblock \emph{Sci. Rep.}, \textbf{9}, 19764.
+\newblock \doi{10.1038/s41598-019-56114-6}.
+
+\bibitem[{{da Silva Filho} \emph{et~al.}(2021){da Silva Filho}, Zebende, {de Castro}, and Guedes}]{filho2021-2}
+{da Silva Filho} AM, Zebende GF, {de Castro} APN, Guedes EF (2021).
+\newblock \enquote{Statistical test for multiple detrended cross-correlation coefficient.}
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{562}, 125285.
+
+\bibitem[{Guedes \emph{et~al.}(2021)Guedes, {da Silva Filho}, and Zebende}]{guedes2021-2}
+Guedes EF, {da Silva Filho} AM, Zebende GF (2021).
+\newblock \enquote{Detrended multiple cross-correlation coefficient with sliding windows approach.}
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{574}, 125990.
+
+\bibitem[{Guedes \emph{et~al.}(2022)Guedes, {de Castro}, {da Silva Filho}, and Zebende}]{guedes2022d}
+Guedes EF, {de Castro} APN, {da Silva Filho} AM, Zebende GF (2022).
+\newblock \enquote{$\Delta $ DMC x 2: {A} New Approach to Measure Contagion Effect on Financial Crisis.}
+\newblock \emph{Fluctuation and Noise Letters}, \textbf{21}(04), 2250026.
 
 \bibitem[{Kacs \emph{et~al.}(2024)Kacs, Lee, Zarins, and Brown}]{10820804}
 Kacs D, Lee J, Zarins J, Brown N (2024).
@@ -52,6 +73,11 @@ Zebende GF (2011).
 \newblock ISSN 03784371.
 \newblock \doi{10.1016/j.physa.2010.10.022}.
 \newblock \urlprefix\url{http://dx.doi.org/10.1016/j.physa.2010.10.022}.
+
+\bibitem[{Zebende \emph{et~al.}(2022)Zebende, Aguiar, Ferreira, and Guedes}]{zebende2022s}
+Zebende GF, Aguiar LC, Ferreira P, Guedes EF (2022).
+\newblock \enquote{Statistical Approach to Study the Relationship Between Stock Market Indexes by Multiple DCCA Cross-Correlation Coefficient.}
+\newblock \emph{Fluctuation and Noise Letters}, \textbf{21}(5), 2250045--1314.
 
 \bibitem[{Zebende and Silva(2018)}]{Zebende2018}
 Zebende GF, Silva AM (2018).

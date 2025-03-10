@@ -84,11 +84,11 @@
 
 The Detrended Cross-correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between two non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationary time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
 
-% rho DCCA applications
+\color{red}Inserir parágrafo com citações de artigos que aplicam o $\rho_{DCCA}$\color{black}
 
 The Detrended Multiple Cross-Correlation Coefficient \citep{Zebende2018} ($DMC_x^2$) is a generalization of the $\rho_{DCCA}$ coefficient that correlates one time series (dependent variable) a number of time series (independent variables). The $DMC_x^2$ values ranges from zero ($0$), indicating no correlation to $1$, meaning perfect correlation or anti-correlation between the dependent and the independent variables.
 
-% DMCx2 applications
+The method has been applied to study meteorological data~\citep{Brito2019}, have been tested statistically~\citep{filho2021-2}, used with the implementation of sliding windows~\citep{guedes2021-2}, to measure the contagion effect on stock market indexes~\citep{guedes2022d}, to produce statistical analysis between stock market behavior~\citep{zebende2022s} or analyze electroencephalogram (EEG) signals \citep{RIBEIRO2025107419}.
 
 This paper presents the \pkg{Zebende} \proglang{Python} package, an implementation of the $DFA$, $DCCA$, $\rho_{DCCCA}$, $DMC_x^2$ and utility functions related to the methods. In section \ref{sec:calculations} the steps for calculating the $\rho_{DCCCA}$ and $DMC_x^2$ are presented and discussed. Section \ref{sec:optimization} shows how this library was implemented, the optimization technics and the recommended steps to use the library. In Section \ref{sec:results} the \pkg{Zebende} package is compared with other packages for \proglang{Python} and \proglang{R} that calculates the $\rho_{DCCA}$ in terms of performance and usability, leading to the conclusions in Section \ref{sec:summary}.
 
@@ -572,7 +572,7 @@ The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized 
 
 \section{Results} \label{sec:results}
 
-The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG (electroencephalogram) data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated.
+The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG, data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated.
 
 The original data came from the \textit{Physionet} open-access website, available at this link:
 
