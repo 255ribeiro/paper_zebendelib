@@ -8,8 +8,9 @@ tws <- c(4, 5, 7, 9, 11, 13, 16, 20, 23, 28, 33,
          905, 1011, 1130, 1261, 1407, 1570)
 print("Number of time windows scales:")
 print(length(tws))
-data <- read.csv("https://tinyurl.com/zbtestdata01")# load data
-dcca_of <- combn(4, 2)
+series_count <- 6
+data <- read.csv("https://tinyurl.com/zbtestdata64")# load data
+dcca_of <- combn(series_count, 2)
 result_DCCA_PKG <- list()
 start_time <- Sys.time()
 for(i in 1:dim(dcca_of)[2]){
