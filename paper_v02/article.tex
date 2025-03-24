@@ -84,7 +84,7 @@
 
 The Detrended Cross-correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between two non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationary time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
 
-\color{red}Inserir parágrafo com citações de artigos que aplicam o $\rho_{DCCA}$\color{black}
+The method was statistically validated~\citep{PhysRevE.84.066118}, applied to climate data~\cite{vassolerZebende2012}, financial data\citep{Wang2013, Guedes2017, Ferreira2018}, electroencephalogram recorded data \citep{Oliveira2023}, among others. Statistical criteria for evaluating the relevance of the results were also developed~\cite{Guedes2018,Guedes2018a}.
 
 The Detrended Multiple Cross-Correlation Coefficient \citep{Zebende2018} ($DMC_x^2$) is a generalization of the $\rho_{DCCA}$ coefficient that correlates one time series (dependent variable) a number of time series (independent variables). The $DMC_x^2$ values ranges from zero ($0$), indicating no correlation to $1$, meaning perfect correlation or anti-correlation between the dependent and the independent variables.
 
@@ -594,7 +594,7 @@ None of the comparison packages can calculate multiple series comparison in the 
 \begin{table}[h]
   \label{tab:time}
   \centering
-  \caption{Elapsed Time Comparison}
+  \caption{Elapsed Time Comparison with four series}
   \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
     \hline
     Package & Implementation & Elapsed Time(s) & Percentage Increase \\
@@ -619,7 +619,7 @@ The $52.7\%$ increase in performance from the basic to the optimized \proglang{Z
   \centering
   \includegraphics{
     figs/elapsed_tws.png}
-  \caption{\label{fig:elapsed_tws}Elapsed Time Comparison for Different Implementations}
+  \caption{\label{fig:elapsed_tws}Elapsed Time Comparison for Different Implementations (four series)}
 \end{figure}
 
 Figure \ref{fig:elapsed_tws} shows the elapsed computation time difference from the Basic to the optimized version of the algorithm increases as the time scale increases. If the test was conducted with a bigger time series, and with larger time scales the difference would be even more significant. 

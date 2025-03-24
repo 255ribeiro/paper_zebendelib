@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{21}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -24,6 +24,44 @@ Brito AA, Araujo HA, Zebende GF (2019).
 \newblock \enquote{Statistical test for multiple detrended cross-correlation coefficient.}
 \newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{562}, 125285.
 
+\bibitem[{Ferreira \emph{et~al.}(2018)Ferreira, Dion{\'{i}}sio, Guedes, and Zebende}]{Ferreira2018}
+Ferreira P, Dion{\'{i}}sio A, Guedes EF, Zebende GF (2018).
+\newblock \enquote{{A sliding windows approach to analyse the evolution of bank shares in the European Union}.}
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{490}, 1355--1367.
+\newblock ISSN 03784371.
+\newblock \doi{10.1016/j.physa.2017.08.095}.
+
+\bibitem[{Filho \emph{et~al.}()Filho, Ribeiro, Cruz, De~Castro, and Zebende}]{Oliveira2023}
+Filho FO, Ribeiro F, Cruz JL, De~Castro AN, Zebende G (????).
+\newblock \enquote{Statistical Study of the {{EEG}} in Motor Tasks (Real and Imaginary).}
+\newblock \textbf{622}, 128802.
+\newblock ISSN 03784371.
+\newblock \doi{10.1016/j.physa.2023.128802}.
+\newblock \urlprefix\url{https://linkinghub.elsevier.com/retrieve/pii/S0378437123003576}.
+
+\bibitem[{Guedes \emph{et~al.}()Guedes, Dionísio, Ferreira, and Zebende}]{Guedes2017}
+Guedes E, Dionísio A, Ferreira PJ, Zebende GF (????).
+\newblock \enquote{{{DCCA}} Cross-Correlation in Blue-Chips Companies: {{A}} View of the 2008 Financial Crisis in the {{Eurozone}}.}
+\newblock \textbf{479}, 38--47.
+\newblock ISSN 03784371.
+\newblock \doi{10.1016/j.physa.2017.02.065}.
+\newblock \urlprefix\url{http://dx.doi.org/10.1016/j.physa.2017.02.065}.
+
+\bibitem[{Guedes \emph{et~al.}(2018{\natexlab{a}})Guedes, Brito, {Oliveira Filho}, Fernandez, de~Castro, {da Silva Filho}, and Zebende}]{Guedes2018}
+Guedes EF, Brito AA, {Oliveira Filho} FM, Fernandez BF, de~Castro AP, {da Silva Filho} AM, Zebende GF (2018{\natexlab{a}}).
+\newblock \enquote{{Statistical test for $\Delta$$\rho$DCCA cross-correlation coefficient}.}
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{501}, 134--140.
+\newblock ISSN 03784371.
+\newblock \doi{10.1016/j.physa.2018.02.148}.
+\newblock \urlprefix\url{https://doi.org/10.1016/j.physa.2018.02.148}.
+
+\bibitem[{Guedes \emph{et~al.}(2018{\natexlab{b}})Guedes, Brito, {Oliveira Filho}, Fernandez, de~Castro, {da Silva Filho}, and Zebende}]{Guedes2018a}
+Guedes EF, Brito AA, {Oliveira Filho} FM, Fernandez BF, de~Castro AP, {da Silva Filho} AM, Zebende GF (2018{\natexlab{b}}).
+\newblock \enquote{{Statistical test for $\Delta$$\rho$DCCA: Methods and data}.}
+\newblock \emph{Data in Brief}, \textbf{18}, 795--798.
+\newblock ISSN 23523409.
+\newblock \doi{10.1016/j.dib.2018.03.080}.
+
 \bibitem[{Guedes \emph{et~al.}(2021)Guedes, {da Silva Filho}, and Zebende}]{guedes2021-2}
 Guedes EF, {da Silva Filho} AM, Zebende GF (2021).
 \newblock \enquote{Detrended multiple cross-correlation coefficient with sliding windows approach.}
@@ -45,6 +83,13 @@ Peng CK, Buldyrev SV, Havlin S, Simons M, Stanley HE, Goldberger AL (1994).
 \newblock \enquote{{Mosaic Organization of DNA Nucleotides}.}
 \newblock \textbf{49}(2), 1685--1689.
 
+\bibitem[{Podobnik \emph{et~al.}(2011)Podobnik, Jiang, Zhou, and Stanley}]{PhysRevE.84.066118}
+Podobnik B, Jiang ZQ, Zhou WX, Stanley HE (2011).
+\newblock \enquote{{Statistical tests for power-law cross-correlated processes}.}
+\newblock \emph{Phys. Rev. E}, \textbf{84}(6), 66118.
+\newblock \doi{10.1103/PhysRevE.84.066118}.
+\newblock \urlprefix\url{https://link.aps.org/doi/10.1103/PhysRevE.84.066118}.
+
 \bibitem[{Podobnik and Stanley(2008)}]{Podobnik2008}
 Podobnik B, Stanley HE (2008).
 \newblock \enquote{{Detrended cross-correlation analysis: A new method for analyzing two nonstationary time series}.}
@@ -65,6 +110,21 @@ Ribeiro FF, de~Almeida~Brito A, Filho FMO, Cruz JAL, Zebende GF (2025).
 \newblock ISSN 1746-8094.
 \newblock \doi{https://doi.org/10.1016/j.bspc.2024.107419}.
 \newblock \urlprefix\url{https://www.sciencedirect.com/science/article/pii/S1746809424014770}.
+
+\bibitem[{Vassoler and Zebende(2012)}]{vassolerZebende2012}
+Vassoler RT, Zebende GF (2012).
+\newblock \enquote{{DCCA cross-correlation coefficient apply in time series of air temperature and air relative humidity}.}
+\newblock \emph{Physica A}, \textbf{391}(7), 2438--2443.
+\newblock ISSN 0378-4371.
+\newblock \doi{10.1016/j.physa.2011.12.015}.
+\newblock \urlprefix\url{http://dx.doi.org/10.1016/j.physa.2011.12.015}.
+
+\bibitem[{Wang \emph{et~al.}(2013)Wang, Xie, Chen, Yang, and Yang}]{Wang2013}
+Wang GJ, Xie C, Chen S, Yang JJ, Yang MY (2013).
+\newblock \enquote{Random Matrix Theory Analysis of Cross-Correlations in the {{US}} Stock Market: {{Evidence}} from {{Pearson}}'s Correlation Coefficient and Detrended Cross-Correlation Coefficient.}
+\newblock \emph{Physica A: Statistical Mechanics and its Applications}, \textbf{392}(17), 3715--3730.
+\newblock ISSN 03784371.
+\newblock \doi{10.1016/j.physa.2013.04.027}.
 
 \bibitem[{Zebende(2011)}]{Zebende2011}
 Zebende GF (2011).

@@ -5,3 +5,6 @@ DCCA(R-Java) : 33.12779 minutes
 Zebende(pure Python) : 2415.9367322921753 seconds
 DFA(R) : 5.603646 hours
 
+
+calculation example: ((42.03 - 27.52) / 27.52) × 100
+

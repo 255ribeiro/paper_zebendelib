@@ -4,46 +4,50 @@ The top-level auxiliary file: article.aux
 The style file: jss.bst
 Database file #1: refs.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty year in Oliveira2023; set to ????
+Warning--empty journal in Oliveira2023
+Warning--empty year in Guedes2017; set to ????
+Warning--empty journal in Guedes2017
 Warning--empty journal in Peng_1994
-You've used 13 entries,
+You've used 21 entries,
             3215 wiz_defined-function locations,
-            740 strings with 8251 characters,
-and the built_in function-call counts, 16040 in all, are:
-= -- 1619
-> -- 406
-< -- 5
-+ -- 151
-- -- 139
-* -- 1224
-:= -- 1858
-add.period$ -- 64
-call.type$ -- 13
-change.case$ -- 101
-chr.to.int$ -- 14
-cite$ -- 14
-duplicate$ -- 1680
-empty$ -- 1243
-format.name$ -- 181
-if$ -- 3257
-int.to.chr$ -- 1
+            809 strings with 10413 characters,
+and the built_in function-call counts, 28273 in all, are:
+= -- 2902
+> -- 736
+< -- 6
++ -- 274
+- -- 253
+* -- 2196
+:= -- 3246
+add.period$ -- 116
+call.type$ -- 21
+change.case$ -- 171
+chr.to.int$ -- 22
+cite$ -- 26
+duplicate$ -- 2956
+empty$ -- 2148
+format.name$ -- 321
+if$ -- 5736
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 159
-newline$ -- 89
-num.names$ -- 52
-pop$ -- 809
+missing$ -- 269
+newline$ -- 149
+num.names$ -- 84
+pop$ -- 1428
 preamble$ -- 1
-purify$ -- 98
+purify$ -- 168
 quote$ -- 0
-skip$ -- 257
+skip$ -- 401
 stack$ -- 0
-substring$ -- 1786
-swap$ -- 393
+substring$ -- 3257
+swap$ -- 664
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 117
-warning$ -- 1
-while$ -- 102
+type$ -- 189
+warning$ -- 5
+while$ -- 178
 width$ -- 0
-write$ -- 204
-(There was 1 warning)
+write$ -- 346
+(There were 5 warnings)
