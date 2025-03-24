@@ -8,3 +8,11 @@ DFA(R) : 5.603646 hours
 
 calculation example: ((42.03 - 27.52) / 27.52) × 100
 
+
+Zebende Zig(opt) : 
+Zebende Zig(basic) : 
+DCCA(Python) : 
+DCCA(R-Java) : 8.054744 hours
+Zebende(pure Python) : 
+DFA(R) : 61.640106 hours
+
