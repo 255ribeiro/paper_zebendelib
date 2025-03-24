@@ -14,9 +14,9 @@ start_time <- Sys.time() # start time stamp
 dcca_of <- combn(c(1:series_count), 2)
 cat("Number of series:", length(data), "\n")
 result_DCCA_PKG <- list()
-for(i in 1:dim(dcca_of)[2]){
-  s1 <- data[[ dcca_of[, i][1]]] # selecting first series
-  s2 <- data[[ dcca_of[, i][2]]] # selecting second series
+for(i in seq_len(dim(dcca_of)[2])){
+  s1 <- data[[dcca_of[, i][1]]] # selecting first series
+  s2 <- data[[dcca_of[, i][2]]] # selecting second series
   temp <- rhodcca(s1, s2, m = tws, nu = 1, overlap = TRUE) # Pdcca calculations
   result_DCCA_PKG <- append(result_DCCA_PKG, temp,
                             after = length(result_DCCA_PKG)) # collecting results
