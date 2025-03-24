@@ -16,9 +16,8 @@ cat("Number of series: ", length(data), "\n")
 for (i in seq_len(dim(dcca_of)[2])){
   s1 <- data[[dcca_of[, i][1]]] # selecting first series
   s2 <- data[[dcca_of[, i][2]]] # selecting second series
-
   rhoDCCA(s1, s2, scale = "F", box_size = tws) # Pdcca calculations
 }
 end_time <- Sys.time() #end time stamp
-elapsed_DFA_PKG <- end_time - start_time #elapsed time
-cat("elapsed time: ", elapsed_DFA_PKG, "\n")
+elapsed_dfa_pkg <- end_time - start_time #elapsed time
+cat("elapsed time: ", elapsed_dfa_pkg, "\n")
