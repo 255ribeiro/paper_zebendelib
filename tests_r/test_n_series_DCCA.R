@@ -17,6 +17,7 @@ result_dcca_pkg <- list()
 for(i in seq_len(dim(dcca_of)[2])){
   s1 <- data[[dcca_of[, i][1]]] # selecting first series
   s2 <- data[[dcca_of[, i][2]]] # selecting second series
+  cat("Series: ", dcca_of[, i][1], " and ", dcca_of[, i][2], "\n")
   temp <- rhodcca(s1, s2, m = tws, nu = 1, overlap = TRUE) # Pdcca calculations
   result_dcca_pkg <- append(result_DCCA_PKG, temp,  # collecting results
                             after = length(result_DCCA_PKG))
