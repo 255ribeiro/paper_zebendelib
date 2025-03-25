@@ -1,3 +1,5 @@
+Four series
+
 Zebende Zig(opt) : 27.520853996276855 seconds
 Zebende Zig(basic) : 42.03087592124939 seconds
 DCCA(Python) : 370.53771352767944 seconds
@@ -5,9 +7,19 @@ DCCA(R-Java) : 33.12779 minutes
 Zebende(pure Python) : 2415.9367322921753 seconds
 DFA(R) : 5.603646 hours
 
-
 calculation example: ((42.03 - 27.52) / 27.52) × 100
 
+Four series bigger 
+
+Zebende Zig(opt) : 
+Zebende Zig(basic) : 
+DCCA(Python) : 447.6767828464508 seconds
+DCCA(R-Java) : 36.77167 minutes 2206.3 seconds
+Zebende(pure Python) : 3076.2364416122437 seconds
+DFA(R) : 
+
+
+12 series
 
 Zebende Zig(opt) : 
 Zebende Zig(basic) : 
