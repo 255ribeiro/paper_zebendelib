@@ -1,3 +1,7 @@
+install.packages('IRkernel')
+IRkernel::installspec()  # to register the kernel in the current R installation
+
+
 Four series
 
 Zebende Zig(opt) : 27.520853996276855 seconds
@@ -16,7 +20,7 @@ Zebende Zig(basic) :
 DCCA(Python) : 447.6767828464508 seconds
 DCCA(R-Java) : 36.77167 minutes 2206.3 seconds
 Zebende(pure Python) : 3076.2364416122437 seconds
-DFA(R) : 
+DFA(R) : 7.81084 hours
 
 
 12 series
@@ -26,5 +30,5 @@ Zebende Zig(basic) :
 DCCA(Python) : 
 DCCA(R-Java) : 8.054744 hours
 Zebende(pure Python) : 
-DFA(R) : 61.640106 hours
+DFA(R) : 68.640106 hours
 
