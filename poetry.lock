@@ -1770,13 +1770,13 @@ files = [
 
 [[package]]
 name = "zebende"
-version = "0.1.91"
+version = "0.2.0"
 description = "DFA, DCCA, Pdcca and Dmcx2 calculations in python"
 optional = false
 python-versions = "<4.0,>=3.09"
 files = [
-    {file = "zebende-0.1.91-py3-none-any.whl", hash = "sha256:37b0c96ff04e9d38002f0241632452af28661f551d705698fd487da3f524ebb6"},
-    {file = "zebende-0.1.91.tar.gz", hash = "sha256:4b33bc2a5d42a42350d59c97fc1cb6919586e61f318636ff1d82b3680c66fa5c"},
+    {file = "zebende-0.2.0-py3-none-any.whl", hash = "sha256:74a25abbb20672c9832a6df599fcda9b498714565f6418e7eb77f357ae92c989"},
+    {file = "zebende-0.2.0.tar.gz", hash = "sha256:da132efc4afc56f36ff18f20a630e5bf40fb065e5413fec56e30b2ebf5b86f4b"},
 ]
 
 [package.dependencies]
@@ -1785,4 +1785,4 @@ numpy = ">=1.26,<3.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bd566272712deeaad616b5f5cb270df063258835a552167d5ebf3e46d04abc4e"
+content-hash = "6dff372d213933e377a120d309021a558e875b51d8aafa17eb8ad28f3e72f4f9"
