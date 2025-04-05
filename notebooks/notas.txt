@@ -8,19 +8,19 @@ calculation formula: ((value - reference) / reference) × 100
 
 4 series
 
-Zebende Zig(opt) : 35.88431978225708 seconds
-Zebende Zig(basic) : 59.744768381118774 seconds
-DCCA(Python) : 447.6767828464508 seconds
-DCCA(R-Java) : 36.77167 minutes 2206.3 seconds
-Zebende(pure Python) : 3076.2364416122437 seconds
-DFA(R) : 7.81084 hours
+Zebende Zig(opt) ; 35.88431978225708 seconds
+Zebende Zig(basic) ; 59.744768381118774 seconds
+DCCA(Python) ; 447.6767828464508 seconds
+DCCA(R-Java) ; 36.77167 minutes 2206.3 seconds
+Zebende(pure Python) ; 3076.2364416122437 seconds
+DFA(R) ; 7.81084 hours
 
 12 series
 
-Zebende Zig(opt) : 120.55404353141785 seconds
-Zebende Zig(basic) : 213.0895299911499 seconds
-Zebende(pure Python) : 3761.4070999622345 seconds
-DCCA(Python) : 4675.172034025192 seconds
-DCCA(R-Java) : 8.054744 hours
-DFA(R) : 68.640106 hours
+Zebende Zig(opt) ; 120.55404353141785 seconds
+Zebende Zig(basic) ; 213.0895299911499 seconds
+Zebende(pure Python) ; 3761.4070999622345 seconds
+DCCA(Python) ; 4675.172034025192 seconds
+DCCA(R-Java) ; 8.054744 hours
+DFA(R) : ; 85.9192400022 hours
 
