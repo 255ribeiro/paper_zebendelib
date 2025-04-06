@@ -600,11 +600,11 @@ None of the comparison packages can calculate multiple series comparison in the 
       Package & Implementation & Elapsed Time(s) & Percentage Increase \\
       \hline
       Zebende & Zig (opt) & 35.88  & - \\
-      Zebende & Zig (basic) & 59.74 & 52.7\% \\
-      DCCA & Python & 447.67 &  1,243.49\% \\
-      DCCA & R-Java & 2,206.3 & 6,126.17\% \\
-      Zebende & Python & 3,076.23 & 8,542.83\% \\
-      DFA & R & 28,818.016 & 80,049.42\% \\
+      Zebende & Zig (basic) & 59.74 & 66.50\% \\
+      DCCA & Python & 447.67 &  1,147.69\% \\
+      DCCA & R-Java & 2,206.2 & 6,048.83\% \\
+      Zebende & Python & 3,076.23 & 8,473.66\% \\
+      DFA & R & 28,116.00 & 78,261.20\% \\
       \hline
     \end{tabular}
   \end{table}
@@ -619,10 +619,10 @@ None of the comparison packages can calculate multiple series comparison in the 
         \hline
         Zebende & Zig (opt) & 120.55  & - \\
         Zebende & Zig (basic) & 213.08 & 76.64\% \\
-        Zebende & Python & 3,761.40 & 3,085.47\% \\
-        DCCA & Python & 4,675.17 &  3,871.65\% \\
-        DCCA & R-Java & 4,8624.44 & 40,423.52\% \\
-        DFA & R & 2,060,776.24 & 81,704,499.33\% \\
+        Zebende & Python & 3,761.40 & 3,020.20\% \\
+        DCCA & Python & 4,675.17 &  3,778.20\% \\
+        DCCA & R-Java & 28,980.00 & 23,939.82\% \\
+        DFA & R & 309,276.00 & 256,454.13\% \\
         \hline
       \end{tabular}
     \end{table}
@@ -634,14 +634,21 @@ The \proglang{Zig} basic and optimized versions occupying the first two position
 
 The $52.7\%$ increase in performance from the basic to the optimized \proglang{Zig} implementation is a good result, showcasing the effectiveness of the optimizations. Another test was conducted, wth the same data and settings as the previous one, but getting the elapsed time inside every time scale. These results are presented in Fig.~\ref{fig:elapsed_tws}.
 
+\begin{figure}[h!] 
+  \centering
+  \includegraphics{
+    figs/elapsed_tws_04.png}
+  \caption{\label{fig:elapsed_tws_04}Elapsed Time Comparison for Different Implementations (four time series)}
+\end{figure}
+
+Figure \ref{fig:elapsed_tws} shows the elapsed computation time difference from the Basic to the optimized version of the algorithm increases as the time scale increases. If the test was conducted with a bigger time series, and with larger time scales the difference would be even more significant.
+
 \begin{figure}[h!]
   \centering
   \includegraphics{
-    figs/elapsed_tws.png}
-  \caption{\label{fig:elapsed_tws}Elapsed Time Comparison for Different Implementations (four series)}
+    figs/elapsed_tws_12.png}
+  \caption{\label{fig:elapsed_tws_12}Elapsed Time Comparison for Different Implementations (twelve time series)}
 \end{figure}
-
-Figure \ref{fig:elapsed_tws} shows the elapsed computation time difference from the Basic to the optimized version of the algorithm increases as the time scale increases. If the test was conducted with a bigger time series, and with larger time scales the difference would be even more significant. 
 
 
 \section{Summary and discussion} \label{sec:summary}
