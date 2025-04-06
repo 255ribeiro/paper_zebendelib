@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  6 APR 2025 18:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  6 APR 2025 20:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -808,13 +808,10 @@ Package pdftex.def Info: figs/elapsed_tws_04.png  used on input line 640.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: Reference `fig:elapsed_tws_04 ' on page 16 undefined on input line 645.
-
-<figs/elapsed_tws_12.png, id=291, 935.1738pt x 632.3625pt>
+<figs/elapsed_tws_12.png, id=292, 935.1738pt x 632.3625pt>
 File: figs/elapsed_tws_12.png Graphic file (type png)
 <use figs/elapsed_tws_12.png>
-Package pdftex.def Info: figs/elapsed_tws_12.png  used on input line 650.
+Package pdftex.def Info: figs/elapsed_tws_12.png  used on input line 649.
 (pdftex.def)             Requested size: 354.12434pt x 239.46077pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -840,12 +837,12 @@ Underfull \hbox (badness 2277) in paragraph at lines 107--113
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 760--760
+Underfull \hbox (badness 10000) in paragraph at lines 759--759
 
  []
 
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/m/it' tried instead on input line 760.
+(Font)              Font shape `T1/pzc/m/it' tried instead on input line 759.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -864,26 +861,22 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `article.out' has not changed.
 (rerunfilecheck)             Checksum: A3B124F57A718D0B47B2D34AD8E0B9B5;2594.
  ) 
 Here is how much of TeX's memory you used:
- 26082 strings out of 475188
- 527326 string characters out of 5767805
+ 26081 strings out of 475188
+ 527305 string characters out of 5767805
  1933248 words of memory out of 5000000
- 46827 multiletter control sequences out of 15000+600000
+ 46826 multiletter control sequences out of 15000+600000
  654137 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,14n,101p,1658b,1060s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (20 pages, 693666 bytes).
+Output written on article.pdf (20 pages, 695453 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
- 407 compressed objects within 5 object streams
+ 495 PDF objects out of 1000 (max. 8388607)
+ 408 compressed objects within 5 object streams
  93 named destinations out of 1000 (max. 500000)
  110 words of extra memory for PDF output out of 10000 (max. 10000000)
 
