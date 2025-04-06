@@ -6,7 +6,7 @@ import zebende as zb
 import time
 
 # %%
-series_count = 4
+series_count = 12
 
 # %%
 url = 'https://tinyurl.com/zbtestdata64c'
