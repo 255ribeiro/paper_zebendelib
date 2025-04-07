@@ -4,50 +4,48 @@ The top-level auxiliary file: article.aux
 The style file: jss.bst
 Database file #1: refs.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Warning--empty year in Oliveira2023; set to ????
 Warning--empty journal in Oliveira2023
-Warning--empty year in Guedes2017; set to ????
 Warning--empty journal in Guedes2017
 Warning--empty journal in Peng_1994
 You've used 21 entries,
             3215 wiz_defined-function locations,
-            809 strings with 10413 characters,
-and the built_in function-call counts, 28273 in all, are:
+            811 strings with 10421 characters,
+and the built_in function-call counts, 28271 in all, are:
 = -- 2902
 > -- 736
 < -- 6
 + -- 274
 - -- 253
-* -- 2196
+* -- 2192
 := -- 3246
 add.period$ -- 116
 call.type$ -- 21
 change.case$ -- 171
 chr.to.int$ -- 22
-cite$ -- 26
-duplicate$ -- 2956
-empty$ -- 2148
+cite$ -- 24
+duplicate$ -- 2958
+empty$ -- 2150
 format.name$ -- 321
-if$ -- 5736
+if$ -- 5738
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 269
 newline$ -- 149
 num.names$ -- 84
-pop$ -- 1428
+pop$ -- 1420
 preamble$ -- 1
 purify$ -- 168
 quote$ -- 0
-skip$ -- 401
+skip$ -- 407
 stack$ -- 0
 substring$ -- 3257
-swap$ -- 664
+swap$ -- 666
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 189
-warning$ -- 5
+warning$ -- 3
 while$ -- 178
 width$ -- 0
 write$ -- 346
-(There were 5 warnings)
+(There were 3 warnings)
