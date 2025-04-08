@@ -1,6 +1,6 @@
 # Notes
 
-[Testing code](./notebooks/test_nb.md)
+[Testing codes](./notebooks/test_nb.md)
 
 ## Pdcca packages
 
