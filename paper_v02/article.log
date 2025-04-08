@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  7 APR 2025 23:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  8 APR 2025 18:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -795,7 +795,7 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 <figs/elapsed_tws_04.png, id=298, 927.2241pt x 632.3625pt>
 File: figs/elapsed_tws_04.png Graphic file (type png)
 <use figs/elapsed_tws_04.png>
-Package pdftex.def Info: figs/elapsed_tws_04.png  used on input line 618.
+Package pdftex.def Info: figs/elapsed_tws_04.png  used on input line 614.
 (pdftex.def)             Requested size: 354.12434pt x 241.50638pt.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
@@ -806,23 +806,19 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 <figs/elapsed_tws_12.png, id=309, 935.1738pt x 632.3625pt>
 File: figs/elapsed_tws_12.png Graphic file (type png)
 <use figs/elapsed_tws_12.png>
-Package pdftex.def Info: figs/elapsed_tws_12.png  used on input line 652.
+Package pdftex.def Info: figs/elapsed_tws_12.png  used on input line 650.
 (pdftex.def)             Requested size: 354.12434pt x 239.46077pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(./article.bbl
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 [] \T1/lmr/m/n/10.95 17
  []
 
-[17]
+[17 <./figs/elapsed_tws_12.png>] (./article.bbl
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 18 []
  []
 
-[18 <./figs/elapsed_tws_12.png>]
+[18]
 Underfull \hbox (badness 2277) in paragraph at lines 112--118
 \T1/lmr/m/n/10.95 multi cross-correlation anal-y-sis ap-plied on EEG sig-nals to study mo-tor ac-tiv-ity
  []
@@ -833,12 +829,12 @@ Overfull \hbox (10.94998pt too wide) has occurred while \output is active
  []
 
 [19])
-Underfull \hbox (badness 10000) in paragraph at lines 763--763
+Underfull \hbox (badness 10000) in paragraph at lines 767--767
 
  []
 
 LaTeX Font Info:    Font shape `T1/pzc/m/n' in size <13> not available
-(Font)              Font shape `T1/pzc/m/it' tried instead on input line 763.
+(Font)              Font shape `T1/pzc/m/it' tried instead on input line 767.
 
 Overfull \hbox (10.94998pt too wide) has occurred while \output is active
 \T1/lmr/m/n/10.95 20 []
@@ -861,10 +857,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,14n,101p,1658b,1060s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on article.pdf (20 pages, 697503 bytes).
+Output written on article.pdf (20 pages, 698498 bytes).
 PDF statistics:
- 506 PDF objects out of 1000 (max. 8388607)
- 419 compressed objects within 5 object streams
+ 510 PDF objects out of 1000 (max. 8388607)
+ 423 compressed objects within 5 object streams
  95 named destinations out of 1000 (max. 500000)
  110 words of extra memory for PDF output out of 10000 (max. 10000000)
 
