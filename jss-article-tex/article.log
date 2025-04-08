@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  3 NOV 2024 19:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.6)  8 APR 2025 19:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/gitrepos/paper_zebendelib/jss-article-tex/article.tex
-(d:/gitrepos/paper_zebendelib/jss-article-tex/article.tex
+**d:/gitrepos/papers/paper_zebendelib/jss-article-tex/article.tex
+(d:/gitrepos/papers/paper_zebendelib/jss-article-tex/article.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-03>
 (./jss.cls
@@ -653,12 +653,12 @@ Package rerunfilecheck Info: File `article.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  21051 strings out of 475188
- 394981 string characters out of 5767805
+ 395002 string characters out of 5767805
  1932248 words of memory out of 5000000
  41898 multiletter control sequences out of 15000+600000
  663345 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,14n,101p,469b,863s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,14n,101p,476b,863s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmb10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbo10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmro10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
 Output written on article.pdf (9 pages, 436069 bytes).
 PDF statistics:

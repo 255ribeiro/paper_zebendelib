@@ -1,8 +1,8 @@
-PWD d:/gitrepos/paper_zebendelib/jss-article-tex
+PWD d:/gitrepos/papers/paper_zebendelib/jss-article-tex
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT d:/gitrepos/paper_zebendelib/jss-article-tex/article.tex
+INPUT d:/gitrepos/papers/paper_zebendelib/jss-article-tex/article.tex
 OUTPUT article.log
 INPUT ./jss.cls
 INPUT jss.cls
