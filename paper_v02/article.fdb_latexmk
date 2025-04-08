@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex article"] 1744147408 "article.aux" "article.bbl" "article" 1744147425 0
+["bibtex article"] 1744147408 "article.aux" "article.bbl" "article" 1744149928 0
   "./jss.bst" 1728929345 32989 20bb38cc9c684ce32025a8fa283a9df6 ""
   "./refs.bib" 1744077321 20551 45ce815cc83deeaa0e4515bd601048d2 ""
-  "article.aux" 1744147423 6063 5b133959dbf86c81af996452f4fc4400 "pdflatex"
+  "article.aux" 1744149926 6063 5b133959dbf86c81af996452f4fc4400 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1744147420 "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" "article.pdf" "article" 1744147425 0
-  "article.aux" 1744147423 6063 5b133959dbf86c81af996452f4fc4400 "pdflatex"
+["pdflatex"] 1744149923 "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" "article.pdf" "article" 1744149928 0
+  "article.aux" 1744149926 6063 5b133959dbf86c81af996452f4fc4400 "pdflatex"
   "article.bbl" 1744147409 9584 02a4d2f101104e60d7874627ed40007b "bibtex article"
-  "article.out" 1744147423 2594 a3b124f57a718d0b47b2d34ad8e0b9b5 "pdflatex"
-  "article.tex" 1744147418 56450 45e2802ba0702cbd40d66d76b0ed9394 ""
+  "article.out" 1744149926 2594 a3b124f57a718d0b47b2d34ad8e0b9b5 "pdflatex"
+  "article.tex" 1744149921 56556 4beba579aa6a4dabeed2388aa7c3202b ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1691348256 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691353563 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1691353563 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -238,7 +238,7 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1691371227 4687025 676c7d7298543c4303eabe86c426c675 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1691371334 8172625 f42d0d86b5a9d53df6cf8902d13f892b ""
   "c:/texlive/2023/texmf.cnf" 1691371196 713 e69b156964470283e0530f5060668171 ""
-  "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" 1744147418 56450 45e2802ba0702cbd40d66d76b0ed9394 ""
+  "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" 1744149921 56556 4beba579aa6a4dabeed2388aa7c3202b ""
   "figs/dmc_chart.png" 1730916186 58869 946bb0593ee9bfc80b3686046b8bfb06 ""
   "figs/elapsed_tws_04.png" 1743983556 51303 d15a14aee14c50bff96944c3b5766d2d ""
   "figs/elapsed_tws_12.png" 1743983568 54547 bad425bbee9a0d4f1a680067d1a4eed1 ""
