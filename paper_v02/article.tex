@@ -644,7 +644,7 @@ The \pkg{Zebende} package implementations where designed to increase performance
   \end{tabular}
 \end{table}
 
-With that configuration, the results are very simmilar, except that the \pkg{Zebende} pure \proglang{Python} implementation ended in the third position, performing better than the \pkg{DCCA-Python} (4th) and the \pkg{DCCA-R-Java} (5th) packages. 
+With that configuration, the optimized \proglang{Zig} version still the fastest, followed by the basic \proglang{Zig} implementation. The \pkg{Zebende} pure \proglang{Python} implementation ended in the third position, performing better than the \pkg{DCCA-Python} (4th) and the \pkg{DCCA-R-Java} (5th) packages. The lists ended with the \pkg{DFA} in the 6th position.
 
 \begin{figure}[h!]
   \centering
@@ -652,6 +652,7 @@ With that configuration, the results are very simmilar, except that the \pkg{Zeb
     figs/elapsed_tws_12.png}
   \caption{\label{fig:elapsed_tws_12}Elapsed Time Comparison for Different Implementations (twelve time series)}
 \end{figure}
+
 
 
 \section{Summary and discussion} \label{sec:summary}
