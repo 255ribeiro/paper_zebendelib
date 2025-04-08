@@ -572,27 +572,26 @@ The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized 
 
 \section{Results} \label{sec:results}
 
-The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG, data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated.
-
-The original data came from the \textit{Physionet} open-access website, available at this link:
+The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG, data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated. The original data came from the~\cite{schalk2004bci2000} paper, available on the \textit{Physionet} open-access website, that can be accessed in this link:
 
 \begin{center}
 	\url{https://physionet.org/content/eegmmidb/1.0.0/}
 \end{center}
 
 
-Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} repository, the \pkg{DFA}, a pure \proglang{R} implementation, and  the \pkg{DCCA}~\citep{R-DCCA},  a \proglang{R} package implemented in \proglang{Java} where found. From the \proglang{Python} \textbf{pypi} repository, a package also named \pkg{DCCA}\citep{alchieri2024lateralization}, a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops, was used. All those packages have $\rho_{DCCA}$ functions. Hereafter the \pkg{DCCA} \proglang{R-java} package will be referred as \pkg{DCCA-R-Java} and the \pkg{DCCA} \proglang{Python} package as \pkg{DCCA-Python} for better distinction.
+Regarding performance, the pure \proglang{Python} implementation, the \proglang{Zig} implementation and the optimized \proglang{Zig} where compared with 3 oder packages that calculates the $\rho_{DCCA}$. Researching the \proglang{R} \textbf{CRAN} repository, the \pkg{DFA}~\citep{R-DFA}, a pure \proglang{R} implementation, and  the \pkg{DCCA}~\citep{R-DCCA},  a \proglang{R} package implemented in \proglang{Java} where found. From the \proglang{Python} \textbf{pypi} repository, a package also named \pkg{DCCA}\citep{alchieri2024lateralization}, a \proglang{Python} implementation with massive use of \pkg{Numpy} broadcasting capabilities and memory access with strides to avoid loops, was also used. All those packages have $\rho_{DCCA}$ functions. Hereafter the \pkg{DCCA} \proglang{R-java} package will be referred as \pkg{DCCA-R-Java} and the \pkg{DCCA} \proglang{Python} package as \pkg{DCCA-Python} for better distinction.
 
-The $dmc_{x}^{2}$ is a more recent coefficient, and no other package was found that calculates it besides the \pkg{Zebende} package. That alone is a big contribution of this package. The $\rho_{DCCA}$ is a fundamental step to calculate the $DMC_{x}^{2}$ and contains the most computational expensive parts. In the $DMC_{x}^{2}$ calculation, The $\rho_{DCCA}$ is calculated for, at least, a combination of 3 series two by two. With the idea to broadly compare the performance of the \pkg{Zebende} package with the others, aiming an overall order of magnitude of the packages compared speed, using the same computer and the same time window scales, the performance comparison was made using data from one of the experiments described in the \cite{RIBEIRO2025107419} paper, available at the link below:
+The $dmc_{x}^{2}$ is a more recent coefficient, and no other package was found that calculates it besides the \pkg{Zebende} package. That alone is a huge contribution of this package. The $\rho_{DCCA}$ is a fundamental step to calculate the $DMC_{x}^{2}$ and contains the most computational expensive parts. In the $DMC_{x}^{2}$ calculation, The $\rho_{DCCA}$ is calculated for, at least, a combination of 3 series two by two. With the idea to broadly compare the performance of the \pkg{Zebende} package with the others, aiming an overall order of magnitude of the packages compared speed, using the same computer and the same time window scales, the performance comparison was made using data from one of the experiments described in the~\cite{schalk2004bci2000} paper, with $19920$ lines and $64$ channels. For convenience the data was posted in the link below:
 
 \begin{center}
   	\url{https://tinyurl.com/zbtestdata01}
 \end{center}
 
-None of the comparison packages can calculate multiple series comparison in the same input, so the $\rho_{DCCA}$ methods where wrapped around a loop that alternate the series used by the function, using a four two by two combination of the data indexes. The \pkg{DCCA-Python} package also didn't accepts multiple inputs for the time scale, so another loop was added in that test. The results are presented in the Table \ref{tab:time_4}.
+None of the comparison packages can calculate multiple series comparison in the same input, so the $\rho_{DCCA}$ methods where wrapped around a loop that alternate the series used by the function, using a four two by two combination of the data indexes. The \pkg{DCCA-Python} package also didn't accepts multiple inputs for the time scale, so another loop was added in that test. 
 
-  \begin{table}[h]
+First all the packages were used to calculate the $\rho_{DCCA}$ of combinations of four time series. The results are presented in the Table \ref{tab:time_4}.
 
+  \begin{table}[h!]
     \centering
     \caption{Elapsed Time Comparison with four series} \label{tab:time_4}
     \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
@@ -609,30 +608,9 @@ None of the comparison packages can calculate multiple series comparison in the 
     \end{tabular}
   \end{table}
 
-    \begin{table}[h]
-      
-      \centering
-      \caption{Elapsed Time Comparison with twelve series} \label{tab:time_12}
-      \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
-        \hline
-        Package & Implementation & Elapsed Time(s) & Performance Increase \\
-        \hline
-        Zebende & Zig (opt) & 120.55  & - \\
-        Zebende & Zig (basic) & 213.08 & 76.64\% \\
-        Zebende & Python & 3,761.40 & 3,020.20\% \\
-        DCCA & Python & 4,675.17 &  3,778.20\% \\
-        DCCA & R-Java & 28,980.00 & 23,939.82\% \\
-        DFA & R & 309,276.00 & 256,454.13\% \\
-        \hline
-      \end{tabular}
-    \end{table}
-
-
 The \pkg{Zebende} package, using the optimized \proglang{Zig} implementation, was the fastest, with a 27.52 seconds elapsed time. The basic \proglang{Zig} implementation was the second fastest, with 42.03 seconds. The \pkg{DCCA-Python} package was the third fastest, with 370.54 seconds. The \pkg{DCCA-R-Java} package was the fourth fastest, with 1987.67 seconds. The \pkg{Zebende} package, using the \proglang{Python} implementation, was the fifth fastest, with 2415.94 seconds. The \pkg{DFA-R} package was the slowest, with 20173.13 seconds.
 
 The \proglang{Zig} basic and optimized versions occupying the first two positions in the ranking is not unexpected, hence the \proglang{Zig} language is more performative than the other ones used in the comparison. The \pkg{DCCA-Python} package in the third position is a surprise, showing that a well implemented \proglang{Python} package can overperform a \proglang{Java} implementation.
-
-The $52.7\%$ increase in performance from the basic to the optimized \proglang{Zig} implementation is a good result, showcasing the effectiveness of the optimizations. Another test was conducted, wth the same data and settings as the previous one, but getting the elapsed time inside every time scale. These results are presented in Fig.~\ref{fig:elapsed_tws_04}.
 
 \begin{figure}[h!] 
   \centering
@@ -641,7 +619,32 @@ The $52.7\%$ increase in performance from the basic to the optimized \proglang{Z
   \caption{\label{fig:elapsed_tws_04}Elapsed Time Comparison for Different Implementations (four time series)}
 \end{figure}
 
-Figure \ref{fig:elapsed_tws_04} shows the elapsed computation time difference from the Basic to the optimized version of the algorithm increases as the time scale increases. If the test was conducted with a bigger time series, and with larger time scales the difference would be even more significant.
+The $66.50\%$ increase in performance from the basic to the optimized \proglang{Zig} implementation is a good result, showcasing the effectiveness of the optimizations. Another test was conducted, wth the same data and settings as the previous one, but getting the elapsed time inside every time scale. These results are presented in Fig.~\ref{fig:elapsed_tws_04}.
+
+
+Figure \ref{fig:elapsed_tws_04} shows the elapsed computation time for the Basic and the optimized version of the algorithm. The differences between the two implementations increases as the time scale increases. If the test was conducted with a bigger time series, and with larger time scales the difference would be even more significant.
+
+The \pkg{Zebende} package implementations where designed to increase performance in scenarios with large number of points in the series, but also with a large amount of time series used in the $DMC_x^2$ calculations. To prove that, the same tests were also made using the same data, with the combinations of twelve series, 2 by 2. The rasults of that second test are presented in Table~\ref{tab:time_12}.
+
+\begin{table}[h!]
+      
+  \centering
+  \caption{Elapsed Time Comparison with twelve series} \label{tab:time_12}
+  \begin{tabular}{@{}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{\hspace{1.0cm}}l@{}}
+    \hline
+    Package & Implementation & Elapsed Time(s) & Performance Increase \\
+    \hline
+    Zebende & Zig (opt) & 120.55  & - \\
+    Zebende & Zig (basic) & 213.08 & 76.64\% \\
+    Zebende & Python & 3,761.40 & 3,020.20\% \\
+    DCCA & Python & 4,675.17 &  3,778.20\% \\
+    DCCA & R-Java & 28,980.00 & 23,939.82\% \\
+    DFA & R & 309,276.00 & 256,454.13\% \\
+    \hline
+  \end{tabular}
+\end{table}
+
+With that configuration, the results are very simmilar, except that the \pkg{Zebende} pure \proglang{Python} implementation ended in the third position, performing better than the \pkg{DCCA-Python} (4th) and the \pkg{DCCA-R-Java} (5th) packages. 
 
 \begin{figure}[h!]
   \centering

@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{23}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -78,6 +78,11 @@ Kacs D, Lee J, Zarins J, Brown N (2024).
 \newblock In \emph{SC24-W: Workshops of the International Conference for High Performance Computing, Networking, Storage and Analysis}, pp. 930--938.
 \newblock \doi{10.1109/SCW63240.2024.00132}.
 
+\bibitem[{Mesquita \emph{et~al.}(2024)Mesquita, Filho, and Danilevicz.}]{R-DFA}
+Mesquita VB, Filho FMO, Danilevicz IM (2024).
+\newblock \emph{DFA: Detrended Fluctuation Analysis}.
+\newblock R package version 1.0.0, \urlprefix\url{https://CRAN.R-project.org/package=DFA}.
+
 \bibitem[{Peng \emph{et~al.}(1994)Peng, Buldyrev, Havlin, Simons, Stanley, and Goldberger}]{Peng_1994}
 Peng CK, Buldyrev SV, Havlin S, Simons M, Stanley HE, Goldberger AL (1994).
 \newblock \enquote{{Mosaic Organization of DNA Nucleotides}.}
@@ -110,6 +115,12 @@ Ribeiro FF, de~Almeida~Brito A, Filho FMO, Cruz JAL, Zebende GF (2025).
 \newblock ISSN 1746-8094.
 \newblock \doi{https://doi.org/10.1016/j.bspc.2024.107419}.
 \newblock \urlprefix\url{https://www.sciencedirect.com/science/article/pii/S1746809424014770}.
+
+\bibitem[{Schalk \emph{et~al.}(2004)Schalk, McFarland, Hinterberger, Birbaumer, and Wolpaw}]{schalk2004bci2000}
+Schalk G, McFarland D, Hinterberger T, Birbaumer N, Wolpaw J (2004).
+\newblock \enquote{{BCI2000: A General-Purpose Brain-Computer Interface (BCI) System}.}
+\newblock \emph{{IEEE Transactions on Biomedical Engineering}}, \textbf{51}(6), 1034--1043.
+\newblock \doi{10.1109/TBME.2004.827072}.
 
 \bibitem[{Vassoler and Zebende(2012)}]{vassolerZebende2012}
 Vassoler RT, Zebende GF (2012).
