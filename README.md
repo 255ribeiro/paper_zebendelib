@@ -1,5 +1,7 @@
 # Notes
 
+[Testing code](./notebooks/test_nb.md)
+
 ## Pdcca packages
 
 ### R
