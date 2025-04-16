@@ -1788,4 +1788,4 @@ numpy = ">=1.26,<3.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "23e273060d6ff6014ace40951b91b61da4eb0071f21f7224b7a88dd6bac2577e"
+content-hash = "eaf17df6617ee7cf8c4a615c5902a79ba9d6ebab445d972607f6ae5321aff352"
