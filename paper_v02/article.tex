@@ -30,13 +30,13 @@
 %% - \title{} in title case
 %% - \Plaintitle{} without LaTeX markup (if any)
 %% - \Shorttitle{} with LaTeX markup (if any), used as running title
-\title{A \proglang{Python}/\proglang{Zig} optimized and customizable implementation for the $\rho_{DCCA}$ and $DMC_x^2$}
-\Plaintitle{A Python/Zig optimized and customizable implementation for the Pdcca and DMCx2 methods}
+\title{A \proglang{Python}/\proglang{Zig} optimized and customizable implementation for $\rho_{DCCA}$ and $DMC_x^2$ coefficients}
+\Plaintitle{A Python/Zig optimized and customizable implementation for the Pdcca and DMCx2 coefficients}
 \Shorttitle{\proglang{Python}/\proglang{Zig} implementation for the $\rho_{DCCA}$ and $DMC_x^2$}
 
 %% - \Abstract{} almost as usual
 \Abstract{
-  This paper presents \pkg{Zebende}, a \proglang{Python} package written in \proglang{Python} and \proglang{Zig}, that calculates the $DFA$, $DCCA$ $\rho_{DCCA}$ and the $DMC_x^2$, along with auxiliary functions to help the calculations process. The package presents an optimized algorithm that significantly improves the calculations speed in large datasets. \pkg{Zebende} is the first package that implements the $DMC_x^2$ and can be applied to any number of time series. The optimized version of the algorithm is compared to the standard implementation, presenting valuable performance increase. A comparison with other \proglang{Python} and \proglang{R} packages that calculates the $\rho_{DCCA}$ is also presented.}
+  This paper presents \pkg{Zebende}, a \proglang{Python} package written in \proglang{Python} and \proglang{Zig}, that calculates the $DFA$, $DCCA$ functions, and $\rho_{DCCA}$ and $DMC_x^2$ coefficients, along with auxiliary functions to help the calculations process. The package presents an optimized algorithm that significantly improves the calculations speed in large datasets. \pkg{Zebende} is the first package that implements the $DMC_x^2$ and can be applied to any number of time series. The optimized version of the algorithm is compared to the standard implementation, presenting valuable performance increase. A comparison with other \proglang{Python} and \proglang{R} packages that calculates the $\rho_{DCCA}$ is also presented.}
 
 %% - \Keywords{} with LaTeX markup, at least one required
 %% - \Plainkeywords{} without LaTeX markup (if necessary)
@@ -96,13 +96,14 @@
 
 \section{introduction} \label{sec:intro}
 
-The Detrended Cross-correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between two non-stationary time series. It´s an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationary time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
+
+The Detrended Cross-Correlation Coefficient ($\rho_{DCCA}$)~\citep{Zebende2011} is a widely used coefficient that measures the cross-correlation between two non-stationary time series. $\rho_{DCCA}$~is an extension of the Detrended Fluctuation Analysis ($DFA$)~\citep{Peng_1994} and the Detrended Cross-correlation Analysis ($DCCA$)~\citep{Podobnik2008}: while the $DFA$ calculates the self-affinity and long-memory properties of a time series data, and the $DCCA$ analyses power-law cross correlations between two different non-stationary time series, the $\rho_{DCCA}$ coefficient quantifies this cross-correlation in simple values ranging from $-1$ to $1$, where $-1$ indicates a perfect anti-correlation between the series, $1$ a perfect correlation and zero ($0$) no correlation at all.
 
 The method was statistically validated~\citep{PhysRevE.84.066118}, applied to climate data~\cite{vassolerZebende2012}, financial data\citep{Wang2013, Guedes2017, Ferreira2018}, electroencephalogram recorded data \citep{Oliveira2023}, among others. Statistical criteria for evaluating the relevance of the results were also developed~\cite{Guedes2018,Guedes2018a}.
 
-The Detrended Multiple Cross-Correlation Coefficient \citep{Zebende2018} ($DMC_x^2$) is a generalization of the $\rho_{DCCA}$ coefficient that correlates one time series (dependent variable) a number of time series (independent variables). The $DMC_x^2$ values ranges from zero ($0$), indicating no correlation to $1$, meaning perfect correlation or anti-correlation between the dependent and the independent variables.
+The Detrended Multiple Cross-Correlation Coefficient \citep{Zebende2018} ($DMC_x^2$) is a generalization of the $\rho_{DCCA}$ coefficient that correlates one time series (dependent variable) a number of time series (independent variables). The $DMC_x^2$ values ranges from zero ($0$), indicating no multiple cross-correlation to $1$, meaning perfect multiple cross-correlation.
 
-The method has been applied to study meteorological data~\citep{Brito2019}, have been tested statistically~\citep{filho2021-2}, used with the implementation of sliding windows~\citep{guedes2021-2}, to measure the contagion effect on stock market indexes~\citep{guedes2022d}, to produce statistical analysis between stock market behavior~\citep{zebende2022s} or analyze electroencephalogram (EEG) signals \citep{RIBEIRO2025107419}.
+The coefficient has been applied to study meteorological data~\citep{Brito2019}, have been tested statistically~\citep{filho2021-2}, used with the implementation of sliding windows~\citep{guedes2021-2}, to measure the contagion effect on stock market indexes~\citep{guedes2022d}, to produce statistical analysis between stock market behavior~\citep{zebende2022s} or analyze electroencephalogram (EEG) signals \citep{RIBEIRO2025107419}.
 
 This paper presents the \pkg{Zebende} \proglang{Python} package, an implementation of the $DFA$, $DCCA$, $\rho_{DCCCA}$, $DMC_x^2$ and utility functions related to the methods. In section \ref{sec:calculations} the steps for calculating the $\rho_{DCCA}$ and $DMC_x^2$ are presented and discussed. Section \ref{sec:optimization} shows how this library was implemented, the optimization technics and the recommended steps to use the library. In Section \ref{sec:results} the \pkg{Zebende} package is compared with other packages for \proglang{Python} and \proglang{R} that calculates the $\rho_{DCCA}$ in terms of performance and usability, leading to the conclusions in Section \ref{sec:summary}.
 
@@ -113,10 +114,10 @@ The algorithms that calculates the $\rho_{DCCA}$ uses the $DFA$ and the $DCCA$ s
 
 \begin{enumerate}\label{steps:dfa}
 
-  \item Taking a time series $\{x_{i}\}$ with $i$ ranging from $1$ to $N$, the integrated series $X_{k}$ is calculated by $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right]$ with \(k\) also ranging from $1$ to $N$;
+  \item Taking a time series $\{x_{i}\}$ with $i$ ranging from $1$ to $N$, the integrated series $X_{k}$ is calculated by $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right]$ with \(k\) also ranging from $1$ to $N$ (time series length);
   \item the  $X_{k}$ series is divided in $N - n$ boxes of size $n$(time scale), each box containing $n + 1$ values, starting in $i$ up to $i + n$;
   \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting $\widetilde{X}_{k, i}$ with $i \le k \le (i + n)$;
-  \item in each box is calculated: $f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k}-\widetilde{X}_{k})^{2}$
+  \item in each box is calculated: $f_{DFA}^{2}(n, i) = \frac{1}{1+n} \sum_{k=i}^{i + n}(X_{k,i}-\widetilde{X}_{k,i})^{2}$
   \item for all the boxes of a time scale, the $DFA$ is calculated as:\\[10pt]
         $F_{DFA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DFA}^{2}(n, i)}$;
   \item for a number of different timescales ($n$), with possible values $4 \le n \le \frac{N}{4}$ the $F_{DFA}$ function is calculated to find a relation among $F_{DFA} \times n$
@@ -129,24 +130,26 @@ The $DCCA$ method is very similar to the $DFA$ calculations, with the difference
 
 \begin{enumerate}
   \label{steps:DCCA}
-  \item Taking two time series with the same length $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ with $i$ ranging from $1$ to $N$,
-        the integrated series $X\alpha_{k}$ and $X\beta_{k}$ are calculated by
-        $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] $ for each series, with $k$ also ranging from $i$ to $N$;
-  \item $X\alpha_{k}$ and $X\beta_{k}$ series are divided in $N - n$ boxes of size $n$(time scale), each box containing $n + 1$ values, starting in $i$ up to $i + n$;
-  \item for each box, a polynomial (usually of degree 1) best fit is calculated, getting
-        $\widetilde{X\alpha}_{k, i}$ and $\widetilde{X\beta}_{k, i}$,
-        for series $\{x\alpha_{i}\}$ and $\{x\beta_{i}\}$ respectively,
-        with $i \le k \le (i + n)$;
-  \item in each box is calculated: $f_{DCCA}^{2}(n, i) =
-          \frac{1}{1+n} \sum_{k=i}^{i + n}(X\alpha_{k}-\widetilde{X\alpha}_{k, i}) \times (X\beta_{k}-\widetilde{X\beta}_{k})$
-  \item for all the boxes of a time scale, the $DCCA$ is calculated as:\\[10pt]
+  \item Taking two time series of the same length $\{x^{j1}_{i}\}$ and $\{x^{j2}_{i}\}$ with $i$ ranging from $1$ to $N$, the integrated series $X\alpha_{k}$ and $X\beta_{k}$ are calculated by
+  $X_{k} = \sum_{i=1}^{k}\left[x_{i} - \langle x \rangle \right] $ for each series, with $k$ also ranging from $i$ to $N$;
+\item The series $X^{j1}_{k}$ and $X^{j2}_{k}$ are divided into $N - n$ boxes of size $n$ (time scale), each box containing $n + 1$ values, starting from $i$ to $i + n$;
+\item For each box, a polynomial (usually of degree 1) is fitted, obtaining
+  $\widetilde{X^{j1}}_{k, i}$ and $\widetilde{X^{j2}}_{k, i}$,
+  for series $\{x^{j1}_{i}\}$ and $\{x^{j2}_{i}\}$ respectively,
+  with $i \le k \le (i + n)$;
+\item For each box, one of the $N - n$ boxes of the same temporal scale, the function is calculated by:\\[10pt]
+  $f_{DCCA}^{2}(n, i) =
+          \frac{1}{1+n} \sum_{k=i}^{i + n}(X^{j1}_{k,i}-\widetilde{X^{j1}}_{k, i}) \times (X^{j2}_{k,i}-\widetilde{X^{j2}}_{k, i})$
+\item For all boxes of the same temporal scale, the DCCA is calculated as:\\[10pt]
+  $F_{DCCA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)}$;
+\item For a number of temporal scales ($n$), with possible values $4 \le n \le \frac{N}{4}$, the DCCA is calculated to find a relationship between $F_{DCCA} \times n$
 \end{enumerate}
 
 Comparing the algorithms, the first three are basically identical, the only difference is that the $DCCA$ method apply those steps to two series. The step four of the $DFA$ can be considered an analogous of the variance, replacing the average subtraction (in the variance) for the values obtained by the polynomial fit (estimated series); and the equivalent step of the $DCCA$ is, in the same terms, compared to the covariance between the two series. The technique of fitting a curve, interpreted as a trend inside each box, and subtracting the value estimated by the trend from the actual value in the integrated series $(X_{k}-\widetilde{X}_{k})$ from now on will be called \textbf{detrended values}($DV$). In the $DFA$ algorithm, the $f_{DFA}^{2}(n, i)$ function is the mean of the square of the $DV$, in $DCCA$ calculations, the $f_{DCCA}^{2}(n, i)$ function evaluates the mean of the product of the $DV$ of the two series in each box.
 
 Step five of the $DFA$ calculates the square root of the mean of the values calculates in the previous step for each box, in the $DCCA$, the mean of the values evaluated for each box is calculated in stead. The last step, in both cases, is more a reminder to repeat the respective previous operations for a number of difference time scales ($n$).
 
-The $\rho_{DCCA}$ is measured using Eq. \ref{eq:p_dcca}. Considering the relation between $DFA$ and variance and $DCCA$ and covariance, the $\rho_{DCCA}$ resembles Pearson correlation for a time scale $n$.
+The $\rho_{DCCA}$ is measured by Eq. \ref{eq:p_dcca}. Considering the relation between $DFA$ and variance and $DCCA$ and covariance, the $\rho_{DCCA}$ resembles Pearson correlation for a time scale $n$.
 
 \begin{equation}
   {\rho}_{DCCA}(n) = \frac{F_{DCCA~(x\alpha,~x\beta)}^{2}(n)}
@@ -154,29 +157,29 @@ The $\rho_{DCCA}$ is measured using Eq. \ref{eq:p_dcca}. Considering the relatio
   \label{eq:p_dcca}
 \end{equation}
 
-The $DMC_x^2$ is a generalization of the $\rho_{DCCA}$ that calculates the correlation between one time-series $\left\lbrace Y \right\rbrace $, as the  dependent variable, and a number $j$ of time-series $\left\lbrace X_{1} \right\rbrace $, $\left\lbrace X_{2} \right\rbrace $, $\left\lbrace X_{3} \right\rbrace $, $\dots $, $\left\lbrace X_{j} \right\rbrace $ defined as independent variables. The coefficient is expressed mathematically as:
+The $DMC_x^2$ is a generalization of the $\rho_{DCCA}$ that calculates the correlation between one time-series $\left\lbrace Y \right\rbrace $, as the  dependent variable, and a number $m$ of time-series $\left\lbrace X^{1} \right\rbrace $, $\left\lbrace X^{2} \right\rbrace $, $\left\lbrace X^{3} \right\rbrace $, $\dots $, $\left\lbrace X^{m} \right\rbrace $ defined as independent variables and represented as $\left\lbrace X^{j} \right\rbrace $, with $j$ ranging from $1$ to $m$. The coefficient is expressed mathematically as:
 
 \begin{equation}
-  {DMC}_{x}^{2}  \equiv \rho_{Y,X_{i}}(n)^{T} \times \rho^{-1}(n) \times \rho_{Y,X_{i}}(n)
+  {DMC}_{x}^{2}  \equiv \rho_{Y,X^{j}}(n)^{T} \times \rho^{-1}(n) \times \rho_{Y,X^{j}}(n)
   \label{eq:dmcx2}
 \end{equation}
 
-In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X_{1},X_{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X_{1}$ and $X_{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a cross-correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is a commutative operation.
+In Eq. \ref{eq:dmcx2}, $\rho^{-1}(n)$ represent the inverse of a matrix populated by all possible combinations of $\rho_{DCCA}$ between independent variables. In Eq. \ref{eq:p_dcca_matrix}, value $\rho_{X^{1},X^{2}}(n)$, for instance, is the $\rho_{DCCA}$ for independent variables $X^{1}$ and $X^{2}$ calculated with time scale $n$, occupying position $\rho_{1 2}$ of the matrix. Two fundamental characteristics: the first is that the main diagonal values are all ones, since it's position in the matrix denotes the calculation of a cross-correlation between a series and itself. Second, the matrix is symmetric in relation to the main diagonal, as the $\rho_{DCCA}$ is a commutative operation.
 
 \begin{equation}
-  \rho^{-1}(n) = \left(\begin{matrix}
-    1                     & \rho_{X_{1},X_{2}}(n) & \rho_{X_{1},X_{3}}(n) & \dots & \rho_{X_{1},X_{j}}(n) \\
-    \rho_{X_{2},X_{1}}(n) & 1                     & \rho_{X_{2},X_{3}}(n) & \dots & \rho_{X_{2},X_{j}}(n) \\
+  \rho~(n) = \left(\begin{matrix}
+    1                     & \rho_{X^{1},X^{2}}(n) & \rho_{X^{1},X^{3}}(n) & \dots & \rho_{X^{1},X^{m}}(n) \\
+    \rho_{X^{2},X^{1}}(n) & 1                     & \rho_{X^{2},X^{3}}(n) & \dots & \rho_{X_{2},X^{m}}(n) \\
     \vdots                & \vdots                & \vdots                & \dots & \vdots                \\
-    \rho_{X_{j},X_{1}}(n) & \rho_{X_{j},X_{2}}(n) & \rho_{X_{j},X_{3}}(n) & \dots & 1                     \\
-  \end{matrix}\right)^{-1}
+    \rho_{X^{m},X^{1}}(n) & \rho_{X^{m},X^{2}}(n) & \rho_{X^{m},X^{3}}(n) & \dots & 1                     \\
+  \end{matrix}\right)
   \label{eq:p_dcca_matrix}
 \end{equation}
 
 At last Eq. \ref{eq:rhocol} represent the transposed vector of the $\rho_{Y,X_{i}}(n)$ between the depended variable $\left\lbrace Y \right\rbrace $ and each $\left\lbrace X_{i} \right\rbrace $ independent variable for a given time scale $n$.
 
 \begin{equation} \label{eq:rhocol}
-  \rho_{Y,X_i}(n)^T=[\rho_{Y,X_1}(n), \rho_{Y,X_2}(n),\cdots,\rho_{Y,X_j}(n)]
+  \rho_{Y,X^{j}}(n)^T=[\rho_{Y,X^1}(n), \rho_{Y,X^2}(n),\cdots,\rho_{Y,X^m}(n)]
 \end{equation}
 
 As the $DFA$ and the $DCCA$,~$\rho_{DCCA}$ and~$DMC_x^2$ should be evaluated in a number of time scales ($n$) to analyze the characteristics of each coefficient.
@@ -207,7 +210,7 @@ The implementation of the \pkg{Zebende} package follows some well defined goals:
   \item deliver an easy to use package.
 \end{enumerate}
 
-The \proglang{Python} language was chosen because it´s one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a plethora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels}~...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}~...) and data visualization(\pkg{Matplotlib}, \pkg{Seaborn}, \pkg{Plotly}~...) among other data related applications.
+The \proglang{Python} language was chosen because it is one of the most used languages in the data analyses field and have a great support for statistical tools and machine learning algorithms. The are a plethora of tools to load and manipulate data (\pkg{Pandas}, \pkg{Polar}, \pkg{PySpark} ...), execute statistical analyzes (\pkg{Numpy}, \pkg{SciPy}, \pkg{StatsModels}~...), machine learning (\pkg{Pytorch}, \pkg{TensorFlow}, \pkg{Scykit Learn}~...) and data visualization~(\pkg{Matplotlib}, \pkg{Seaborn}, \pkg{Plotly}~...) among other data related applications.
 
 \begin{figure}[h!]
   \centering
@@ -276,7 +279,7 @@ With the mandatory steps explained, some very important optional inputs should b
 
 \subsection{Implementation of the Detrended Cross-correlation Coefficient function}
 
-It´s important to understand the calculation steps, the role of the \verb"DCCA_of" array and how it fits in the goals of the package implementation. The code below is part of the pure \proglang{Python} implementation of the $\rho_{DCCA}$ function, 
+Is very important to understand the calculation steps, the role of the \verb"DCCA_of" array and how it fits in the goals of the package implementation. The code below is part of the pure \proglang{Python} implementation of the $\rho_{DCCA}$ function, 
 
 \begin{Code}
 for n_index, n  in enumerate(tws): # for each time scale
@@ -440,9 +443,9 @@ Function \verb"dmcx2_from_p_dcca_matrix_2d()" can be used to more customizable a
 
 \subsection{Zig implementation}
 
-The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could benefit with the integration of a low-level language. \proglang{Zig} was chosen to enhance the algorithms performance. It's a low-level language that gain popularity in recent years and provides performance similar to \proglang{C} and \proglang{Fortran} in some scenarios~\citep{10820804}.
+The \proglang{Python} implementation successfully reflects the implementation goals presented in Sec.~\ref{sec:optimization} but the performance could benefit with the integration of a low-level language. \proglang{Zig} was chosen to enhance the algorithms performance. It is a low-level language that gain popularity in recent years and provides performance similar to \proglang{C} and \proglang{Fortran} in some scenarios~\citep{10820804}.
 
-The interest for using \proglang{ZIg} for this project also relies on the cross-compiling capabilities of the \proglang{Zig} compiler. For a small research group maintaining a package could be challenging and the ability to to compile all releases for all platforms in a single machine is a great advantage. The \proglang{Zig} compiler can generate binaries for Windows, Linux and MacOS from a single machine. The \proglang{Zig} compiler is also very fast, and the language is very easy to learn, with a syntax that is very similar to \proglang{C}.
+The interest in using \proglang{ZIg} language for this project also relies on the cross-compiling capabilities of the \proglang{Zig} compiler. For a small research group maintaining a package could be challenging and the ability to to compile all releases for all platforms in a single machine is a great advantage. The \proglang{Zig} compiler can generate binaries for Windows, Linux and MacOS from a single machine. The \proglang{Zig} compiler is also very fast, and the language is very easy to learn, with a syntax that is very similar to \proglang{C}.
 
 The implementation focus on writing technics $\rho_{DCCA}$ function in \proglang{Zig} exposed as a \proglang{C} Application Binary Interface (ABI), called by \proglang{Python} using the \pkg{ctypes} package. The $\rho_{DCCA}$ function is the most computational expensive part of the package, and the performance gain was expected to be significant.
 
@@ -586,7 +589,7 @@ The three implementations, pure \proglang{Python}, \proglang{ZIg} and optimized 
 
 \section{Results} \label{sec:results}
 
-The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG, data, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated. The original data came from the~\cite{schalk2004bci2000} paper, available on the \textit{Physionet} open-access website, that can be accessed in this link:
+The algorithm was tested with data and results from the \cite{RIBEIRO2025107419} paper. Details regarding data preparations can be found in the aforementioned paper. A comprehensive dataset of EEG recording, with 108 subjects, executing 12 experiments each, with the $\rho_{DCCA}$ and $DMC_{x}^{2}$ calculated for all experiments, using signals from four electrodes with 15742 points. The results were compared with the original ones, and the algorithms where validated. The original data came from the~\cite{schalk2004bci2000} paper, available on the \textit{Physionet} open-access website, that can be accessed in this link:
 
 \begin{center}
 	\url{https://physionet.org/content/eegmmidb/1.0.0/}
