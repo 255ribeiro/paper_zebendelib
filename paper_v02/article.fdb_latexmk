@@ -1,18 +1,17 @@
 # Fdb version 4
-["bibtex article"] 1746125517 "article.aux" "article.bbl" "article" 1746140481 0
+["bibtex article"] 1751754092 "article.aux" "article.bbl" "article" 1751754098 0
   "./jss.bst" 1728929345 32989 20bb38cc9c684ce32025a8fa283a9df6 ""
   "./refs.bib" 1744077321 20551 45ce815cc83deeaa0e4515bd601048d2 ""
-  "article.aux" 1746140479 6063 a15881cbcd1e45d146d15c3711cb7e95 "pdflatex"
+  "article.aux" 1751754096 6063 f14ecbbb8253a51216d8fd7dc8e97dd7 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1746140475 "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" "article.pdf" "article" 1746140481 0
-  "article.aux" 1746140479 6063 a15881cbcd1e45d146d15c3711cb7e95 "pdflatex"
-  "article.bbl" 1746125518 9584 02a4d2f101104e60d7874627ed40007b "bibtex article"
-  "article.out" 1746140479 2594 a3b124f57a718d0b47b2d34ad8e0b9b5 "pdflatex"
-  "article.tex" 1746140472 57785 381898664b7c07bfc7bc9cb3e5749d95 ""
-  "c:/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1691348256 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
+["pdflatex"] 1751754093 "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" "article.pdf" "article" 1751754098 0
+  "article.aux" 1751754096 6063 f14ecbbb8253a51216d8fd7dc8e97dd7 "pdflatex"
+  "article.bbl" 1751754093 9584 02a4d2f101104e60d7874627ed40007b "bibtex article"
+  "article.out" 1751754096 2594 a3b124f57a718d0b47b2d34ad8e0b9b5 "pdflatex"
+  "article.tex" 1751754085 57779 507d9ef759ed12110adbf84db5e71bcf ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1691353563 2375 baa924870cfb487815765f9094cf3728 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1691353563 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1691353563 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -20,8 +19,6 @@
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc" 1691353563 2327 9d6df24f9c4f7368395224341a95523a ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc" 1691353563 3031 6c4d3515bf7115d8518af1c9ab97ca44 ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1691349831 3524 cb3e574dea2d1052e39280babc910dc8 ""
-  "c:/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfchan/pzcmi8r.tfm" 1691370527 3520 74c182562270529cb43f51d7c7d9f1d9 ""
-  "c:/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfchan/pzcmi8t.tfm" 1691370527 5096 d41a51208edc0ef3a3b8a2d6da0f98ab ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm" 1691348367 3584 929cdff2b7a8c11bd4d49fd68cb0ae70 ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/ae/aer10.tfm" 1691343630 6076 dc5394361b1c55a30e76ff07ab99157c ""
   "c:/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1691343830 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -88,8 +85,6 @@
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmsy8.pfb" 1691353563 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb" 1691353563 113227 d3d1adc024746ff57b20efba82c6d365 ""
   "c:/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtto10.pfb" 1691353563 125829 8123c8ab071cec821b194c5aeaae7d6c ""
-  "c:/texlive/2023/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb" 1691370527 49289 ed75f97b75be34140e9d251dd8e641af ""
-  "c:/texlive/2023/texmf-dist/fonts/vf/adobe/zapfchan/pzcmi8t.vf" 1691370527 2308 b1f0e720c2c5fa7d47ec91998ab9de1d ""
   "c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1691355342 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "c:/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1691344264 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1691345414 40635 c40361e206be584d448876bba8a64a3b ""
@@ -224,7 +219,6 @@
   "c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty" 1691356966 348 ee405e64380c11319f0e249fed57e6c5 ""
   "c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty" 1691356966 274 5ae372b7df79135d240456a1c6f2cf9a ""
   "c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty" 1691356966 325 f9f16d12354225b7dd52a3321f085955 ""
-  "c:/texlive/2023/texmf-dist/tex/latex/psnfss/t1pzc.fd" 1691364968 278 339f907b41e92648c97a94474aff64ff ""
   "c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty" 1691365850 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1691365922 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "c:/texlive/2023/texmf-dist/tex/latex/siunitx/siunitx.sty" 1691366734 325960 c337e4fb660b178514644cbed5463e3c ""
@@ -238,13 +232,12 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1691371227 4687025 676c7d7298543c4303eabe86c426c675 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1691371334 8172625 f42d0d86b5a9d53df6cf8902d13f892b ""
   "c:/texlive/2023/texmf.cnf" 1691371196 713 e69b156964470283e0530f5060668171 ""
-  "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" 1746140472 57785 381898664b7c07bfc7bc9cb3e5749d95 ""
+  "d:/gitrepos/papers/paper_zebendelib/paper_v02/article.tex" 1751754085 57779 507d9ef759ed12110adbf84db5e71bcf ""
   "figs/dmc_chart.png" 1730916186 58869 946bb0593ee9bfc80b3686046b8bfb06 ""
   "figs/elapsed_tws_04.png" 1743983556 51303 d15a14aee14c50bff96944c3b5766d2d ""
   "figs/elapsed_tws_12.png" 1743983568 54547 bad425bbee9a0d4f1a680067d1a4eed1 ""
   "figs/pdcca_chart.png" 1730914033 64339 3c8ccc1ce1d7a81b6481143339ee7468 ""
-  "jss.cls" 1728937806 14941 3697c2d4e5008ba5075da85ee0382bd5 ""
-  "jsslogo.jpg" 1728929345 22731 b9564ddd59a06782310989e8f33db55e ""
+  "jss.cls" 1751753773 14941 3697c2d4e5008ba5075da85ee0382bd5 ""
   (generated)
   "article.aux"
   "article.log"

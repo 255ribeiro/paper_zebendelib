@@ -1,4 +1,5 @@
-\documentclass[article]{jss}
+\documentclass[nojss]{jss}
+
 
 %% -- LaTeX packages and custom commands ---------------------------------------
 
@@ -141,7 +142,7 @@ The $DCCA$ method is very similar to the $DFA$ calculations, with the difference
   $f_{DCCA}^{2}(n, i) =
           \frac{1}{1+n} \sum_{k=i}^{i + n}(X^{j1}_{k,i}-\widetilde{X^{j1}}_{k, i}) \times (X^{j2}_{k,i}-\widetilde{X^{j2}}_{k, i})$
 \item For all boxes of the same temporal scale, the DCCA is calculated as:\\[10pt]
-  $F_{DCCA}(n) = \sqrt{\frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)}$;
+  $F^2_{DCCA}(n) = \frac{1}{N - n} \sum_{i=1}^{N-n} f_{DCCA}^{2}(n, i)$;
 \item For a number of temporal scales ($n$), with possible values $4 \le n \le \frac{N}{4}$, the DCCA is calculated to find a relationship between $F_{DCCA} \times n$
 \end{enumerate}
 
